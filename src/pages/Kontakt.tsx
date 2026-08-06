@@ -16,24 +16,25 @@ const contactInfo = [
     href: 'mailto:kontakt@vona-cloud.com',
   },
   {
-    icon: Phone,
-    label: 'Telefon',
-    value: '0211-87971940',
-    href: 'tel:+4921187971940',
+    icon: Building2,
+    label: 'Unternehmen',
+    value: 'VONA Cloud Solutions GmbH',
+    href: undefined,
   },
   {
     icon: MapPin,
     label: 'Adresse',
     value: 'Rheingaustr. 53, 65201 Wiesbaden',
-    href: '#',
+    href: undefined,
   },
   {
     icon: Clock,
-    label: 'Öffnungszeiten',
+    label: 'Erreichbarkeit',
     value: 'Mo–Fr: 09:00 – 18:00 Uhr',
     href: undefined,
   },
 ];
+
 
 const Kontakt = () => {
   const { ref, isVisible } = useScrollAnimation();

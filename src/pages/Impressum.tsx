@@ -25,18 +25,23 @@ const Impressum = () => {
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Vertreten durch</h3>
-          <p>Geschäftsführer: Tobias Papst</p>
+          <p>Geschäftsführer: Alexander Seitz</p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Registereintrag</h3>
           <p>
-            Registergericht: Amtsgericht Düsseldorf<br />
-            Registernummer: HRB 101174
+            Registergericht: Amtsgericht Wiesbaden<br />
+            Registernummer: HRB 32932
+          </p>
+
+          <h3 className="text-lg font-bold mt-8 mb-3">Unternehmensgegenstand</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Die Entwicklung, der Betrieb und Vertrieb von Softwareprodukten einschließlich Beratung.
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Umsatzsteuer-ID</h3>
           <p>
             Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
-            DE321399565
+            DE294808751
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Kontakt</h3>
@@ -46,16 +51,12 @@ const Impressum = () => {
               kontakt@vona-cloud.com
             </a>
             <br />
-            Telefon:{' '}
-            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
-              0211-87971940
-            </a>
-            <br />
             Website:{' '}
             <a href="https://vona-cloud.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
               vona-cloud.com
             </a>
           </p>
+
 
           <h3 className="text-lg font-bold mt-8 mb-3">Haftung für Inhalte</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
