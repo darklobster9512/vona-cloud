@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Building2, MapPin } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const Footer = () => {
@@ -13,8 +13,10 @@ const Footer = () => {
               <img src={logo} alt="VONA Cloud" className="h-10 hover:scale-105 transition-transform duration-200" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Beratung, Digitalisierung und Software für Unternehmen, die bereit sind, effizienter zu arbeiten.
+              Wir entwickeln, betreiben und skalieren Cloud-Software — von der Architektur
+              bis zum 24/7-Betrieb, gehostet in der EU.
             </p>
+
           </div>
 
           {/* Unternehmen */}
@@ -41,11 +43,12 @@ const Footer = () => {
             <h4 className="font-semibold text-sm mb-4 text-foreground">Leistungen</h4>
             <ul className="space-y-2.5">
               {[
-                { label: 'Beratung', href: '/leistungen' },
-                { label: 'Digitalisierung', href: '/leistungen' },
-                { label: 'Software', href: '/software' },
-                { label: 'Automatisierung', href: '/leistungen' },
+                { label: 'Cloud-Entwicklung', href: '/leistungen' },
+                { label: 'Managed Cloud-Betrieb', href: '/leistungen' },
+                { label: 'Cloud-Migration', href: '/leistungen' },
+                { label: 'Plattform & Software', href: '/software' },
               ].map((link, i) => (
+
                 <li key={i}>
                   <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
@@ -65,12 +68,11 @@ const Footer = () => {
                   kontakt@vona-cloud.com
                 </a>
               </li>
-              <li>
-                <a href="mailto:kontakt@vona-cloud.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <Phone className="h-4 w-4 text-primary/70 shrink-0" />
-                  0211-87971940
-                </a>
+              <li className="flex items-center gap-2">
+                <Building2 className="h-4 w-4 text-primary/70 shrink-0" />
+                <span>VONA Cloud Solutions GmbH</span>
               </li>
+
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-primary/70 shrink-0 mt-0.5" />
                 <span>Rheingaustr. 53<br />65201 Wiesbaden</span>
