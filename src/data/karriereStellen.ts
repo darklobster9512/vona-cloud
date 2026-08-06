@@ -16,7 +16,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'onlineprozess-tester',
     titel: 'Mitarbeiter (m/w/d) für Onlineprozess-Tests',
-    standort: 'Düsseldorf',
+    standort: 'Wiesbaden',
     modell: 'Remote / Minijob / Teilzeit',
     arbeitszeit: 'Flexibel (ca. 5–30 Std./Woche)',
     stundenlohn: '29 €',
@@ -47,7 +47,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'senior-software-engineer',
     titel: 'Mitarbeiter (m/w/d) für Softwareentwicklung',
-    standort: 'Düsseldorf',
+    standort: 'Wiesbaden',
     modell: 'Remote',
     kurzbeschreibung: 'Entwickle skalierbare Full-Stack-Lösungen mit React und Node.js für unsere Kunden.',
     beschreibung: 'Als Senior Software Engineer gestaltest du die technische Architektur unserer Kundenprojekte und entwickelst performante Web-Applikationen von der Konzeption bis zum Go-Live. Du arbeitest eng mit unserem Consulting-Team zusammen, um maßgeschneiderte Softwarelösungen zu realisieren.',
@@ -76,7 +76,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'ux-ui-designer',
     titel: 'Mitarbeiter (m/w/d) für UX/UI Design',
-    standort: 'Düsseldorf',
+    standort: 'Wiesbaden',
     modell: 'Remote',
     kurzbeschreibung: 'Gestalte intuitive Benutzeroberflächen und entwickle nutzerzentrierte Designkonzepte.',
     beschreibung: 'Als UX/UI Designer:in verantwortest du das visuelle und interaktive Erlebnis unserer Softwareprodukte. Du führst Nutzerforschung durch, erstellst Wireframes und High-Fidelity-Prototypen und arbeitest eng mit dem Entwicklungsteam zusammen.',
@@ -105,7 +105,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'devops-engineer',
     titel: 'Mitarbeiter (m/w/d) für DevOps & Cloud-Infrastruktur',
-    standort: 'Düsseldorf',
+    standort: 'Wiesbaden',
     modell: 'Remote',
     kurzbeschreibung: 'Baue und optimiere unsere Cloud-Infrastruktur und CI/CD-Pipelines.',
     beschreibung: 'Als DevOps Engineer sorgst du für eine robuste, skalierbare und sichere Infrastruktur. Du automatisierst Deployments, überwachst Systeme und arbeitest an der Weiterentwicklung unserer Cloud-Architektur.',
@@ -134,7 +134,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'werkstudent-digitalisierung',
     titel: 'Werkstudent (m/w/d) im Bereich Digitalisierung',
-    standort: 'Düsseldorf',
+    standort: 'Wiesbaden',
     modell: 'Hybrid',
     kurzbeschreibung: 'Unterstütze unser Team bei spannenden Digitalisierungsprojekten und sammle Praxiserfahrung.',
     beschreibung: 'Als Werkstudent:in im Bereich Digitalisierung unterstützt du unser Team bei der Umsetzung von Kundenprojekten. Du bekommst Einblick in Beratung, Softwareentwicklung und Projektmanagement — ideal für den Berufseinstieg.',
@@ -157,7 +157,7 @@ export const stellen: Stelle[] = [
       'Praktische Erfahrung in echten Kundenprojekten',
       'Mentoring durch erfahrene Berater und Entwickler',
       'Übernahmemöglichkeit nach dem Studium',
-      'Modernes Büro in Düsseldorf oder Remote-Arbeit',
+      'Modernes Büro in Wiesbaden oder Remote-Arbeit',
     ],
   },
 ];
