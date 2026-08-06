@@ -8,30 +8,31 @@ import {
 
 const faqs = [
   {
-    q: 'Für welche Unternehmen ist VONA Cloud geeignet?',
-    a: 'Wir arbeiten mit mittelständischen Unternehmen und Konzernen, die ihre Prozesse digitalisieren und effizienter gestalten möchten. Branchenunabhängig — von Produktion über Logistik bis Finanzdienstleistung.',
+    q: 'Was macht VONA Cloud genau?',
+    a: 'Wir entwickeln, betreiben und vertreiben Softwareprodukte — mit Fokus auf Cloud-Anwendungen. Dazu gehört die Entwicklung neuer Web- und SaaS-Anwendungen, die Migration bestehender Systeme, der überwachte Dauerbetrieb sowie Beratung zu Architektur, Kosten und Compliance.',
   },
   {
-    q: 'Wie läuft eine typische Zusammenarbeit ab?',
-    a: 'Alles beginnt mit einer kostenlosen Erstberatung. Danach folgt eine Analyse-Phase, in der wir Ihre Prozesse verstehen. Basierend darauf entwickeln wir ein Konzept und setzen es agil um — mit regelmäßigen Feedback-Schleifen.',
+    q: 'Übernehmen Sie auch den Betrieb bestehender Anwendungen?',
+    a: 'Ja. Wir übernehmen bestehende Anwendungen in den Managed Betrieb: Bestandsaufnahme, Aufbau von Monitoring und Backups, Automatisierung des Deployments und danach laufender Betrieb inklusive Alerting und Updates.',
   },
   {
-    q: 'Entwickelt ihr auch individuelle Software?',
-    a: 'Ja, das ist einer unserer Kernbereiche. Wir entwickeln maßgeschneiderte Web-Applikationen, Dashboards, Automatisierungstools und API-Integrationen — alles cloud-native und skalierbar.',
+    q: 'Wo werden unsere Daten gehostet?',
+    a: 'Standardmäßig in Rechenzentren innerhalb der EU. Auf Wunsch setzen wir auch auf einer bestehenden Cloud-Umgebung oder in einer bestimmten Region auf und dokumentieren die Verarbeitung DSGVO-konform.',
   },
   {
-    q: 'Was unterscheidet euch von anderen Beratungen?',
-    a: 'Wir kombinieren strategische Beratung mit technischer Umsetzung. Viele Beratungen liefern PowerPoint-Folien — wir liefern funktionierende Software und messbare Ergebnisse.',
+    q: 'Wie läuft eine Cloud-Migration ohne Ausfall ab?',
+    a: 'In Wellen: Wir migrieren zuerst unkritische Dienste, bauen parallele Umgebungen auf, spiegeln Daten und schalten erst um, wenn alles verifiziert ist. Ein Rollback-Pfad existiert in jeder Phase.',
   },
   {
-    q: 'Wie schnell sieht man erste Ergebnisse?',
-    a: 'Abhängig vom Projektumfang zeigen sich erste Quick Wins oft schon in den ersten 2–4 Wochen. Größere Transformationsprojekte laufen typischerweise über 3–6 Monate.',
+    q: 'Mit welchen Technologien arbeiten Sie?',
+    a: 'Überwiegend TypeScript und React im Frontend, Node.js, Python, PHP und C#/.NET im Backend, PostgreSQL als Datenbank, dazu Container, Infrastructure as Code und CI/CD-Pipelines.',
   },
   {
-    q: 'Was kostet eine Zusammenarbeit?',
-    a: 'Die Kosten hängen vom Umfang und der Komplexität ab. Die Erstberatung ist immer kostenlos. Danach erstellen wir ein transparentes Angebot ohne versteckte Kosten.',
+    q: 'Was kostet ein Projekt?',
+    a: 'Das hängt vom Umfang ab. Entwicklungsprojekte kalkulieren wir nach Aufwand mit klaren Etappen, der Managed Betrieb läuft als monatliche Pauschale. Das Erstgespräch und die erste Einschätzung sind kostenlos.',
   },
 ];
+
 
 const FAQ = () => {
   const { ref, isVisible } = useScrollAnimation();
