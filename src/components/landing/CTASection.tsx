@@ -16,25 +16,26 @@ const CTASection = () => {
       <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
         <div className={`scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-primary-foreground">
-            Bereit für den nächsten Schritt?
+            Reden wir über Ihre Cloud.
           </h2>
         </div>
         <p className={`scroll-hidden delay-1 ${isVisible ? 'scroll-visible' : ''} text-lg text-white/80 max-w-xl mx-auto mb-10`}>
-          Lassen Sie uns gemeinsam herausfinden, wie wir Ihre Prozesse
-          optimieren und Ihr Unternehmen digitalisieren können.
+          Ob neue Anwendung, Migration oder Übernahme des Betriebs — wir schauen
+          uns Ihre Architektur an und sagen Ihnen offen, was Sinn ergibt.
         </p>
         <div className={`scroll-hidden delay-2 ${isVisible ? 'scroll-visible' : ''}`}>
           <Link
             to="/kontakt"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-foreground font-semibold text-base hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
-            Kontakt aufnehmen
+            Erstgespräch anfragen
             <ArrowRight size={18} />
           </Link>
         </div>
         <p className={`scroll-hidden delay-3 ${isVisible ? 'scroll-visible' : ''} mt-6 text-sm text-white/60`}>
-          Keine Verpflichtung. Kein Risiko. Nur Ergebnisse.
+          Kostenlos. Unverbindlich. Mit klarer Einschätzung.
         </p>
+
       </div>
     </section>
   );

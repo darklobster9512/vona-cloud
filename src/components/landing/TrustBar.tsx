@@ -36,7 +36,7 @@ const TrustBar = () => {
     <section ref={ref} className="py-8 border-y border-border/40 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <p className={`text-center text-xs font-medium text-muted-foreground uppercase tracking-[0.2em] mb-8 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          Modernste Tech-Stacks für maximale Performance und Sicherheit
+          Unser Technologie-Stack für skalierbare, sichere Cloud-Anwendungen
         </p>
         <div className="relative overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
