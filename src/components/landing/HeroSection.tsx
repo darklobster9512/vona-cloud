@@ -203,7 +203,7 @@ const HeroSection = () => {
               </div>
               <div className="flex-1 mx-4">
                 <div className="h-6 rounded-md bg-background border border-border/50 flex items-center px-3">
-                  <span className="text-xs text-muted-foreground">app.efficientflow.solutions/{activeTab}</span>
+                  <span className="text-xs text-muted-foreground">console.vona-cloud.com/{activeTab}</span>
                 </div>
               </div>
             </div>

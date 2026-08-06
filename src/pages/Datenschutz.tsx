@@ -18,16 +18,16 @@ const Datenschutz = () => {
 
           <h2 className="text-2xl font-extrabold tracking-tight mb-6">1. Verantwortlicher</h2>
           <p>
-            Efficient Flow Solutions GmbH<br />
-            Marc-Chagall-Str. 142<br />
-            40477 Düsseldorf<br />
+            VONA Cloud Solutions GmbH<br />
+            Rheingaustr. 53<br />
+            65201 Wiesbaden<br />
             E-Mail:{' '}
-            <a href="mailto:info@efficient-flow.com" className="text-primary hover:underline">
-              info@efficient-flow.com
+            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
+              kontakt@vona-cloud.com
             </a>
             <br />
             Telefon:{' '}
-            <a href="tel:+4921187971940" className="text-primary hover:underline">
+            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
               0211-87971940
             </a>
           </p>

@@ -21,7 +21,7 @@ const Karriere = () => {
 
       <PageHero
         title="Karriere bei"
-        highlight="Efficient Flow"
+        highlight="VONA Cloud"
         subtitle="Werde Teil unseres Teams und gestalte die digitale Zukunft von Unternehmen. Wir suchen Talente, die mit uns wachsen wollen."
         breadcrumb={[
           { label: 'Home', href: '/' },

@@ -8,7 +8,7 @@ import {
 
 const faqs = [
   {
-    q: 'Für welche Unternehmen ist Efficient Flow geeignet?',
+    q: 'Für welche Unternehmen ist VONA Cloud geeignet?',
     a: 'Wir arbeiten mit mittelständischen Unternehmen und Konzernen, die ihre Prozesse digitalisieren und effizienter gestalten möchten. Branchenunabhängig — von Produktion über Logistik bis Finanzdienstleistung.',
   },
   {

@@ -12,8 +12,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'E-Mail',
-    value: 'info@efficient-flow.com',
-    href: 'mailto:info@efficient-flow.com',
+    value: 'kontakt@vona-cloud.com',
+    href: 'mailto:kontakt@vona-cloud.com',
   },
   {
     icon: Phone,
@@ -24,7 +24,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Adresse',
-    value: 'Marc-Chagall-Str. 142, 40477 Düsseldorf',
+    value: 'Rheingaustr. 53, 65201 Wiesbaden',
     href: '#',
   },
   {
