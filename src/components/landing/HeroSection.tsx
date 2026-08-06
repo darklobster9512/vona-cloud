@@ -25,7 +25,7 @@ const tabContent: Record<string, {
     content: (
       <div className="flex-1 rounded-xl border border-border/40 bg-background p-3">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Monatsübersicht</div>
+          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Requests / Monat</div>
           <div className="flex gap-1.5">
             <div className="h-5 px-2 rounded-md bg-muted text-[9px] flex items-center text-muted-foreground">Woche</div>
             <div className="h-5 px-2 rounded-md bg-primary/10 text-[9px] flex items-center text-primary font-medium">Monat</div>
@@ -67,13 +67,14 @@ const tabContent: Record<string, {
   },
   analytics: {
     kpis: [
-      { label: 'Besucher', value: '12.4k', color: 'text-primary' },
-      { label: 'Conversion', value: '3.2%', color: 'text-[hsl(142_71%_35%)]' },
-      { label: 'Umsatz', value: '€1.2M', color: 'text-[hsl(270_60%_50%)]' },
+      { label: 'Requests/s', value: '3.4k', color: 'text-primary' },
+      { label: 'p95 Latenz', value: '48ms', color: 'text-[hsl(142_71%_35%)]' },
+      { label: 'Fehlerrate', value: '0,02%', color: 'text-[hsl(270_60%_50%)]' },
     ],
     content: (
       <div className="flex-1 rounded-xl border border-border/40 bg-background p-3">
-        <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-3">Besuchertrend</div>
+        <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-3">Traffic-Verlauf</div>
+
         <svg viewBox="0 0 300 100" className="w-full h-24" preserveAspectRatio="none">
           <defs>
             <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
@@ -89,18 +90,19 @@ const tabContent: Record<string, {
   },
   projekte: {
     kpis: [
-      { label: 'Laufend', value: '8', color: 'text-primary' },
-      { label: 'Geplant', value: '5', color: 'text-[hsl(45_93%_47%)]' },
-      { label: 'Fertig', value: '34', color: 'text-[hsl(142_71%_35%)]' },
+      { label: 'Aktiv', value: '46', color: 'text-primary' },
+      { label: 'Regionen', value: '3', color: 'text-[hsl(45_93%_47%)]' },
+      { label: 'Autoscale', value: 'An', color: 'text-[hsl(142_71%_35%)]' },
     ],
     content: (
       <div className="flex-1 grid grid-cols-2 gap-2">
         {[
-          { name: 'Website Relaunch', progress: 75 },
-          { name: 'CRM Integration', progress: 40 },
-          { name: 'App Entwicklung', progress: 90 },
-          { name: 'API Migration', progress: 20 },
+          { name: 'API Cluster', progress: 72 },
+          { name: 'Datenbank', progress: 54 },
+          { name: 'Object Storage', progress: 88 },
+          { name: 'Queue Worker', progress: 35 },
         ].map((p) => (
+
           <div key={p.name} className="rounded-xl border border-border/40 bg-background p-2.5 flex flex-col justify-between">
             <span className="text-[10px] font-semibold text-foreground">{p.name}</span>
             <div className="mt-2">
@@ -118,10 +120,11 @@ const tabContent: Record<string, {
     content: (
       <div className="flex-1 rounded-xl border border-border/40 bg-background p-3 flex flex-col gap-3 col-span-full">
         {[
-          { label: 'E-Mail Benachrichtigungen', on: true },
-          { label: 'Zwei-Faktor-Authentifizierung', on: false },
-          { label: 'Automatische Reports', on: true },
+          { label: 'Alerting per E-Mail', on: true },
+          { label: 'Zwei-Faktor-Authentifizierung', on: true },
+          { label: 'Automatische Backups', on: true },
         ].map((s) => (
+
           <div key={s.label} className="flex items-center justify-between px-2 py-1.5">
             <span className="text-[11px] font-medium text-foreground">{s.label}</span>
             <div className={`w-8 h-4 rounded-full flex items-center px-0.5 transition-colors ${s.on ? 'bg-primary justify-end' : 'bg-muted justify-start'}`}>
@@ -131,7 +134,7 @@ const tabContent: Record<string, {
         ))}
         <div className="flex flex-col gap-2 mt-1">
           <div className="h-8 rounded-lg border border-border/50 bg-muted/30 flex items-center px-3">
-            <span className="text-[10px] text-muted-foreground">team@unternehmen.de</span>
+            <span className="text-[10px] text-muted-foreground">ops@vona-cloud.com</span>
           </div>
           <div className="h-8 rounded-lg border border-border/50 bg-muted/30 flex items-center px-3">
             <span className="text-[10px] text-muted-foreground">••••••••••••</span>
