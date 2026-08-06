@@ -26,10 +26,8 @@ const Datenschutz = () => {
               kontakt@vona-cloud.com
             </a>
             <br />
-            Telefon:{' '}
-            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
-              0211-87971940
-            </a>
+            Geschäftsführer: Alexander Seitz
+
           </p>
 
           <h2 className="text-xl font-bold mt-10 mb-4">2. Erhebung und Speicherung personenbezogener Daten</h2>
