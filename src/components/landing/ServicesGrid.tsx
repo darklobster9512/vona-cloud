@@ -1,49 +1,50 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Link } from 'react-router-dom';
-import { Lightbulb, Monitor, Code2, Cog, ArrowRight } from 'lucide-react';
+import { Code2, ServerCog, MoveRight, ShieldCheck, ArrowRight } from 'lucide-react';
 
 const services = [
   {
-    icon: Lightbulb,
+    icon: Code2,
     number: '01',
     total: '04',
-    title: 'Strategische Prozessberatung',
-    headline: 'Consulting',
+    title: 'Web-Apps, SaaS & APIs',
+    headline: 'Cloud-Entwicklung',
     description:
-      'Wir analysieren Ihre bestehenden Abläufe, identifizieren Engpässe und entwickeln maßgeschneiderte Strategien für nachhaltige Effizienzsteigerung — datenbasiert und transparent.',
-    features: ['Prozessanalyse', 'Potenzialermittlung', 'Roadmap-Entwicklung'],
+      'Wir bauen Cloud-Anwendungen von Grund auf: saubere Architektur, getestete Codebasis, automatisierte Auslieferung. Vom ersten Prototyp bis zum produktiven Release.',
+    features: ['Web-Applikationen', 'SaaS-Produkte', 'API- & Integrationsschicht'],
   },
   {
-    icon: Monitor,
+    icon: ServerCog,
     number: '02',
     total: '04',
-    title: 'Von Legacy zu Modern',
-    headline: 'Digitalisierung',
+    title: 'Deployment, Monitoring & Support',
+    headline: 'Managed Cloud-Betrieb',
     description:
-      'Transformation Ihrer analogen und veralteten Systeme in eine zukunftsfähige digitale Infrastruktur. Keine halben Sachen — vollständige Modernisierung.',
-    features: ['System-Migration', 'Cloud-Transformation', 'Digitale Workflows'],
+      'Wir übernehmen den Betrieb Ihrer Anwendungen: Infrastruktur as Code, Monitoring, Alerting, Backups und Skalierung — überwacht statt gehofft.',
+    features: ['24/7 Monitoring', 'Backups & Recovery', 'Autoscaling'],
   },
   {
-    icon: Code2,
+    icon: MoveRight,
     number: '03',
     total: '04',
-    title: 'Maßgeschneiderte Lösungen',
-    headline: 'Software-Entwicklung',
+    title: 'Vom Altsystem in die Cloud',
+    headline: 'Cloud-Migration',
     description:
-      'Individuelle Softwarelösungen, die exakt auf Ihre Geschäftsprozesse zugeschnitten sind — von Konzept bis Deployment, mit erstklassiger UX.',
-    features: ['Web-Applikationen', 'API-Entwicklung', 'Dashboard & Analytics'],
+      'Bestehende Systeme migrieren wir schrittweise und ohne Stillstand: Bestandsaufnahme, Zielarchitektur, Migration in Wellen, Abschaltung der Altwelt.',
+    features: ['Lift & Reshape', 'Datenmigration', 'Legacy-Ablösung'],
   },
   {
-    icon: Cog,
+    icon: ShieldCheck,
     number: '04',
     total: '04',
-    title: 'Systematische Verbesserung',
-    headline: 'Prozessoptimierung',
+    title: 'Architektur, Kosten & Compliance',
+    headline: 'Cloud-Beratung',
     description:
-      'Datengestützte Analyse und Optimierung Ihrer Workflows für messbare Ergebnisse und weniger Verschwendung — kontinuierlich und nachhaltig.',
-    features: ['Workflow-Automation', 'KPI-Tracking', 'Lean Management'],
+      'Wir bewerten Ihre Architektur, senken Cloud-Kosten und bringen Security sowie DSGVO-Anforderungen in eine belastbare Form — inklusive EU-Hosting.',
+    features: ['Architektur-Review', 'Cost Optimization', 'Security & DSGVO'],
   },
 ];
+
 
 /* ── Individual mock visuals per service ── */
 

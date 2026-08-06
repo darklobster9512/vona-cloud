@@ -19,43 +19,44 @@ const Impressum = () => {
           <h2 className="text-2xl font-extrabold tracking-tight mb-6">Angaben gemäß § 5 TMG</h2>
 
           <p>
-            Efficient Flow Solutions GmbH<br />
-            Marc-Chagall-Str. 142<br />
-            40477 Düsseldorf
+            VONA Cloud Solutions GmbH<br />
+            Rheingaustr. 53<br />
+            65201 Wiesbaden
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Vertreten durch</h3>
-          <p>Geschäftsführer: Tobias Papst</p>
+          <p>Geschäftsführer: Alexander Seitz</p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Registereintrag</h3>
           <p>
-            Registergericht: Amtsgericht Düsseldorf<br />
-            Registernummer: HRB 101174
+            Registergericht: Amtsgericht Wiesbaden<br />
+            Registernummer: HRB 32932
+          </p>
+
+          <h3 className="text-lg font-bold mt-8 mb-3">Unternehmensgegenstand</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Die Entwicklung, der Betrieb und Vertrieb von Softwareprodukten einschließlich Beratung.
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Umsatzsteuer-ID</h3>
           <p>
             Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
-            DE321399565
+            DE294808751
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Kontakt</h3>
           <p>
             E-Mail:{' '}
-            <a href="mailto:info@efficient-flow.com" className="text-primary hover:underline">
-              info@efficient-flow.com
-            </a>
-            <br />
-            Telefon:{' '}
-            <a href="tel:+4921187971940" className="text-primary hover:underline">
-              0211-87971940
+            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
+              kontakt@vona-cloud.com
             </a>
             <br />
             Website:{' '}
-            <a href="https://efficient-flow.solutions" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              efficient-flow.solutions
+            <a href="https://vona-cloud.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              vona-cloud.com
             </a>
           </p>
+
 
           <h3 className="text-lg font-bold mt-8 mb-3">Haftung für Inhalte</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">

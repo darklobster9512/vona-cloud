@@ -82,7 +82,7 @@ const Methodik = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
-    document.title = 'Methodik | Efficient Flow';
+    document.title = 'Methodik | VONA Cloud';
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('scroll-visible')),
       { threshold: 0.1 }
@@ -97,7 +97,7 @@ const Methodik = () => {
       <PageHero
         title="Unsere"
         highlight="Methodik"
-        subtitle="Ein bewährter Dreischritt-Prozess für nachhaltige digitale Transformation — transparent, agil und ergebnisorientiert."
+        subtitle="Assessment, Architektur, Build & Betrieb — drei Phasen, mit denen aus einer Idee eine Anwendung wird, die stabil läuft."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Methodik' },

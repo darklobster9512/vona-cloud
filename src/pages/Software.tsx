@@ -32,46 +32,47 @@ const techStack = [
 const capabilities = [
   {
     icon: Globe,
-    title: 'Web-Applikationen',
-    description: 'Moderne, performante Single-Page-Applications und Progressive Web Apps mit React, Next.js und TypeScript.',
+    title: 'SaaS & Web-Plattformen',
+    description: 'Mandantenfähige Cloud-Anwendungen mit React, Next.js und TypeScript — schnell, barrierearm und wartbar.',
   },
   {
     icon: Server,
-    title: 'Backend & APIs',
-    description: 'Skalierbare REST- und GraphQL-APIs mit Node.js, Python oder .NET — inklusive Datenbank-Design und Cloud-Deployment.',
+    title: 'APIs & Services',
+    description: 'Skalierbare REST- und GraphQL-Services mit Node.js, Python oder .NET, containerisiert und automatisiert ausgeliefert.',
   },
   {
     icon: BarChart3,
-    title: 'Dashboards & Analytics',
-    description: 'Echtzeit-Dashboards und Datenvisualisierung für fundierte Geschäftsentscheidungen auf einen Blick.',
+    title: 'Observability',
+    description: 'Dashboards für Auslastung, Latenzen und Kosten — damit Betriebsentscheidungen auf Zahlen basieren, nicht auf Gefühl.',
   },
   {
     icon: Smartphone,
     title: 'Responsive & Mobile',
-    description: 'Jede Anwendung wird mobile-first entwickelt und funktioniert perfekt auf allen Geräten und Bildschirmgrößen.',
+    description: 'Jede Anwendung wird mobile-first entwickelt und funktioniert auf allen Geräten und Bildschirmgrößen.',
   },
 ];
 
 const projects = [
   {
-    title: 'Logistik-Dashboard',
-    category: 'Dashboard & Analytics',
-    description: 'Echtzeit-Tracking und Optimierung von Lieferketten für ein mittelständisches Logistikunternehmen.',
+    title: 'Multi-Tenant SaaS-Portal',
+    category: 'Cloud-Entwicklung',
+    description: 'Mandantenfähige Plattform mit Rollenmodell, Self-Service-Onboarding und automatisiertem Deployment pro Release.',
     tags: ['React', 'Node.js', 'PostgreSQL'],
   },
   {
-    title: 'HR-Management Platform',
-    category: 'Web-Applikation',
-    description: 'Digitalisierung des gesamten HR-Prozesses — von Bewerbungen über Onboarding bis zur Personalverwaltung.',
-    tags: ['Next.js', 'Python', 'Cloud'],
+    title: 'Migration eines ERP-Backends',
+    category: 'Cloud-Migration',
+    description: 'Schrittweise Ablösung eines Monolithen: Zielarchitektur, Datenmigration und Umschaltung im Parallelbetrieb ohne Ausfall.',
+    tags: ['C#', '.NET', 'Container'],
   },
   {
-    title: 'Produktionssteuerung',
-    category: 'Prozessautomation',
-    description: 'Automatisierte Steuerung und Überwachung von Fertigungsprozessen mit IoT-Integration.',
-    tags: ['C#', '.NET', 'IoT'],
+    title: 'Managed Betrieb einer Kundenplattform',
+    category: 'Cloud-Betrieb',
+    description: 'Aufbau von Monitoring, Alerting und getesteten Backups mit anschließender Übernahme des 24/7-Betriebs.',
+    tags: ['Kubernetes', 'IaC', 'Monitoring'],
   },
 ];
+
 
 const Software = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -89,9 +90,10 @@ const Software = () => {
     <>
 
       <PageHero
-        title="Maßgeschneiderte"
-        highlight="Software-Lösungen"
-        subtitle="Von der Idee bis zum Deployment — wir entwickeln Software, die Ihre Prozesse transformiert und mit Ihrem Unternehmen wächst."
+        title="Cloud-Software,"
+        highlight="die trägt"
+        subtitle="Wir entwickeln Anwendungen, die skalieren, sich automatisiert ausliefern lassen und im Betrieb keine Überraschungen produzieren."
+
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Software' },

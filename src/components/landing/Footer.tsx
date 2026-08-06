@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Building2, MapPin } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const Footer = () => {
@@ -10,11 +10,13 @@ const Footer = () => {
           {/* Logo + Tagline */}
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <img src={logo} alt="Efficient Flow" className="h-10 hover:scale-105 transition-transform duration-200" />
+              <img src={logo} alt="VONA Cloud" className="h-10 hover:scale-105 transition-transform duration-200" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Beratung, Digitalisierung und Software für Unternehmen, die bereit sind, effizienter zu arbeiten.
+              Wir entwickeln, betreiben und skalieren Cloud-Software — von der Architektur
+              bis zum 24/7-Betrieb, gehostet in der EU.
             </p>
+
           </div>
 
           {/* Unternehmen */}
@@ -41,11 +43,12 @@ const Footer = () => {
             <h4 className="font-semibold text-sm mb-4 text-foreground">Leistungen</h4>
             <ul className="space-y-2.5">
               {[
-                { label: 'Beratung', href: '/leistungen' },
-                { label: 'Digitalisierung', href: '/leistungen' },
-                { label: 'Software', href: '/software' },
-                { label: 'Automatisierung', href: '/leistungen' },
+                { label: 'Cloud-Entwicklung', href: '/leistungen' },
+                { label: 'Managed Cloud-Betrieb', href: '/leistungen' },
+                { label: 'Cloud-Migration', href: '/leistungen' },
+                { label: 'Plattform & Software', href: '/software' },
               ].map((link, i) => (
+
                 <li key={i}>
                   <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
@@ -60,20 +63,19 @@ const Footer = () => {
             <h4 className="font-semibold text-sm mb-4 text-foreground">Kontakt</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <a href="mailto:info@efficient-flow.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <a href="mailto:kontakt@vona-cloud.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Mail className="h-4 w-4 text-primary/70 shrink-0" />
-                  info@efficient-flow.com
+                  kontakt@vona-cloud.com
                 </a>
               </li>
-              <li>
-                <a href="tel:+4921187971940" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <Phone className="h-4 w-4 text-primary/70 shrink-0" />
-                  0211-87971940
-                </a>
+              <li className="flex items-center gap-2">
+                <Building2 className="h-4 w-4 text-primary/70 shrink-0" />
+                <span>VONA Cloud Solutions GmbH</span>
               </li>
+
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-primary/70 shrink-0 mt-0.5" />
-                <span>Marc-Chagall-Str. 142<br />40477 Düsseldorf</span>
+                <span>Rheingaustr. 53<br />65201 Wiesbaden</span>
               </li>
             </ul>
           </div>
@@ -84,7 +86,7 @@ const Footer = () => {
       <div className="border-t border-border/50 bg-muted/30">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Efficient Flow Solutions GmbH. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} VONA Cloud Solutions GmbH. Alle Rechte vorbehalten.
           </p>
           <div className="flex items-center gap-6">
             <Link to="/impressum" className="text-xs text-muted-foreground hover:text-primary transition-colors">Impressum</Link>

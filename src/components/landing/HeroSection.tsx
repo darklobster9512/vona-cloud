@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronRight, Sparkles, LayoutDashboard, GitBranch, BarChart3, FolderKanban, Settings, CheckCircle2, Clock, AlertCircle } from 'lucide-react';
 
 const sidebarItems = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { id: 'prozesse', label: 'Prozesse', icon: GitBranch },
-  { id: 'analytics', label: 'Analytics', icon: BarChart3 },
-  { id: 'projekte', label: 'Projekte', icon: FolderKanban },
+  { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
+  { id: 'prozesse', label: 'Deployments', icon: GitBranch },
+  { id: 'analytics', label: 'Monitoring', icon: BarChart3 },
+  { id: 'projekte', label: 'Services', icon: FolderKanban },
   { id: 'einstellungen', label: 'Einstellungen', icon: Settings },
 ];
+
 
 const tabContent: Record<string, {
   kpis?: { label: string; value: string; color: string }[];
@@ -16,14 +17,15 @@ const tabContent: Record<string, {
 }> = {
   dashboard: {
     kpis: [
-      { label: 'Effizienz', value: '+42%', color: 'text-[hsl(142_71%_35%)]' },
-      { label: 'Prozesse', value: '128', color: 'text-primary' },
-      { label: 'Einsparung', value: '€340k', color: 'text-[hsl(270_60%_50%)]' },
+      { label: 'Uptime', value: '99,98%', color: 'text-[hsl(142_71%_35%)]' },
+      { label: 'Services', value: '46', color: 'text-primary' },
+      { label: 'Cloud-Kosten', value: '−31%', color: 'text-[hsl(270_60%_50%)]' },
     ],
+
     content: (
       <div className="flex-1 rounded-xl border border-border/40 bg-background p-3">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Monatsübersicht</div>
+          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Requests / Monat</div>
           <div className="flex gap-1.5">
             <div className="h-5 px-2 rounded-md bg-muted text-[9px] flex items-center text-muted-foreground">Woche</div>
             <div className="h-5 px-2 rounded-md bg-primary/10 text-[9px] flex items-center text-primary font-medium">Monat</div>
@@ -39,18 +41,19 @@ const tabContent: Record<string, {
   },
   prozesse: {
     kpis: [
-      { label: 'Aktiv', value: '24', color: 'text-primary' },
-      { label: 'Abgeschlossen', value: '89', color: 'text-[hsl(142_71%_35%)]' },
-      { label: 'Ausstehend', value: '15', color: 'text-[hsl(45_93%_47%)]' },
+      { label: 'Heute', value: '12', color: 'text-primary' },
+      { label: 'Erfolgreich', value: '98%', color: 'text-[hsl(142_71%_35%)]' },
+      { label: 'Rollbacks', value: '1', color: 'text-[hsl(45_93%_47%)]' },
     ],
     content: (
       <div className="flex-1 rounded-xl border border-border/40 bg-background p-3 flex flex-col gap-2">
         {[
-          { name: 'Onboarding-Flow', status: 'Aktiv', icon: Clock, statusColor: 'text-primary bg-primary/10' },
-          { name: 'Rechnungsfreigabe', status: 'Fertig', icon: CheckCircle2, statusColor: 'text-[hsl(142_71%_35%)] bg-[hsl(142_71%_35%/0.1)]' },
-          { name: 'Lagerverwaltung', status: 'Aktiv', icon: Clock, statusColor: 'text-primary bg-primary/10' },
-          { name: 'Support-Tickets', status: 'Review', icon: AlertCircle, statusColor: 'text-[hsl(45_93%_47%)] bg-[hsl(45_93%_47%/0.1)]' },
+          { name: 'api-gateway · v2.14', status: 'Live', icon: CheckCircle2, statusColor: 'text-[hsl(142_71%_35%)] bg-[hsl(142_71%_35%/0.1)]' },
+          { name: 'billing-service · v1.8', status: 'Deploy', icon: Clock, statusColor: 'text-primary bg-primary/10' },
+          { name: 'web-app · v4.2', status: 'Live', icon: CheckCircle2, statusColor: 'text-[hsl(142_71%_35%)] bg-[hsl(142_71%_35%/0.1)]' },
+          { name: 'worker-queue · v0.9', status: 'Staging', icon: AlertCircle, statusColor: 'text-[hsl(45_93%_47%)] bg-[hsl(45_93%_47%/0.1)]' },
         ].map((p) => (
+
           <div key={p.name} className="flex items-center justify-between px-2.5 py-2 rounded-lg bg-muted/40">
             <div className="flex items-center gap-2">
               <p.icon size={12} className="text-muted-foreground" />
@@ -64,13 +67,14 @@ const tabContent: Record<string, {
   },
   analytics: {
     kpis: [
-      { label: 'Besucher', value: '12.4k', color: 'text-primary' },
-      { label: 'Conversion', value: '3.2%', color: 'text-[hsl(142_71%_35%)]' },
-      { label: 'Umsatz', value: '€1.2M', color: 'text-[hsl(270_60%_50%)]' },
+      { label: 'Requests/s', value: '3.4k', color: 'text-primary' },
+      { label: 'p95 Latenz', value: '48ms', color: 'text-[hsl(142_71%_35%)]' },
+      { label: 'Fehlerrate', value: '0,02%', color: 'text-[hsl(270_60%_50%)]' },
     ],
     content: (
       <div className="flex-1 rounded-xl border border-border/40 bg-background p-3">
-        <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-3">Besuchertrend</div>
+        <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-3">Traffic-Verlauf</div>
+
         <svg viewBox="0 0 300 100" className="w-full h-24" preserveAspectRatio="none">
           <defs>
             <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
@@ -86,18 +90,19 @@ const tabContent: Record<string, {
   },
   projekte: {
     kpis: [
-      { label: 'Laufend', value: '8', color: 'text-primary' },
-      { label: 'Geplant', value: '5', color: 'text-[hsl(45_93%_47%)]' },
-      { label: 'Fertig', value: '34', color: 'text-[hsl(142_71%_35%)]' },
+      { label: 'Aktiv', value: '46', color: 'text-primary' },
+      { label: 'Regionen', value: '3', color: 'text-[hsl(45_93%_47%)]' },
+      { label: 'Autoscale', value: 'An', color: 'text-[hsl(142_71%_35%)]' },
     ],
     content: (
       <div className="flex-1 grid grid-cols-2 gap-2">
         {[
-          { name: 'Website Relaunch', progress: 75 },
-          { name: 'CRM Integration', progress: 40 },
-          { name: 'App Entwicklung', progress: 90 },
-          { name: 'API Migration', progress: 20 },
+          { name: 'API Cluster', progress: 72 },
+          { name: 'Datenbank', progress: 54 },
+          { name: 'Object Storage', progress: 88 },
+          { name: 'Queue Worker', progress: 35 },
         ].map((p) => (
+
           <div key={p.name} className="rounded-xl border border-border/40 bg-background p-2.5 flex flex-col justify-between">
             <span className="text-[10px] font-semibold text-foreground">{p.name}</span>
             <div className="mt-2">
@@ -115,10 +120,11 @@ const tabContent: Record<string, {
     content: (
       <div className="flex-1 rounded-xl border border-border/40 bg-background p-3 flex flex-col gap-3 col-span-full">
         {[
-          { label: 'E-Mail Benachrichtigungen', on: true },
-          { label: 'Zwei-Faktor-Authentifizierung', on: false },
-          { label: 'Automatische Reports', on: true },
+          { label: 'Alerting per E-Mail', on: true },
+          { label: 'Zwei-Faktor-Authentifizierung', on: true },
+          { label: 'Automatische Backups', on: true },
         ].map((s) => (
+
           <div key={s.label} className="flex items-center justify-between px-2 py-1.5">
             <span className="text-[11px] font-medium text-foreground">{s.label}</span>
             <div className={`w-8 h-4 rounded-full flex items-center px-0.5 transition-colors ${s.on ? 'bg-primary justify-end' : 'bg-muted justify-start'}`}>
@@ -128,7 +134,7 @@ const tabContent: Record<string, {
         ))}
         <div className="flex flex-col gap-2 mt-1">
           <div className="h-8 rounded-lg border border-border/50 bg-muted/30 flex items-center px-3">
-            <span className="text-[10px] text-muted-foreground">team@unternehmen.de</span>
+            <span className="text-[10px] text-muted-foreground">ops@vona-cloud.com</span>
           </div>
           <div className="h-8 rounded-lg border border-border/50 bg-muted/30 flex items-center px-3">
             <span className="text-[10px] text-muted-foreground">••••••••••••</span>
@@ -157,18 +163,18 @@ const HeroSection = () => {
         <div className="text-left">
           <div className="hero-animate hero-animate-1 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/[0.06] backdrop-blur-sm mb-8">
             <Sparkles size={14} className="text-primary" />
-            <span className="text-xs font-semibold text-primary tracking-wide">Beratung & Software für 2026</span>
+            <span className="text-xs font-semibold text-primary tracking-wide">Cloud-Software aus Wiesbaden · EU-Hosting</span>
           </div>
 
           <h1 className="hero-animate hero-animate-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold tracking-tight leading-[1.08] mb-6">
-            Wir digitalisieren,{' '}
-            <span className="text-gradient-blue">was Sie bremst.</span>
+            Software, die in der{' '}
+            <span className="text-gradient-blue">Cloud zuhause ist.</span>
           </h1>
 
           <p className="hero-animate hero-animate-3 text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed">
-            Wir beraten Unternehmen in Effizienzsteigerung, Digitalisierung und
-            Prozessoptimierung — und entwickeln die Software, die Ihre Prozesse
-            in echten Wettbewerbsvorteil verwandelt.
+            VONA Cloud entwickelt, betreibt und skaliert Cloud-Anwendungen —
+            von der Architektur über CI/CD bis zum überwachten Dauerbetrieb.
+            Ein Team für Entwicklung, Betrieb und Beratung.
           </p>
 
           <div className="hero-animate hero-animate-4 flex flex-col sm:flex-row items-stretch sm:items-start gap-4">
@@ -176,17 +182,18 @@ const HeroSection = () => {
               to="/kontakt"
               className="inline-flex items-center justify-center gap-2.5 px-10 h-14 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.03] transition-all duration-200"
             >
-              Projekt starten
+              Projekt anfragen
               <ArrowRight size={18} />
             </Link>
             <Link
               to="/leistungen"
               className="inline-flex items-center justify-center gap-2 px-10 h-14 rounded-full border border-border bg-background/80 backdrop-blur-sm text-foreground font-semibold text-base hover:bg-background hover:border-primary/40 transition-all duration-200"
             >
-              Leistungen entdecken
+              Leistungen ansehen
               <ChevronRight size={18} className="text-muted-foreground" />
             </Link>
           </div>
+
         </div>
 
         {/* Right: Interactive Dashboard Mockup */}
@@ -203,7 +210,7 @@ const HeroSection = () => {
               </div>
               <div className="flex-1 mx-4">
                 <div className="h-6 rounded-md bg-background border border-border/50 flex items-center px-3">
-                  <span className="text-xs text-muted-foreground">app.efficientflow.solutions/{activeTab}</span>
+                  <span className="text-xs text-muted-foreground">console.vona-cloud.com/{activeTab}</span>
                 </div>
               </div>
             </div>

@@ -5,88 +5,89 @@ import PageHero from '@/components/landing/PageHero';
 import CTASection from '@/components/landing/CTASection';
 import Footer from '@/components/landing/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Lightbulb, Monitor, Code2, Cog, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Code2, ServerCog, MoveRight, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const services = [
   {
-    icon: Lightbulb,
-    id: 'consulting',
-    title: 'Strategische Prozessberatung',
-    headline: 'Consulting',
-    description:
-      'Wir analysieren Ihre bestehenden Abläufe bis ins Detail, identifizieren Engpässe und entwickeln maßgeschneiderte Strategien für nachhaltige Effizienzsteigerung — datenbasiert, transparent und zukunftsorientiert.',
-    longDescription:
-      'Unsere Berater bringen jahrelange Erfahrung in der Optimierung von Geschäftsprozessen mit. Wir arbeiten eng mit Ihrem Team zusammen, um tiefgreifende Einblicke in Ihre aktuellen Abläufe zu gewinnen und Verbesserungspotenziale aufzudecken.',
-    features: [
-      'Umfassende Prozessanalyse & Mapping',
-      'Identifikation von Engpässen und Ineffizienzen',
-      'Datenbasierte Potenzialermittlung',
-      'Strategische Roadmap-Entwicklung',
-      'Change-Management Begleitung',
-      'ROI-Prognosen und Erfolgsmessung',
-    ],
-  },
-  {
-    icon: Monitor,
-    id: 'digitalisierung',
-    title: 'Von Legacy zu Modern',
-    headline: 'Digitalisierung',
-    description:
-      'Transformation Ihrer analogen und veralteten Systeme in eine zukunftsfähige digitale Infrastruktur. Keine halben Sachen — vollständige Modernisierung mit klarem Plan.',
-    longDescription:
-      'Die digitale Transformation ist mehr als nur neue Software. Wir begleiten Sie bei der kompletten Modernisierung Ihrer IT-Landschaft — von der Strategie über die Migration bis zum laufenden Betrieb.',
-    features: [
-      'Legacy-System-Migration',
-      'Cloud-Transformation & Infrastruktur',
-      'Digitale Workflow-Implementierung',
-      'Datenbank-Modernisierung',
-      'API-First Architektur',
-      'Schulung und Onboarding',
-    ],
-  },
-  {
     icon: Code2,
-    id: 'software',
-    title: 'Maßgeschneiderte Lösungen',
-    headline: 'Software-Entwicklung',
+    id: 'entwicklung',
+    title: 'Web-Apps, SaaS & APIs',
+    headline: 'Cloud-Entwicklung',
     description:
-      'Individuelle Softwarelösungen, die exakt auf Ihre Geschäftsprozesse zugeschnitten sind — von Konzept bis Deployment, mit erstklassiger UX und modernster Technologie.',
+      'Wir entwickeln Cloud-Anwendungen von Grund auf — mit klarer Architektur, getesteter Codebasis und automatisierter Auslieferung. Vom Prototyp bis zum produktiven Release.',
     longDescription:
-      'Ob Web-Applikation, interne Tools oder komplexe Plattformen — wir entwickeln Software, die perfekt zu Ihren Anforderungen passt und mit Ihrem Unternehmen wächst.',
+      'Unsere Teams arbeiten in kurzen Iterationen: jede Woche ein sichtbarer Fortschritt, jedes Release automatisiert ausgeliefert. Wir setzen auf bewährte Technologien statt Experimente und dokumentieren Entscheidungen so, dass Ihr Team jederzeit übernehmen kann.',
     features: [
-      'Full-Stack Web-Applikationen',
-      'API-Design & Entwicklung',
-      'Dashboards & Analytics-Plattformen',
-      'Responsive Design & Mobile-First',
-      'CI/CD & DevOps-Integration',
-      'Langfristige Wartung & Support',
+      'Full-Stack Web- und SaaS-Anwendungen',
+      'API- und Integrationsschicht',
+      'Multi-Tenancy & Rollenmodelle',
+      'Automatisierte Tests & CI/CD',
+      'Container & Infrastructure as Code',
+      'Wartung und Weiterentwicklung',
     ],
   },
   {
-    icon: Cog,
-    id: 'optimierung',
-    title: 'Systematische Verbesserung',
-    headline: 'Prozessoptimierung',
+    icon: ServerCog,
+    id: 'betrieb',
+    title: 'Deployment, Monitoring & Support',
+    headline: 'Managed Cloud-Betrieb',
     description:
-      'Datengestützte Analyse und Optimierung Ihrer Workflows für messbare Ergebnisse und weniger Verschwendung — kontinuierlich und nachhaltig.',
+      'Wir übernehmen den Betrieb Ihrer Anwendungen: Infrastruktur, Monitoring, Alerting, Backups und Skalierung — überwacht statt gehofft.',
     longDescription:
-      'Wir verbinden Lean-Methoden mit moderner Technologie, um Ihre Prozesse systematisch zu verbessern. Durch kontinuierliches Monitoring und KPI-Tracking stellen wir sicher, dass Verbesserungen nachhaltig wirken.',
+      'Betrieb ist kein Nebenprodukt der Entwicklung, sondern eine eigene Disziplin. Wir bauen Monitoring und Alerting so auf, dass Probleme auffallen, bevor Ihre Nutzer sie merken, und testen Wiederherstellungen regelmäßig statt nur zu dokumentieren.',
     features: [
-      'Workflow-Automation',
-      'KPI-Definition & Tracking',
-      'Lean Management Methoden',
-      'Kontinuierliche Verbesserungsprozesse',
-      'Performance-Monitoring',
-      'Ressourcenoptimierung',
+      'Monitoring, Logging & Alerting',
+      'Backups mit getesteter Recovery',
+      'Autoscaling & Lastverteilung',
+      'Patch- und Update-Management',
+      'Incident-Handling mit Reaktionszeiten',
+      'Regelmäßige Betriebsreports',
+    ],
+  },
+  {
+    icon: MoveRight,
+    id: 'migration',
+    title: 'Vom Altsystem in die Cloud',
+    headline: 'Cloud-Migration',
+    description:
+      'Bestehende Systeme migrieren wir schrittweise und ohne Stillstand — mit Zielarchitektur, Migration in Wellen und einem Rollback-Pfad in jeder Phase.',
+    longDescription:
+      'Migrationen scheitern selten an der Technik, sondern an fehlender Reihenfolge. Wir beginnen mit einer vollständigen Bestandsaufnahme, definieren Abhängigkeiten und schalten erst um, wenn die neue Umgebung verifiziert ist.',
+    features: [
+      'Bestandsaufnahme & Abhängigkeitsanalyse',
+      'Zielarchitektur und Migrationsplan',
+      'Datenmigration mit Abgleich',
+      'Parallelbetrieb und stufenweise Umschaltung',
+      'Ablösung von Legacy-Komponenten',
+      'Wissenstransfer an Ihr Team',
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    id: 'beratung',
+    title: 'Architektur, Kosten & Compliance',
+    headline: 'Cloud-Beratung',
+    description:
+      'Wir bewerten Ihre Architektur, senken Cloud-Kosten und bringen Security- sowie DSGVO-Anforderungen in eine belastbare Form — inklusive EU-Hosting.',
+    longDescription:
+      'Wir sagen offen, was gut läuft und was nicht. Das Ergebnis ist kein Foliensatz, sondern eine priorisierte Liste konkreter Maßnahmen mit Aufwand, Wirkung und Reihenfolge.',
+    features: [
+      'Architektur- und Code-Review',
+      'Cloud Cost Optimization',
+      'Security-Assessment',
+      'DSGVO-konforme Verarbeitung & EU-Hosting',
+      'Vermeidung von Vendor Lock-in',
+      'Technische Due Diligence',
     ],
   },
 ];
+
 
 const Leistungen = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
-    document.title = 'Leistungen | Efficient Flow';
+    document.title = 'Leistungen | VONA Cloud';
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('scroll-visible')),
       { threshold: 0.1 }
@@ -101,7 +102,7 @@ const Leistungen = () => {
       <PageHero
         title="Unsere"
         highlight="Leistungen"
-        subtitle="Vier Säulen für maximale Effizienz — von strategischer Beratung bis zur technischen Umsetzung."
+        subtitle="Vier Bereiche rund um die Cloud — Entwicklung, Betrieb, Migration und Beratung aus einer Hand."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Leistungen' },

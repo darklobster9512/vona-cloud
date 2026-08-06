@@ -6,34 +6,35 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Building2, MapPin, Clock, Send } from 'lucide-react';
 
 const contactInfo = [
   {
     icon: Mail,
     label: 'E-Mail',
-    value: 'info@efficient-flow.com',
-    href: 'mailto:info@efficient-flow.com',
+    value: 'kontakt@vona-cloud.com',
+    href: 'mailto:kontakt@vona-cloud.com',
   },
   {
-    icon: Phone,
-    label: 'Telefon',
-    value: '0211-87971940',
-    href: 'tel:+4921187971940',
+    icon: Building2,
+    label: 'Unternehmen',
+    value: 'VONA Cloud Solutions GmbH',
+    href: undefined,
   },
   {
     icon: MapPin,
     label: 'Adresse',
-    value: 'Marc-Chagall-Str. 142, 40477 Düsseldorf',
-    href: '#',
+    value: 'Rheingaustr. 53, 65201 Wiesbaden',
+    href: undefined,
   },
   {
     icon: Clock,
-    label: 'Öffnungszeiten',
+    label: 'Erreichbarkeit',
     value: 'Mo–Fr: 09:00 – 18:00 Uhr',
     href: undefined,
   },
 ];
+
 
 const Kontakt = () => {
   const { ref, isVisible } = useScrollAnimation();

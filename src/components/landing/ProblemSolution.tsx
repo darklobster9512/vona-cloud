@@ -1,11 +1,12 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const painPoints = [
-  'Legacy-Systeme?', 'Excel-Chaos?', 'Manuelle Prozesse?',
-  'Datensilos?', 'Keine Transparenz?', 'Verpasste Deadlines?',
-  'Hohe Fehlerquoten?', 'Langsame Freigaben?', 'Zu viele Tools?',
-  'Verlorenes Wissen?', 'Kein Überblick?', 'Skalierungsprobleme?',
+  'Server im Keller?', 'Deploys per Hand?', 'Nachts Ausfälle?',
+  'Cloud-Kosten explodiert?', 'Kein Monitoring?', 'Releases dauern Wochen?',
+  'Keine Backups getestet?', 'Vendor Lock-in?', 'Legacy-Monolith?',
+  'Skaliert nicht?', 'Kein DSGVO-Nachweis?', 'Niemand kennt das System?',
 ];
+
 
 const ProblemSolution = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -14,13 +15,14 @@ const ProblemSolution = () => {
     <section ref={ref} className="py-24 md:py-32 overflow-hidden">
       <div className="max-w-4xl mx-auto px-6">
         <div className={`text-center mb-12 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Das Problem</p>
+          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Der Ausgangspunkt</p>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Das sollte <span className="text-gradient-blue">2026 nicht mehr</span> passieren.
+            Ihre Infrastruktur <span className="text-gradient-blue">darf kein Risiko</span> sein.
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Wenn Ihnen davon etwas bekannt vorkommt, sind Sie nicht allein — aber es gibt eine Lösung.
+            Wenn Ihnen davon etwas bekannt vorkommt: genau hier setzen wir an.
           </p>
+
         </div>
 
         {/* Pain point tags */}

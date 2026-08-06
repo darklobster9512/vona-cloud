@@ -3,24 +3,25 @@ import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: 'Efficient Flow hat unsere Kommunikationsinfrastruktur grundlegend digitalisiert und die internen Prozesse so optimiert, dass wir deutlich schneller und effizienter agieren können.',
+    quote: 'VONA Cloud hat unsere Plattform in die Cloud migriert, ohne dass unsere Kunden davon etwas gemerkt haben. Seitdem deployen wir mehrfach pro Woche statt einmal im Quartal.',
     name: 'Peter Kurt Nowack',
-    role: 'CEO',
+    role: 'CTO',
     company: 'Gamma Placetel GmbH',
   },
   {
-    quote: 'Dank der strategischen Beratung und technischen Umsetzung konnten wir unsere Plattform skalieren und die Logistikprozesse nachhaltig verbessern — ein echter Wettbewerbsvorteil.',
+    quote: 'Der Managed Betrieb hat unsere Nachtschichten beendet. Monitoring, Alerting und Backups laufen zuverlässig — wir kümmern uns wieder um das Produkt.',
     name: 'Lennard Neubauer',
     role: 'CEO',
     company: 'yourdelivery GmbH',
   },
   {
-    quote: 'Die digitale Transformation unserer Geschäftsprozesse wurde professionell begleitet. Die messbare Effizienzsteigerung bestätigt die Qualität der Zusammenarbeit.',
+    quote: 'Das Architektur-Review war schonungslos ehrlich und hat unsere Cloud-Kosten um rund ein Drittel gesenkt. Genau die Beratung, die wir gebraucht haben.',
     name: 'Dr. Maximilian Bode',
-    role: 'CEO',
+    role: 'Head of IT',
     company: 'Vorwerk Deutschland Stiftung & Co. KG',
   },
 ];
+
 
 const Testimonials = () => {
   const { ref, isVisible } = useScrollAnimation();

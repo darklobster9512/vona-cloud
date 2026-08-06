@@ -1,11 +1,12 @@
 import { useScrollAnimation, useCounterAnimation } from '@/hooks/useScrollAnimation';
 
 const stats = [
-  { value: 150, suffix: '+', label: 'Abgeschlossene Projekte' },
-  { value: 80, suffix: '+', label: 'Zufriedene Kunden' },
-  { value: 47, suffix: '%', label: 'Ø Effizienzsteigerung' },
-  { value: 5, suffix: '+', label: 'Jahre Erfahrung' },
+  { value: 99, suffix: ',9%', label: 'Uptime im Managed Betrieb' },
+  { value: 120, suffix: '+', label: 'Betriebene Cloud-Services' },
+  { value: 34, suffix: '%', label: 'Ø Ersparnis bei Cloud-Kosten' },
+  { value: 100, suffix: '%', label: 'Hosting in der EU' },
 ];
+
 
 const StatItem = ({ value, suffix, label, isVisible }: { value: number; suffix: string; label: string; isVisible: boolean }) => {
   const count = useCounterAnimation(value, 2000, isVisible);

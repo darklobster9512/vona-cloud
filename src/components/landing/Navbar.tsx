@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* Logo: fixed size to prevent layout shift */}
           {/* Desktop: logo left */}
           <Link to="/" className="shrink-0 hidden md:block h-10">
-            <img src={logo} alt="Efficient Flow" loading="eager" fetchPriority="high" className="h-10 w-auto object-contain hover:scale-105 transition-transform duration-200" />
+            <img src={logo} alt="VONA Cloud" loading="eager" fetchPriority="high" className="h-10 w-auto object-contain hover:scale-105 transition-transform duration-200" />
           </Link>
 
           {/* Desktop Nav pill */}
@@ -95,7 +95,7 @@ const Navbar = () => {
 
             {/* Logo zentriert, transparent */}
             <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-              <img src={logo} alt="Efficient Flow" loading="eager" fetchPriority="high" className="h-8 hover:scale-105 transition-transform duration-200" />
+              <img src={logo} alt="VONA Cloud" loading="eager" fetchPriority="high" className="h-8 hover:scale-105 transition-transform duration-200" />
             </Link>
           </div>
         </div>
@@ -119,7 +119,7 @@ const Navbar = () => {
           {/* Header */}
           <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border/40">
             <Link to="/" onClick={() => setMobileOpen(false)}>
-              <img src={logo} alt="Efficient Flow" className="h-8" />
+              <img src={logo} alt="VONA Cloud" className="h-8" />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
