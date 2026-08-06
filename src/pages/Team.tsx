@@ -97,7 +97,7 @@ const Team = () => {
       <PageHero
         title="Unser"
         highlight="Team"
-        subtitle="Die Menschen hinter VONA Cloud — Expert:innen mit Leidenschaft für digitale Exzellenz."
+        subtitle="Die Menschen hinter VONA Cloud — Entwicklung, Betrieb und Beratung in einem Team."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Team' },
