@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 224 76% 48%;
+
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 214 95% 93%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 95% 93%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(217 91% 60%), hsl(199 89% 48%));
+  }
+  .bg-gradient-blue {
+    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(199 89% 48%));
+  }
+  .bg-gradient-blue-subtle {
+    background: radial-gradient(ellipse at 50% 0%, hsl(217 91% 60% / 0.08) 0%, transparent 70%);
+  }
+  .bg-gradient-blue-section {
+    background: linear-gradient(180deg, hsl(217 91% 60% / 0.04) 0%, hsl(199 89% 48% / 0.06) 100%);
+  }
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-border/50 shadow-sm;
+  }
+}
+
+/* Hero gradient background */
+.hero-gradient {
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, hsl(217 91% 60% / 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 30% 20%, hsl(199 89% 48% / 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 70% 20%, hsl(217 91% 60% / 0.08) 0%, transparent 50%);
+}
+
+/* Scroll animation classes */
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(3px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
+}
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+.scroll-hidden.delay-1 { transition-delay: 80ms; }
+.scroll-hidden.delay-2 { transition-delay: 160ms; }
+.scroll-hidden.delay-3 { transition-delay: 240ms; }
+.scroll-hidden.delay-4 { transition-delay: 320ms; }
+.scroll-hidden.delay-5 { transition-delay: 400ms; }
+.scroll-hidden.delay-6 { transition-delay: 480ms; }
+
+/* Hero load animations (not scroll-based) */
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-fade-up {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.hero-animate {
+  opacity: 0;
+  animation: hero-fade-up 0.8s ease-out forwards;
+}
+.hero-animate-1 { animation-delay: 0.1s; }
+.hero-animate-2 { animation-delay: 0.2s; }
+.hero-animate-3 { animation-delay: 0.35s; }
+.hero-animate-4 { animation-delay: 0.5s; }
+.hero-animate-5 { animation-delay: 0.7s; }
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-8px) scale(1.01); }
+}
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+/* Gradient orb animations */
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.1); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(20px, 10px) scale(1.05); }
+}
+.animate-orb {
+  animation: orb-drift 20s ease-in-out infinite;
+}
+.animate-orb-delayed {
+  animation: orb-drift 25s ease-in-out infinite reverse;
+}
+
+/* Glow pulse for CTA */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px hsl(217 91% 60% / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(217 91% 60% / 0.5); }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Marquee for trust bar */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Scrolling text */
+@keyframes scroll-text {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll-text {
+  animation: scroll-text 20s linear infinite;
+}
+
+/* Counter number styling */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Line draw animation */
+@keyframes line-draw {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.animate-line-draw {
+  animation: line-draw 1.5s ease-out forwards;
+}
