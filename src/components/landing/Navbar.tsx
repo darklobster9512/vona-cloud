@@ -44,8 +44,8 @@ const Navbar = () => {
           <div
             className={`hidden md:flex items-center rounded-2xl border transition-all duration-500 ${
               scrolled
-                ? 'h-16 bg-background/85 backdrop-blur-2xl border-border/70 shadow-[0_18px_50px_-24px_hsl(217_91%_60%/0.55)]'
-                : 'h-[4.5rem] bg-background/55 backdrop-blur-xl border-border/40 shadow-[0_12px_40px_-28px_hsl(217_91%_60%/0.4)]'
+                ? 'h-[4.5rem] bg-background/85 backdrop-blur-2xl border-border/70 shadow-[0_18px_50px_-24px_hsl(217_91%_60%/0.55)]'
+                : 'h-20 bg-background/55 backdrop-blur-xl border-border/40 shadow-[0_12px_40px_-28px_hsl(217_91%_60%/0.4)]'
             }`}
           >
             <Link to="/" className="flex items-center pl-5 pr-5 shrink-0 transition-opacity hover:opacity-80">
