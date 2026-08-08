@@ -90,7 +90,7 @@ const Navbar = () => {
 
           {/* Mobile: schmale Glas-Insel */}
           <div
-            className={`md:hidden flex items-center justify-between h-14 pl-4 pr-2.5 rounded-2xl border transition-all duration-500 ${
+            className={`md:hidden flex items-center justify-between h-16 pl-4 pr-2.5 rounded-2xl border transition-all duration-500 ${
               scrolled
                 ? 'bg-background/90 backdrop-blur-2xl border-border/70 shadow-[0_16px_40px_-24px_hsl(217_91%_60%/0.5)]'
                 : 'bg-background/60 backdrop-blur-xl border-border/40 shadow-sm'
