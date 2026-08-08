@@ -13,9 +13,10 @@ const Footer = () => {
               <img src={logo} alt="VONA Cloud" className="h-10 hover:scale-105 transition-transform duration-200" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Wir entwickeln, betreiben und skalieren Cloud-Software — von der Architektur
-              bis zum 24/7-Betrieb, gehostet in der EU.
+              Entwicklung, Betrieb und Vertrieb von Softwareprodukten einschließlich
+              Beratung — aus Wiesbaden, mit Hosting in der EU.
             </p>
+
 
           </div>
 
@@ -43,10 +44,11 @@ const Footer = () => {
             <h4 className="font-semibold text-sm mb-4 text-foreground">Leistungen</h4>
             <ul className="space-y-2.5">
               {[
-                { label: 'Cloud-Entwicklung', href: '/leistungen' },
-                { label: 'Managed Cloud-Betrieb', href: '/leistungen' },
-                { label: 'Cloud-Migration', href: '/leistungen' },
-                { label: 'Plattform & Software', href: '/software' },
+                { label: 'Softwareentwicklung', href: '/leistungen' },
+                { label: 'Softwareprodukte & Vertrieb', href: '/leistungen' },
+                { label: 'Betrieb & Support', href: '/leistungen' },
+                { label: 'Beratung', href: '/leistungen' },
+
               ].map((link, i) => (
 
                 <li key={i}>
