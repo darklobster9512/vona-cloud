@@ -7,32 +7,33 @@ const tabs = [
   {
     id: 'dashboards',
     icon: LayoutDashboard,
-    label: 'Dashboards',
-    title: 'Kennzahlen in Echtzeit',
-    text: 'Auswertungen, die direkt aus dem laufenden System kommen — ohne Excel-Export und ohne Wartezeit.',
+    label: 'Auswertungen',
+    title: 'Zahlen ohne Excel-Umweg',
+    text: 'Kennzahlen kommen direkt aus dem laufenden System — aktuell, nachvollziehbar und für jeden Bereich passend aufbereitet.',
   },
   {
     id: 'workflows',
     icon: Workflow,
-    label: 'Workflows',
-    title: 'Prozesse automatisiert',
-    text: 'Freigaben, Benachrichtigungen und wiederkehrende Aufgaben laufen regelbasiert und nachvollziehbar.',
+    label: 'Prozesse',
+    title: 'Abläufe abgebildet',
+    text: 'Freigaben, Benachrichtigungen und wiederkehrende Aufgaben laufen regelbasiert — statt per Zuruf und Mail.',
   },
   {
     id: 'apis',
     icon: Plug,
-    label: 'Integrationen',
+    label: 'Schnittstellen',
     title: 'Systeme verbunden',
-    text: 'ERP, CRM und Drittanbieter über stabile APIs angebunden — mit Retry, Logging und Monitoring.',
+    text: 'ERP, CRM, Warenwirtschaft und Portale werden über stabile Schnittstellen angebunden — mit Protokollierung.',
   },
   {
     id: 'infra',
     icon: Boxes,
-    label: 'Cloud-native',
-    title: 'Skaliert mit der Last',
-    text: 'Containerisiert, horizontal skalierbar und mit Zero-Downtime-Deploys ausgeliefert.',
+    label: 'Betrieb',
+    title: 'Läuft und bleibt aktuell',
+    text: 'Hosting, Updates und Überwachung übernehmen wir — inklusive Sicherung und festem Ansprechpartner.',
   },
 ];
+
 
 const panels: Record<string, JSX.Element> = {
   dashboards: (
@@ -85,14 +86,14 @@ const panels: Record<string, JSX.Element> = {
   infra: (
     <div className="space-y-3">
       {[
-        { k: 'api', pods: 6 },
-        { k: 'worker', pods: 4 },
-        { k: 'scheduler', pods: 2 },
+        { k: 'anwendung', pods: 6 },
+        { k: 'updates', pods: 4 },
+        { k: 'sicherung', pods: 2 },
       ].map((r) => (
         <div key={r.k} className="rounded-xl border border-border/60 bg-white px-4 py-3">
           <div className="mb-2 flex items-center justify-between">
             <span className="font-mono text-[11px] font-bold text-primary">{r.k}</span>
-            <span className="font-mono text-[10px] text-muted-foreground">{r.pods} pods</span>
+            <span className="font-mono text-[10px] text-muted-foreground">geprüft</span>
           </div>
           <div className="flex gap-1.5">
             {Array.from({ length: r.pods }).map((_, i) => (
@@ -106,6 +107,7 @@ const panels: Record<string, JSX.Element> = {
         </div>
       ))}
     </div>
+
   ),
 };
 
@@ -122,7 +124,7 @@ const SoftwareShowcase = () => {
           <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             Individuelle Software,
             <br />
-            <span className="text-gradient-blue">cloud-native gedacht.</span>
+            <span className="text-gradient-blue">auf Ihren Ablauf gebaut.</span>
           </h2>
         </div>
 

@@ -2,20 +2,21 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { X, Check, ArrowDown } from 'lucide-react';
 
 const before = [
-  'Deploys per Hand, freitags niemand',
-  'Ausfälle fallen dem Kunden zuerst auf',
-  'Cloud-Rechnung wächst ohne Erklärung',
-  'Legacy-Monolith, den keiner anfasst',
-  'Backups existieren — ungetestet',
+  'Excel-Listen als heimliches Hauptsystem',
+  'Insellösungen, die nicht miteinander reden',
+  'Software läuft, aber niemand pflegt sie',
+  'Bei Störungen kein klarer Ansprechpartner',
+  'Wissen steckt in einzelnen Köpfen',
 ];
 
 const after = [
-  'Automatisierte Pipelines, Deploy in Minuten',
-  'Monitoring & Alerting melden vor dem Kunden',
-  'Kosten transparent, Ø 34 % gesenkt',
-  'Schrittweise Ablösung ohne Stillstand',
-  'Recovery regelmäßig getestet und belegt',
+  'Eine Anwendung, die den Prozess abbildet',
+  'Systeme über Schnittstellen verbunden',
+  'Wartung, Updates und Weiterentwicklung fest geregelt',
+  'Fester Ansprechpartner mit zugesagter Reaktionszeit',
+  'Dokumentation, die im Haus bleibt',
 ];
+
 
 const ProblemSolution = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -26,9 +27,9 @@ const ProblemSolution = () => {
         <div className={`mb-16 max-w-2xl scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
           <p className="mono-label mb-4">01 — Ausgangspunkt</p>
           <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
-            Vom Bauchgefühl
+            Von gewachsenen Lösungen
             <br />
-            <span className="text-gradient-blue">zum belegbaren Betrieb.</span>
+            <span className="text-gradient-blue">zu verlässlicher Software.</span>
           </h2>
         </div>
 
@@ -57,7 +58,7 @@ const ProblemSolution = () => {
 
           {/* After */}
           <div className={`scroll-hidden delay-2 ${isVisible ? 'scroll-visible' : ''} md:pl-14`}>
-            <p className="mono-label mb-6">Mit VONA Cloud</p>
+            <p className="mono-label mb-6">Mit VONA</p>
             <ul className="space-y-3">
               {after.map((item) => (
                 <li

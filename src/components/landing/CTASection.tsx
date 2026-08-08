@@ -19,14 +19,15 @@ const CTASection = () => {
                 Nächster Schritt
               </span>
               <h2 className="mt-5 text-3xl font-extrabold leading-tight tracking-tight text-white md:text-5xl">
-                Lassen Sie uns Ihre
+                Sprechen wir über Ihre
                 <br />
-                Cloud-Architektur ansehen.
+                Software.
               </h2>
               <p className="mt-6 max-w-lg text-base leading-relaxed text-white/70">
-                30 Minuten, unverbindlich: Wir schauen auf Ihr System, Ihre Kosten und Ihre
-                Betriebsrisiken — und sagen offen, was sich lohnt.
+                30 Minuten, unverbindlich: Wir schauen auf Ihre Abläufe, Ihre bestehenden
+                Systeme und Ihre Anforderungen — und sagen offen, was sich lohnt.
               </p>
+
 
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <Link

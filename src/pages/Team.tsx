@@ -68,7 +68,7 @@ const teamMembers = [
   {
     name: 'Jonas Hartmann',
     role: 'Recruiter',
-    description: 'Findet die besten Köpfe der Branche und begleitet sie auf ihrem Weg zu VONA Cloud.',
+    description: 'Findet die besten Köpfe der Branche und begleitet sie auf ihrem Weg zu VONA.',
     image: jonasHartmann,
   },
   {
@@ -97,7 +97,7 @@ const Team = () => {
       <PageHero
         title="Unser"
         highlight="Team"
-        subtitle="Die Menschen hinter VONA Cloud — Entwicklung, Betrieb und Beratung in einem Team."
+        subtitle="Die Menschen hinter VONA — Entwicklung, Betrieb und Beratung in einem Team."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Team' },

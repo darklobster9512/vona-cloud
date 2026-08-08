@@ -1,45 +1,46 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Link } from 'react-router-dom';
-import { Code2, ServerCog, MoveRight, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { Code2, Boxes, LifeBuoy, Compass, ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
     icon: Code2,
     number: '01',
-    headline: 'Cloud-Entwicklung',
-    title: 'Web-Apps, SaaS & APIs',
+    headline: 'Softwareentwicklung',
+    title: 'Individuelle Anwendungen',
     description:
-      'Wir bauen Cloud-Anwendungen von Grund auf: saubere Architektur, getestete Codebasis, automatisierte Auslieferung — vom Prototyp bis zum produktiven Release.',
-    features: ['Web-Applikationen', 'SaaS-Produkte', 'API- & Integrationsschicht'],
+      'Wir entwickeln Software, die genau Ihren Ablauf abbildet: Fachanwendungen, Web-Portale und Schnittstellen — sauber gebaut, getestet und dokumentiert.',
+    features: ['Fachanwendungen', 'Web-Portale', 'Schnittstellen & APIs'],
   },
   {
-    icon: ServerCog,
+    icon: Boxes,
     number: '02',
-    headline: 'Managed Cloud-Betrieb',
-    title: 'Deployment, Monitoring & Support',
+    headline: 'Softwareprodukte',
+    title: 'Vertrieb & Einführung',
     description:
-      'Infrastructure as Code, Monitoring, Alerting, Backups und Skalierung — überwacht statt gehofft.',
-    features: ['24/7 Monitoring', 'Backups & Recovery', 'Autoscaling'],
+      'Eigene Produkte und bewährte Lösungen — mit Lizenzierung, Einrichtung und Schulung Ihrer Mitarbeiter.',
+    features: ['Lizenzmodelle', 'Einführung', 'Schulung'],
   },
   {
-    icon: MoveRight,
+    icon: LifeBuoy,
     number: '03',
-    headline: 'Cloud-Migration',
-    title: 'Vom Altsystem in die Cloud',
+    headline: 'Betrieb & Support',
+    title: 'Wartung, Updates & Hilfe',
     description:
-      'Bestandsaufnahme, Zielarchitektur, Migration in Wellen, Abschaltung der Altwelt — ohne Stillstand.',
-    features: ['Lift & Reshape', 'Datenmigration', 'Legacy-Ablösung'],
+      'Wir halten Ihre Software am Laufen: Hosting, Updates, Überwachung und ein Ansprechpartner mit zugesagter Reaktionszeit.',
+    features: ['Hosting in der EU', 'Wartung & Updates', 'Support'],
   },
   {
-    icon: ShieldCheck,
+    icon: Compass,
     number: '04',
-    headline: 'Cloud-Beratung',
-    title: 'Architektur, Kosten & Compliance',
+    headline: 'Beratung',
+    title: 'Prozesse, Auswahl & Konzept',
     description:
-      'Architektur bewerten, Cloud-Kosten senken, Security und DSGVO belastbar machen — inklusive EU-Hosting.',
-    features: ['Architektur-Review', 'Cost Optimization', 'Security & DSGVO'],
+      'Wir analysieren Abläufe, bewerten bestehende Systeme und sagen offen, was sich lohnt — inklusive Datenschutz und Aufwandsschätzung.',
+    features: ['Prozessanalyse', 'Systemauswahl', 'Datenschutz'],
   },
 ];
+
 
 /* ── Illustrations ── */
 
@@ -51,10 +52,10 @@ const DevVisual = () => (
       <span className="h-2 w-2 rounded-full bg-primary/10" />
     </div>
     {[
-      ['deploy', 'vona/api@v2.14'],
-      ['build', 'passed · 42s'],
+      ['release', 'v2.14'],
       ['tests', '318 / 318'],
-      ['release', 'zero-downtime'],
+      ['module', 'Auftrag · Lager · Faktura'],
+      ['übergabe', 'inkl. Dokumentation'],
     ].map(([k, v]) => (
       <div key={k} className="flex justify-between border-b border-border/40 py-1.5 last:border-0">
         <span className="text-primary">{k}</span>
@@ -64,39 +65,38 @@ const DevVisual = () => (
   </div>
 );
 
-const OpsVisual = () => (
+const ProductVisual = () => (
   <div className="rounded-2xl border border-border/60 bg-muted/30 p-4">
     <div className="mb-3 flex items-center justify-between">
-      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">load</span>
-      <span className="font-mono text-[10px] text-primary">stable</span>
+      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">module</span>
+      <span className="font-mono text-[10px] text-primary">aktiv</span>
     </div>
-    <div className="flex h-16 items-end gap-1">
-      {[38, 55, 42, 70, 58, 82, 64, 90, 71, 84, 62, 78].map((h, i) => (
-        <div key={i} className="flex-1 rounded-sm bg-gradient-blue opacity-70" style={{ height: `${h}%` }} />
+    <div className="grid grid-cols-2 gap-2">
+      {['Basis', 'Erweiterung', 'Portal', 'Auswertung'].map((m) => (
+        <div key={m} className="rounded-lg border border-border bg-white px-2 py-2 text-center text-[10px] font-semibold text-foreground/70">
+          {m}
+        </div>
       ))}
     </div>
   </div>
 );
 
-const MigrationVisual = () => (
+const SupportVisual = () => (
   <div className="rounded-2xl border border-border/60 bg-muted/30 p-4">
     <div className="flex items-center gap-2">
       <span className="flex-1 rounded-lg border border-border bg-white px-2 py-2 text-center text-[10px] font-semibold text-muted-foreground">
-        Legacy
+        Meldung
       </span>
       <svg width="34" height="10" className="shrink-0">
         <line x1="0" y1="5" x2="34" y2="5" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash-flow" />
       </svg>
       <span className="flex-1 rounded-lg bg-gradient-blue px-2 py-2 text-center text-[10px] font-semibold text-primary-foreground">
-        Cloud
+        Gelöst
       </span>
     </div>
-    <div className="mt-4 space-y-2">
-      {[100, 74, 41].map((w, i) => (
-        <div key={i} className="h-1.5 w-full overflow-hidden rounded-full bg-border/60">
-          <div className="h-full rounded-full bg-primary/60" style={{ width: `${w}%` }} />
-        </div>
-      ))}
+    <div className="mt-4 flex items-baseline justify-between">
+      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">reaktion</span>
+      <span className="text-lg font-extrabold text-primary">&lt; 4 h</span>
     </div>
   </div>
 );
@@ -104,20 +104,20 @@ const MigrationVisual = () => (
 const ConsultVisual = () => (
   <div className="rounded-2xl border border-border/60 bg-muted/30 p-4">
     <div className="grid grid-cols-3 gap-2">
-      {['ISO', 'DSGVO', 'EU'].map((t) => (
+      {['Analyse', 'DSGVO', 'Konzept'].map((t) => (
         <div key={t} className="rounded-lg border border-primary/20 bg-primary/[0.06] py-3 text-center font-mono text-[10px] font-bold text-primary">
           {t}
         </div>
       ))}
     </div>
     <div className="mt-4 flex items-baseline justify-between">
-      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">kosten</span>
-      <span className="text-lg font-extrabold text-primary">−34 %</span>
+      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">aufwand</span>
+      <span className="text-lg font-extrabold text-primary">fest kalkuliert</span>
     </div>
   </div>
 );
 
-const visuals = [DevVisual, OpsVisual, MigrationVisual, ConsultVisual];
+const visuals = [DevVisual, ProductVisual, SupportVisual, ConsultVisual];
 
 const ServicesGrid = () => {
   const { ref, isVisible } = useScrollAnimation();

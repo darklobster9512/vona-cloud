@@ -82,7 +82,7 @@ const Methodik = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
-    document.title = 'Methodik | VONA Cloud';
+    document.title = 'Methodik | VONA Cloud Solutions';
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('scroll-visible')),
       { threshold: 0.1 }
@@ -97,7 +97,7 @@ const Methodik = () => {
       <PageHero
         title="Unsere"
         highlight="Methodik"
-        subtitle="Assessment, Architektur, Build & Betrieb — drei Phasen, mit denen aus einer Idee eine Anwendung wird, die stabil läuft."
+        subtitle="Analyse, Konzept und Umsetzung — drei Phasen, mit denen aus einer Anforderung Software wird, die im Alltag hält."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Methodik' },

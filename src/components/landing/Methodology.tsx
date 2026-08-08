@@ -3,26 +3,27 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 const phases = [
   {
     step: '01',
-    title: 'Assessment',
+    title: 'Analyse & Beratung',
     duration: 'Woche 1–2',
-    description: 'Bestandsaufnahme von System, Infrastruktur und Kosten. Ergebnis: dokumentierter Ist-Stand mit Risiken.',
-    points: ['Architektur-Analyse', 'Kosten- & Risiko-Check', 'Zielbild'],
+    description: 'Wir sehen uns Abläufe, bestehende Systeme und Anforderungen an. Ergebnis: ein dokumentiertes Zielbild mit Prioritäten.',
+    points: ['Prozessaufnahme', 'Systembestand', 'Aufwandsschätzung'],
   },
   {
     step: '02',
-    title: 'Architektur',
-    duration: 'Woche 3–4',
-    description: 'Zielarchitektur, Infrastructure as Code und Migrationspfad — abgestimmt, bevor gebaut wird.',
-    points: ['Zielarchitektur', 'IaC-Blueprint', 'Migrationsplan'],
+    title: 'Konzept & Umsetzung',
+    duration: 'Woche 3 bis Go-live',
+    description: 'Konzept und Oberflächen werden abgestimmt, danach entwickeln wir in kurzen Iterationen mit regelmäßigen Demos.',
+    points: ['Konzept & Prototyp', 'Entwicklung in Sprints', 'Tests & Abnahme'],
   },
   {
     step: '03',
-    title: 'Build & Betrieb',
+    title: 'Einführung & Betrieb',
     duration: 'laufend',
-    description: 'Umsetzung in Iterationen, dann überwachter Dauerbetrieb mit Monitoring, Backups und Reporting.',
-    points: ['CI/CD-Pipelines', '24/7 Monitoring', 'Monatliches Reporting'],
+    description: 'Wir begleiten Einführung und Schulung und übernehmen anschließend Wartung, Updates und Support.',
+    points: ['Schulung & Rollout', 'Wartung & Updates', 'Support mit Reaktionszeit'],
   },
 ];
+
 
 const Methodology = () => {
   const { ref, isVisible } = useScrollAnimation();

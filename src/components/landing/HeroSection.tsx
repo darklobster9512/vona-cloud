@@ -11,14 +11,15 @@ const ArchitectureGraphic = () => (
       <div className="absolute inset-0 rounded-[2rem] bg-blueprint-fine opacity-70 pointer-events-none" />
 
       <div className="relative flex items-center justify-between mb-6">
-        <span className="mono-label-muted">vona · architektur</span>
+        <span className="mono-label-muted">vona · systemlandschaft</span>
         <span className="flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 animate-ring-expand" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
-          eu-central
+          in betrieb
         </span>
+
       </div>
 
       {/* Node map */}
@@ -46,32 +47,32 @@ const ArchitectureGraphic = () => (
           </g>
         </svg>
 
-        {/* Top: edge */}
-        <Node className="left-1/2 -translate-x-1/2 top-0" icon={Globe} label="Edge / CDN" />
+        {/* Top: users */}
+        <Node className="left-1/2 -translate-x-1/2 top-0" icon={Globe} label="Nutzer & Portale" />
         {/* Center: platform */}
         <div className="absolute left-1/2 -translate-x-1/2 top-[110px] -translate-y-1/2">
           <div className="relative flex items-center gap-3 rounded-2xl bg-gradient-blue px-5 py-3.5 text-primary-foreground shadow-[0_18px_44px_-16px_hsl(217_91%_60%/0.8)]">
             <Cloud size={20} />
             <div className="leading-tight">
-              <p className="text-[13px] font-bold">VONA Platform</p>
-              <p className="font-mono text-[10px] text-white/70">kubernetes · IaC</p>
+              <p className="text-[13px] font-bold">Ihre Anwendung</p>
+              <p className="font-mono text-[10px] text-white/70">entwickelt · gewartet</p>
             </div>
           </div>
         </div>
         {/* Row of services */}
-        <Node className="left-0 top-[210px]" icon={Server} label="API-Services" />
-        <Node className="left-1/2 -translate-x-1/2 top-[218px]" icon={Cpu} label="Worker" />
-        <Node className="right-0 top-[210px]" icon={Database} label="PostgreSQL" />
+        <Node className="left-0 top-[210px]" icon={Server} label="Schnittstellen" />
+        <Node className="left-1/2 -translate-x-1/2 top-[218px]" icon={Cpu} label="Prozesse" />
+        <Node className="right-0 top-[210px]" icon={Database} label="Datenbank" />
         {/* Bottom */}
-        <Node className="left-1/2 -translate-x-1/2 bottom-0" icon={Lock} label="Backups · DSGVO" />
+        <Node className="left-1/2 -translate-x-1/2 bottom-0" icon={Lock} label="Wartung · Support" />
       </div>
 
       {/* Live metrics strip */}
       <div className="relative mt-6 grid grid-cols-3 gap-3 border-t border-border/60 pt-5">
         {[
-          { k: 'uptime', v: '99,98%' },
-          { k: 'p95', v: '48 ms' },
-          { k: 'deploys/wo', v: '31' },
+          { k: 'verfügbarkeit', v: '99,9 %' },
+          { k: 'reaktionszeit', v: '< 4 h' },
+          { k: 'releases/monat', v: '12' },
         ].map((m) => (
           <div key={m.k}>
             <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{m.k}</p>
@@ -79,6 +80,7 @@ const ArchitectureGraphic = () => (
           </div>
         ))}
       </div>
+
     </div>
   </div>
 );
@@ -115,20 +117,20 @@ const HeroSection = () => {
         <div>
           <div className="hero-animate hero-animate-1 mb-8 flex items-center gap-3">
             <span className="h-px w-10 bg-primary/50" />
-            <span className="mono-label">Cloud Software · Wiesbaden</span>
+            <span className="mono-label">Softwarehaus · Wiesbaden</span>
           </div>
 
           <h1 className="hero-animate hero-animate-2 text-[2.5rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]">
-            Wir bauen und
+            Software, die wir
             <br />
-            betreiben Ihre
+            entwickeln,
             <br />
-            <span className="text-gradient-blue">Cloud-Software.</span>
+            <span className="text-gradient-blue">betreiben & betreuen.</span>
           </h1>
 
           <p className="hero-animate hero-animate-3 mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            Entwicklung, Migration und überwachter Dauerbetrieb — aus einer Hand,
-            dokumentiert und mit Hosting in der EU.
+            Entwicklung, Betrieb und Vertrieb von Softwareprodukten — einschließlich
+            Beratung, Einführung und langfristigem Support.
           </p>
 
           <div className="hero-animate hero-animate-4 mt-10 flex flex-col gap-4 sm:flex-row">
@@ -150,9 +152,9 @@ const HeroSection = () => {
 
           <dl className="hero-animate hero-animate-5 mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-border/70 pt-7">
             {[
-              { v: '120+', l: 'Cloud-Services' },
-              { v: '99,9 %', l: 'Uptime' },
-              { v: '100 %', l: 'EU-Hosting' },
+              { v: '80+', l: 'Softwareprojekte' },
+              { v: '15 J.', l: 'Erfahrung' },
+              { v: '100 %', l: 'Support inhouse' },
             ].map((s) => (
               <div key={s.l}>
                 <dt className="text-2xl font-extrabold tracking-tight">{s.v}</dt>
@@ -160,6 +162,7 @@ const HeroSection = () => {
               </div>
             ))}
           </dl>
+
         </div>
 
         {/* Right */}
