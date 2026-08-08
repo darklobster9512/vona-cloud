@@ -1,4 +1,3 @@
-import logoWordmark from '@/assets/logo-wordmark.png';
 import { cn } from '@/lib/utils';
 
 interface LogoProps {
@@ -8,21 +7,49 @@ interface LogoProps {
 }
 
 const heights = {
-  sm: 'h-8',
-  md: 'h-10',
-  lg: 'h-16',
+  sm: 'h-6',
+  md: 'h-7',
+  lg: 'h-8',
 };
 
-const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
-  <img
-    src={logoWordmark}
-    alt="VONA Cloud"
-    width={1152}
-    height={576}
-    loading={eager ? 'eager' : 'lazy'}
-    fetchPriority={eager ? 'high' : undefined}
-    className={cn(heights[size], 'w-auto object-contain', className)}
-  />
+/**
+ * Wortmarke "VONA CLOUD" als Vektor.
+ * VONA fett in Primaerblau, CLOUD leicht in Foreground-Navy.
+ * Feste viewBox + textLength => kein Verzerren, pixelscharf in jeder Groesse.
+ */
+const Logo = ({ className, size = 'lg' }: LogoProps) => (
+  <svg
+    viewBox="0 0 468 96"
+    role="img"
+    aria-label="VONA Cloud"
+    className={cn(heights[size], 'w-auto shrink-0 overflow-visible', className)}
+  >
+    <title>VONA Cloud</title>
+    <text
+      x="0"
+      y="74"
+      textLength="196"
+      lengthAdjust="spacing"
+      fontSize="76"
+      fontWeight="800"
+      fill="hsl(var(--primary))"
+      style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}
+    >
+      VONA
+    </text>
+    <text
+      x="218"
+      y="74"
+      textLength="250"
+      lengthAdjust="spacing"
+      fontSize="76"
+      fontWeight="300"
+      fill="hsl(var(--foreground))"
+      style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}
+    >
+      CLOUD
+    </text>
+  </svg>
 );
 
 export default Logo;
