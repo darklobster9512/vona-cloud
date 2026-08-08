@@ -1,41 +1,39 @@
-import { useScrollAnimation, useCounterAnimation } from '@/hooks/useScrollAnimation';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const stats = [
-  { value: 99, suffix: ',9%', label: 'Uptime im Managed Betrieb' },
-  { value: 120, suffix: '+', label: 'Betriebene Cloud-Services' },
-  { value: 34, suffix: '%', label: 'Ø Ersparnis bei Cloud-Kosten' },
-  { value: 100, suffix: '%', label: 'Hosting in der EU' },
+  { value: '99,9 %', label: 'Uptime im Betrieb', sub: 'überwacht 24/7' },
+  { value: '120+', label: 'Cloud-Services', sub: 'in Produktion' },
+  { value: '34 %', label: 'Ø Kostenersparnis', sub: 'nach Optimierung' },
+  { value: '100 %', label: 'EU-Hosting', sub: 'DSGVO-konform' },
 ];
-
-
-const StatItem = ({ value, suffix, label, isVisible }: { value: number; suffix: string; label: string; isVisible: boolean }) => {
-  const count = useCounterAnimation(value, 2000, isVisible);
-
-  return (
-    <div className="text-center">
-      <div className="text-5xl md:text-6xl font-extrabold text-primary-foreground tabular-nums mb-2">
-        {count}{suffix}
-      </div>
-      <p className="text-sm font-medium text-white/70">{label}</p>
-    </div>
-  );
-};
 
 const Stats = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-gradient-blue relative overflow-hidden">
-      {/* Subtle orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-white/[0.05] blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-56 h-56 rounded-full bg-white/[0.05] blur-3xl" />
-      </div>
+    <section ref={ref} className="relative overflow-hidden bg-ink py-20 md:py-24">
+      <div className="absolute inset-0 bg-blueprint-light opacity-60 pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          {stats.map((stat) => (
-            <StatItem key={stat.label} {...stat} isVisible={isVisible} />
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className={`mb-14 flex flex-col gap-3 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/50">
+            04 — Betrieb in Zahlen
+          </span>
+          <h2 className="max-w-2xl text-2xl font-extrabold tracking-tight text-white md:text-4xl">
+            Kennzahlen, die wir messen — nicht behaupten.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} border-t border-white/15 pt-6`}
+            >
+              <p className="text-4xl font-extrabold tracking-tight text-white md:text-5xl">{s.value}</p>
+              <p className="mt-3 text-sm font-semibold text-white/85">{s.label}</p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">{s.sub}</p>
+            </div>
           ))}
         </div>
       </div>
