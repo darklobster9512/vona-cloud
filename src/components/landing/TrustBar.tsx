@@ -23,16 +23,17 @@ const techStack = [
 ];
 
 const capabilities = [
-  'Kubernetes',
-  'Terraform',
-  'CI/CD',
-  'Observability',
-  'Zero-Downtime-Deploys',
-  'Autoscaling',
-  'Backups & Recovery',
+  'Individualsoftware',
+  'Web-Portale',
+  'Schnittstellen & APIs',
+  'Prozessautomatisierung',
+  'Wartung & Updates',
+  'Support & Hotline',
+  'Datenbanken',
   'DSGVO & EU-Hosting',
-  'Cost Optimization',
+  'Beratung',
 ];
+
 
 const TrustBar = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -43,7 +44,7 @@ const TrustBar = () => {
 
       <div className={`relative mb-7 flex items-center justify-center gap-3 px-6 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
         <span className="h-px w-8 bg-border" />
-        <span className="mono-label-muted text-center">Stack &amp; Plattform</span>
+        <span className="mono-label-muted text-center">Technologien &amp; Leistungen</span>
         <span className="h-px w-8 bg-border" />
       </div>
 
