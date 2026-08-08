@@ -91,9 +91,9 @@ const Software = () => {
     <>
 
       <PageHero
-        title="Cloud-Software,"
+        title="Software,"
         highlight="die trägt"
-        subtitle="Wir entwickeln Anwendungen, die skalieren, sich automatisiert ausliefern lassen und im Betrieb keine Überraschungen produzieren."
+        subtitle="Wir entwickeln Anwendungen, die den Arbeitsalltag abbilden, sich sauber anbinden lassen und im Betrieb keine Überraschungen produzieren."
 
         breadcrumb={[
           { label: 'Home', href: '/' },
