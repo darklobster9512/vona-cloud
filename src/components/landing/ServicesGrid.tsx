@@ -1,252 +1,191 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Link } from 'react-router-dom';
-import { Code2, ServerCog, MoveRight, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Code2, ServerCog, MoveRight, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
     icon: Code2,
     number: '01',
-    total: '04',
-    title: 'Web-Apps, SaaS & APIs',
     headline: 'Cloud-Entwicklung',
+    title: 'Web-Apps, SaaS & APIs',
     description:
-      'Wir bauen Cloud-Anwendungen von Grund auf: saubere Architektur, getestete Codebasis, automatisierte Auslieferung. Vom ersten Prototyp bis zum produktiven Release.',
+      'Wir bauen Cloud-Anwendungen von Grund auf: saubere Architektur, getestete Codebasis, automatisierte Auslieferung — vom Prototyp bis zum produktiven Release.',
     features: ['Web-Applikationen', 'SaaS-Produkte', 'API- & Integrationsschicht'],
   },
   {
     icon: ServerCog,
     number: '02',
-    total: '04',
-    title: 'Deployment, Monitoring & Support',
     headline: 'Managed Cloud-Betrieb',
+    title: 'Deployment, Monitoring & Support',
     description:
-      'Wir übernehmen den Betrieb Ihrer Anwendungen: Infrastruktur as Code, Monitoring, Alerting, Backups und Skalierung — überwacht statt gehofft.',
+      'Infrastructure as Code, Monitoring, Alerting, Backups und Skalierung — überwacht statt gehofft.',
     features: ['24/7 Monitoring', 'Backups & Recovery', 'Autoscaling'],
   },
   {
     icon: MoveRight,
     number: '03',
-    total: '04',
-    title: 'Vom Altsystem in die Cloud',
     headline: 'Cloud-Migration',
+    title: 'Vom Altsystem in die Cloud',
     description:
-      'Bestehende Systeme migrieren wir schrittweise und ohne Stillstand: Bestandsaufnahme, Zielarchitektur, Migration in Wellen, Abschaltung der Altwelt.',
+      'Bestandsaufnahme, Zielarchitektur, Migration in Wellen, Abschaltung der Altwelt — ohne Stillstand.',
     features: ['Lift & Reshape', 'Datenmigration', 'Legacy-Ablösung'],
   },
   {
     icon: ShieldCheck,
     number: '04',
-    total: '04',
-    title: 'Architektur, Kosten & Compliance',
     headline: 'Cloud-Beratung',
+    title: 'Architektur, Kosten & Compliance',
     description:
-      'Wir bewerten Ihre Architektur, senken Cloud-Kosten und bringen Security sowie DSGVO-Anforderungen in eine belastbare Form — inklusive EU-Hosting.',
+      'Architektur bewerten, Cloud-Kosten senken, Security und DSGVO belastbar machen — inklusive EU-Hosting.',
     features: ['Architektur-Review', 'Cost Optimization', 'Security & DSGVO'],
   },
 ];
 
+/* ── Illustrations ── */
 
-/* ── Individual mock visuals per service ── */
-
-const ConsultingVisual = () => (
-  <div className="w-full max-w-xs space-y-4">
-    {/* Mini flowchart */}
-    <div className="flex items-center gap-3">
-      <div className="w-16 h-10 rounded-lg bg-primary/15 border border-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">Analyse</div>
-      <div className="w-6 h-0.5 bg-primary/30" />
-      <div className="w-16 h-10 rounded-lg bg-primary/10 border border-primary/15 flex items-center justify-center text-[10px] font-bold text-primary/80">Strategie</div>
-      <div className="w-6 h-0.5 bg-primary/30" />
-      <div className="w-16 h-10 rounded-lg bg-primary/[0.07] border border-primary/10 flex items-center justify-center text-[10px] font-bold text-primary/60">Roadmap</div>
+const DevVisual = () => (
+  <div className="rounded-2xl border border-border/60 bg-muted/30 p-4 font-mono text-[11px] leading-relaxed">
+    <div className="mb-3 flex gap-1.5">
+      <span className="h-2 w-2 rounded-full bg-primary/30" />
+      <span className="h-2 w-2 rounded-full bg-primary/20" />
+      <span className="h-2 w-2 rounded-full bg-primary/10" />
     </div>
-    {/* Metrics */}
     {[
-      { label: 'Engpässe identifiziert', value: '12', bar: 85 },
-      { label: 'Optimierungspotenzial', value: '340h/Jahr', bar: 72 },
-      { label: 'ROI-Prognose', value: '+280%', bar: 94 },
-    ].map((m) => (
-      <div key={m.label} className="p-3 rounded-xl bg-white border border-border/40">
-        <div className="flex justify-between items-center mb-1.5">
-          <span className="text-[10px] font-medium text-muted-foreground">{m.label}</span>
-          <span className="text-xs font-bold text-primary">{m.value}</span>
-        </div>
-        <div className="h-1.5 rounded-full bg-muted">
-          <div className="h-full rounded-full bg-primary/40" style={{ width: `${m.bar}%` }} />
-        </div>
+      ['deploy', 'vona/api@v2.14'],
+      ['build', 'passed · 42s'],
+      ['tests', '318 / 318'],
+      ['release', 'zero-downtime'],
+    ].map(([k, v]) => (
+      <div key={k} className="flex justify-between border-b border-border/40 py-1.5 last:border-0">
+        <span className="text-primary">{k}</span>
+        <span className="text-muted-foreground">{v}</span>
       </div>
     ))}
   </div>
 );
 
-const DigitalisierungVisual = () => (
-  <div className="w-full max-w-xs space-y-3">
-    {/* Before / After */}
-    <div className="grid grid-cols-2 gap-3">
-      <div className="p-3 rounded-xl bg-destructive/[0.04] border border-destructive/10">
-        <p className="text-[9px] font-bold text-destructive/60 uppercase tracking-wider mb-2">Vorher</p>
-        <div className="space-y-1.5">
-          <div className="h-2 rounded bg-destructive/10 w-full" />
-          <div className="h-2 rounded bg-destructive/10 w-3/4" />
-          <div className="h-2 rounded bg-destructive/10 w-1/2" />
-        </div>
-        <p className="text-[10px] font-bold text-destructive/50 mt-2">5 Systeme · 23 Schritte</p>
-      </div>
-      <div className="p-3 rounded-xl bg-primary/[0.04] border border-primary/15">
-        <p className="text-[9px] font-bold text-primary/70 uppercase tracking-wider mb-2">Nachher</p>
-        <div className="space-y-1.5">
-          <div className="h-2 rounded bg-primary/20 w-full" />
-          <div className="h-2 rounded bg-primary/15 w-2/3" />
-        </div>
-        <p className="text-[10px] font-bold text-primary mt-2">1 System · 4 Schritte</p>
-      </div>
+const OpsVisual = () => (
+  <div className="rounded-2xl border border-border/60 bg-muted/30 p-4">
+    <div className="mb-3 flex items-center justify-between">
+      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">load</span>
+      <span className="font-mono text-[10px] text-primary">stable</span>
     </div>
-    {/* Migration progress */}
-    <div className="p-3 rounded-xl bg-white border border-border/40">
-      <div className="flex justify-between mb-1.5">
-        <span className="text-[10px] font-medium text-muted-foreground">Migration</span>
-        <span className="text-[10px] font-bold text-primary">78%</span>
-      </div>
-      <div className="h-2 rounded-full bg-muted">
-        <div className="h-full rounded-full bg-gradient-blue w-[78%]" />
-      </div>
-    </div>
-    <div className="p-3 rounded-xl bg-white border border-border/40 flex items-center gap-2">
-      <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center text-[10px] text-primary">☁</div>
-      <span className="text-[10px] font-medium text-muted-foreground">Cloud-Infrastruktur aktiv</span>
-      <span className="ml-auto text-[10px] font-bold text-[hsl(142_71%_35%)]">Live</span>
+    <div className="flex h-16 items-end gap-1">
+      {[38, 55, 42, 70, 58, 82, 64, 90, 71, 84, 62, 78].map((h, i) => (
+        <div key={i} className="flex-1 rounded-sm bg-gradient-blue opacity-70" style={{ height: `${h}%` }} />
+      ))}
     </div>
   </div>
 );
 
-const SoftwareVisual = () => (
-  <div className="w-full max-w-xs space-y-3">
-    {/* Code snippet */}
-    <div className="p-3 rounded-xl bg-[hsl(220_15%_13%)] border border-border/20 font-mono text-[10px] leading-relaxed">
-      <div><span className="text-[hsl(207_82%_66%)]">const</span> <span className="text-[hsl(187_47%_55%)]">workflow</span> = <span className="text-[hsl(207_82%_66%)]">await</span></div>
-      <div className="pl-3"><span className="text-[hsl(187_47%_55%)]">optimize</span>(<span className="text-[hsl(29_54%_61%)]">'process_v2'</span>);</div>
-      <div className="mt-1"><span className="text-[hsl(95_38%_62%)]">// Effizienz: +42% ✓</span></div>
+const MigrationVisual = () => (
+  <div className="rounded-2xl border border-border/60 bg-muted/30 p-4">
+    <div className="flex items-center gap-2">
+      <span className="flex-1 rounded-lg border border-border bg-white px-2 py-2 text-center text-[10px] font-semibold text-muted-foreground">
+        Legacy
+      </span>
+      <svg width="34" height="10" className="shrink-0">
+        <line x1="0" y1="5" x2="34" y2="5" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash-flow" />
+      </svg>
+      <span className="flex-1 rounded-lg bg-gradient-blue px-2 py-2 text-center text-[10px] font-semibold text-primary-foreground">
+        Cloud
+      </span>
     </div>
-    {/* Mini dashboard */}
-    <div className="grid grid-cols-2 gap-2">
-      <div className="p-3 rounded-xl bg-white border border-border/40 text-center">
-        <p className="text-lg font-bold text-primary">98.9%</p>
-        <p className="text-[9px] text-muted-foreground">Uptime</p>
-      </div>
-      <div className="p-3 rounded-xl bg-white border border-border/40 text-center">
-        <p className="text-lg font-bold text-[hsl(142_71%_35%)]">42ms</p>
-        <p className="text-[9px] text-muted-foreground">Latenz</p>
-      </div>
-    </div>
-    <div className="p-3 rounded-xl bg-white border border-border/40">
-      <p className="text-[10px] font-medium text-muted-foreground mb-2">API Requests / Tag</p>
-      <div className="flex items-end gap-1 h-10">
-        {[30, 50, 40, 70, 55, 85, 65, 90, 75, 95].map((h, i) => (
-          <div key={i} className="flex-1 rounded-t bg-primary/30" style={{ height: `${h}%` }} />
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const OptimierungVisual = () => (
-  <div className="w-full max-w-xs space-y-3">
-    {/* KPI Cards */}
-    <div className="grid grid-cols-3 gap-2">
-      {[
-        { label: 'Zykluszeit', value: '-38%', color: 'text-[hsl(142_71%_35%)]' },
-        { label: 'Fehlerrate', value: '-62%', color: 'text-primary' },
-        { label: 'Durchsatz', value: '+45%', color: 'text-[hsl(270_60%_50%)]' },
-      ].map((kpi) => (
-        <div key={kpi.label} className="p-2.5 rounded-xl bg-white border border-border/40 text-center">
-          <p className={`text-sm font-bold ${kpi.color}`}>{kpi.value}</p>
-          <p className="text-[8px] text-muted-foreground mt-0.5">{kpi.label}</p>
+    <div className="mt-4 space-y-2">
+      {[100, 74, 41].map((w, i) => (
+        <div key={i} className="h-1.5 w-full overflow-hidden rounded-full bg-border/60">
+          <div className="h-full rounded-full bg-primary/60" style={{ width: `${w}%` }} />
         </div>
       ))}
     </div>
-    {/* Workflow steps */}
-    {[
-      { step: 'Datenerfassung', status: 'Automatisiert', done: true },
-      { step: 'Qualitätsprüfung', status: 'Automatisiert', done: true },
-      { step: 'Berichterstellung', status: 'In Optimierung', done: false },
-    ].map((item) => (
-      <div key={item.step} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-border/40">
-        <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
-          item.done ? 'bg-[hsl(142_71%_45%/0.15)] text-[hsl(142_71%_35%)]' : 'bg-muted text-muted-foreground'
-        }`}>
-          {item.done ? '✓' : '◔'}
-        </div>
-        <div className="flex-1">
-          <p className="text-[10px] font-medium text-foreground">{item.step}</p>
-        </div>
-        <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full ${
-          item.done ? 'bg-[hsl(142_71%_45%/0.1)] text-[hsl(142_71%_35%)]' : 'bg-muted text-muted-foreground'
-        }`}>
-          {item.status}
-        </span>
-      </div>
-    ))}
   </div>
 );
 
-const serviceVisuals = [ConsultingVisual, DigitalisierungVisual, SoftwareVisual, OptimierungVisual];
+const ConsultVisual = () => (
+  <div className="rounded-2xl border border-border/60 bg-muted/30 p-4">
+    <div className="grid grid-cols-3 gap-2">
+      {['ISO', 'DSGVO', 'EU'].map((t) => (
+        <div key={t} className="rounded-lg border border-primary/20 bg-primary/[0.06] py-3 text-center font-mono text-[10px] font-bold text-primary">
+          {t}
+        </div>
+      ))}
+    </div>
+    <div className="mt-4 flex items-baseline justify-between">
+      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">kosten</span>
+      <span className="text-lg font-extrabold text-primary">−34 %</span>
+    </div>
+  </div>
+);
+
+const visuals = [DevVisual, OpsVisual, MigrationVisual, ConsultVisual];
 
 const ServicesGrid = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="leistungen" ref={ref} className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className={`text-center mb-16 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Leistungen</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Vier Säulen. <span className="text-gradient-blue">Ein Ziel.</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Maximale Effizienz durch ganzheitliche Beratung und moderne Technologie.
-          </p>
+    <section id="leistungen" ref={ref} className="relative overflow-hidden bg-muted/25 py-24 md:py-32">
+      <div className="absolute inset-0 bg-blueprint opacity-60 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className={`mb-14 flex flex-col gap-6 scroll-hidden md:flex-row md:items-end md:justify-between ${isVisible ? 'scroll-visible' : ''}`}>
+          <div className="max-w-xl">
+            <p className="mono-label mb-4">02 — Leistungen</p>
+            <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
+              Vier Bausteine,
+              <br />
+              <span className="text-gradient-blue">ein Betriebsmodell.</span>
+            </h2>
+          </div>
+          <Link
+            to="/leistungen"
+            className="group inline-flex items-center gap-2 self-start rounded-full border border-border bg-white px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/40 md:self-auto"
+          >
+            Alle Leistungen
+            <ArrowUpRight size={16} className="text-primary transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
         </div>
 
-        <div className="space-y-6">
-          {services.map((service, i) => {
-            const Icon = service.icon;
-            const Visual = serviceVisuals[i];
+        {/* Bento grid */}
+        <div className="grid gap-5 md:grid-cols-6">
+          {services.map((s, i) => {
+            const Icon = s.icon;
+            const Visual = visuals[i];
+            const featured = i === 0;
             return (
-              <div
-                key={service.number}
-                className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} group relative rounded-2xl border border-border/60 bg-white hover:border-primary/20 hover:shadow-lg hover:shadow-primary/[0.05] transition-all duration-500 overflow-hidden`}
+              <article
+                key={s.number}
+                className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} card-flat card-flat-hover group relative overflow-hidden p-7 md:p-8 ${
+                  featured ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2'
+                }`}
               >
-                <div className="grid md:grid-cols-[1fr_1fr] gap-0">
-                  {/* Text side */}
-                  <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="w-11 h-11 rounded-xl bg-gradient-blue flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon size={20} className="text-primary-foreground" />
-                      </div>
-                      <span className="text-xs font-bold text-muted-foreground tracking-wider">
-                        {service.number}/{service.total}
-                      </span>
-                    </div>
-                    <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-2">{service.title}</p>
-                    <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4">{service.headline}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">{service.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {service.features.map((f) => (
-                        <span key={f} className="px-3 py-1 rounded-full bg-accent text-xs font-medium text-accent-foreground">
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-                    <Link to="/kontakt" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline group/link">
-                      Mehr erfahren
-                      <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
+                <span className="pointer-events-none absolute right-6 top-6 font-mono text-[11px] tracking-widest text-muted-foreground/60">
+                  {s.number}
+                </span>
 
-                  {/* Visual side - unique per service */}
-                  <div className="hidden md:flex items-center justify-center p-8 bg-muted/30 border-l border-border/40">
-                    <Visual />
-                  </div>
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary transition-colors group-hover:bg-gradient-blue group-hover:text-primary-foreground">
+                  <Icon size={22} />
                 </div>
-              </div>
+
+                <p className="mono-label-muted mb-2">{s.title}</p>
+                <h3 className={`font-extrabold tracking-tight ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+                  {s.headline}
+                </h3>
+                <p className={`mt-3 leading-relaxed text-muted-foreground ${featured ? 'text-base max-w-lg' : 'text-sm'}`}>
+                  {s.description}
+                </p>
+
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {s.features.map((f) => (
+                    <li key={f} className="rounded-full border border-border/70 px-3 py-1 text-[11px] font-medium text-foreground/70">
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className={`mt-7 ${featured ? 'max-w-md' : ''}`}>
+                  <Visual />
+                </div>
+              </article>
             );
           })}
         </div>
