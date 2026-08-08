@@ -155,9 +155,8 @@ const ServicesGrid = () => {
             return (
               <article
                 key={s.number}
-                className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} card-flat card-flat-hover group relative overflow-hidden p-7 md:p-8 ${
-                  featured ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2'
-                }`}
+                className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} card-flat card-flat-hover group relative overflow-hidden p-7 md:p-8 ${span}`}
+
               >
                 <span className="pointer-events-none absolute right-6 top-6 font-mono text-[11px] tracking-widest text-muted-foreground/60">
                   {s.number}
