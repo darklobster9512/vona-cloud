@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo + Tagline */}
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <Logo size="lg" className="transition-opacity duration-200 hover:opacity-80" />
+              <Logo size="md" className="transition-opacity duration-200 hover:opacity-80" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Entwicklung, Betrieb und Vertrieb von Softwareprodukten einschließlich
