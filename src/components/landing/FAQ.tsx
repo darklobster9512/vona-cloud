@@ -6,29 +6,30 @@ import { Link } from 'react-router-dom';
 const faqs = [
   {
     q: 'Übernehmen Sie auch bestehende Systeme?',
-    a: 'Ja. Wir starten mit einem Assessment der bestehenden Anwendung und Infrastruktur, dokumentieren den Ist-Stand und übernehmen Entwicklung, Betrieb oder beides — auch wenn ein anderer Dienstleister vorher zuständig war.',
+    a: 'Ja. Wir sehen uns die bestehende Anwendung an, dokumentieren den Ist-Stand und übernehmen Weiterentwicklung, Wartung oder beides — auch wenn vorher ein anderer Dienstleister zuständig war.',
   },
   {
-    q: 'Wo werden die Daten gehostet?',
-    a: 'Ausschließlich in Rechenzentren innerhalb der EU. Auf Wunsch mit Standort Deutschland, inklusive Auftragsverarbeitungsvertrag und dokumentiertem Backup- und Recovery-Konzept.',
+    q: 'Entwickeln Sie individuell oder verkaufen Sie fertige Produkte?',
+    a: 'Beides. Wenn eine bewährte Lösung passt, führen wir sie ein und passen sie an. Wenn nicht, entwickeln wir eine eigene Anwendung — die Entscheidung fällt nach der Analyse, nicht vorher.',
   },
   {
     q: 'Wie schnell können wir starten?',
-    a: 'Das Erstgespräch findet in der Regel innerhalb weniger Tage statt. Ein Assessment dauert ein bis zwei Wochen, danach liegt ein belastbarer Umsetzungsplan mit Aufwand und Zeitrahmen vor.',
+    a: 'Das Erstgespräch findet in der Regel innerhalb weniger Tage statt. Die Analyse dauert ein bis zwei Wochen, danach liegt ein belastbarer Umsetzungsplan mit Aufwand und Zeitrahmen vor.',
   },
   {
-    q: 'Was kostet der Managed-Betrieb?',
-    a: 'Der Betrieb wird als monatliche Pauschale abgerechnet und richtet sich nach Anzahl der Services, Verfügbarkeitsanforderung und Reaktionszeiten. Sie erhalten vorab eine feste Kalkulation — keine variablen Überraschungen.',
+    q: 'Was passiert nach dem Go-live?',
+    a: 'Wir übernehmen auf Wunsch Wartung, Updates, Betrieb und Support als monatliche Pauschale — mit festen Reaktionszeiten und einem Ansprechpartner, der Ihr System kennt.',
   },
   {
-    q: 'Sind wir nach dem Projekt an Sie gebunden?',
-    a: 'Nein. Infrastruktur ist als Code beschrieben, Architektur und Betriebsabläufe sind dokumentiert. Sie können jederzeit intern übernehmen oder wechseln — kein Vendor-Lock-in.',
+    q: 'Wo liegen unsere Daten?',
+    a: 'In Rechenzentren innerhalb der EU, auf Wunsch mit Standort Deutschland — inklusive Auftragsverarbeitungsvertrag und dokumentiertem Sicherungskonzept. Betrieb im eigenen Haus ist ebenfalls möglich.',
   },
   {
     q: 'Arbeiten Sie auch mit internen IT-Teams zusammen?',
-    a: 'Regelmäßig. Wir ergänzen bestehende Teams punktuell — etwa für Cloud-Architektur, Pipelines oder Rufbereitschaft — und übergeben Wissen strukturiert.',
+    a: 'Regelmäßig. Wir ergänzen bestehende Teams punktuell — etwa in der Entwicklung, bei Schnittstellen oder in der Beratung — und übergeben Wissen strukturiert.',
   },
 ];
+
 
 const FAQ = () => {
   const [open, setOpen] = useState<number | null>(0);

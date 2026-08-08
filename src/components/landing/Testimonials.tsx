@@ -4,26 +4,27 @@ import { Quote } from 'lucide-react';
 const testimonials = [
   {
     quote:
-      'Die Migration lief in Wellen — ohne einen einzigen Ausfall im Tagesgeschäft. Danach war die Cloud-Rechnung ein Drittel niedriger.',
+      'Unsere Abläufe stecken jetzt in einer Anwendung statt in zwanzig Excel-Dateien. Die Einführung lief ohne Stillstand im Tagesgeschäft.',
     author: 'Geschäftsführer',
     company: 'Handelsunternehmen, Hessen',
-    metric: '−34 % Cloud-Kosten',
+    metric: '6 Wochen bis Go-live',
   },
   {
     quote:
-      'Störungen bemerkt heute das Monitoring, nicht unser Kunde. Das hat die Wahrnehmung unseres Produkts komplett verändert.',
-    author: 'CTO',
-    company: 'SaaS-Anbieter, Rhein-Main',
-    metric: '99,98 % Uptime',
+      'Was uns überzeugt hat: Nach dem Projekt war jemand da. Wartung, Updates und Rückfragen laufen zuverlässig über einen Ansprechpartner.',
+    author: 'Leiterin Verwaltung',
+    company: 'Dienstleister, Rhein-Main',
+    metric: 'Support < 4 h',
   },
   {
     quote:
-      'Statt Freitagsdeploys mit Bauchweh liefern wir mehrmals täglich aus. Die Pipelines und die Dokumentation sind Gold wert.',
+      'Die Beratung war ehrlich — inklusive der Punkte, die wir nicht hören wollten. Danach war klar, welche Software wir wirklich brauchen.',
     author: 'Leiter IT',
     company: 'Industriedienstleister',
-    metric: '31 Deploys / Woche',
+    metric: '3 Systeme abgelöst',
   },
 ];
+
 
 const Testimonials = () => {
   const { ref, isVisible } = useScrollAnimation();

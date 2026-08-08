@@ -1,11 +1,12 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const stats = [
-  { value: '99,9 %', label: 'Uptime im Betrieb', sub: 'überwacht 24/7' },
-  { value: '120+', label: 'Cloud-Services', sub: 'in Produktion' },
-  { value: '34 %', label: 'Ø Kostenersparnis', sub: 'nach Optimierung' },
+  { value: '80+', label: 'Softwareprojekte', sub: 'umgesetzt & begleitet' },
+  { value: '99,9 %', label: 'Verfügbarkeit', sub: 'im betreuten Betrieb' },
+  { value: '< 4 h', label: 'Reaktionszeit', sub: 'im Support' },
   { value: '100 %', label: 'EU-Hosting', sub: 'DSGVO-konform' },
 ];
+
 
 const Stats = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -17,7 +18,7 @@ const Stats = () => {
       <div className="relative mx-auto max-w-7xl px-6">
         <div className={`mb-14 flex flex-col gap-3 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
           <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/50">
-            05 — Betrieb in Zahlen
+            05 — In Zahlen
           </span>
           <h2 className="max-w-2xl text-2xl font-extrabold tracking-tight text-white md:text-4xl">
             Kennzahlen, die wir messen — nicht behaupten.
