@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Building2, MapPin } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import Logo from '@/components/Logo';
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo + Tagline */}
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <img src={logo} alt="VONA Cloud" className="h-10 hover:scale-105 transition-transform duration-200" />
+              <Logo size="lg" className="transition-opacity duration-200 hover:opacity-80" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Entwicklung, Betrieb und Vertrieb von Softwareprodukten einschließlich

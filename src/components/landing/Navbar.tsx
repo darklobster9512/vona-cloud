@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '@/assets/logo.png';
+import Logo from '@/components/Logo';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
@@ -27,7 +27,6 @@ const Navbar = () => {
     setMobileOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -35,71 +34,63 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="absolute top-0 left-0 right-0 z-50 px-4 pt-6">
-        <div className="max-w-5xl mx-auto flex items-center gap-4">
-          {/* Logo: fixed size to prevent layout shift */}
-          {/* Desktop: logo left */}
-          <Link to="/" className="shrink-0 hidden md:block h-10">
-            <img src={logo} alt="VONA Cloud" loading="eager" fetchPriority="high" className="h-10 w-auto object-contain hover:scale-105 transition-transform duration-200" />
-          </Link>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-background/85 backdrop-blur-xl border-b border-border/70 shadow-[0_1px_24px_-12px_hsl(217_91%_60%/0.45)]'
+            : 'bg-transparent border-b border-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 sm:px-6">
+          <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16' : 'h-20'}`}>
+            <Link to="/" className="shrink-0 group">
+              <Logo size="lg" className="transition-opacity duration-200 group-hover:opacity-80" />
+            </Link>
 
-          {/* Desktop Nav pill */}
-          <nav
-            className={`hidden md:flex flex-1 transition-all duration-500 rounded-full border px-8 h-16 items-center justify-between ${
-              scrolled
-                ? 'bg-background/90 backdrop-blur-xl shadow-lg shadow-foreground/5 border-border/80'
-                : 'bg-background/60 backdrop-blur-md border-border/40 shadow-sm'
-            }`}
-          >
-            <div className="flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`text-sm font-medium transition-colors ${
-                    location.pathname === link.href
-                      ? 'text-foreground'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            {/* Desktop nav */}
+            <nav className="hidden md:flex items-center gap-7">
+              {navLinks.map((link) => {
+                const active = location.pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={`group relative py-1 font-mono text-[11px] font-medium uppercase tracking-[0.16em] transition-colors ${
+                      active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute -bottom-0.5 left-0 h-[2px] bg-gradient-blue transition-all duration-300 ${
+                        active ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
 
-            <div className="ml-8 pl-6">
+            <div className="hidden md:block">
               <Link
                 to="/kontakt"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-foreground/90 transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-foreground text-background font-mono text-[11px] font-medium uppercase tracking-[0.16em] hover:bg-foreground/90 transition-colors whitespace-nowrap"
               >
                 Projekt starten
-                <ArrowRight size={15} />
+                <ArrowRight size={14} />
               </Link>
             </div>
-          </nav>
 
-          {/* Mobile header bar */}
-          <div className="md:hidden flex-1 flex items-center">
-            {/* Hamburger in eigener Pille */}
+            {/* Mobile trigger */}
             <button
-              className={`p-2.5 rounded-full border transition-all duration-500 ${
-                scrolled
-                  ? 'bg-background/90 backdrop-blur-xl shadow-lg shadow-foreground/5 border-border/80'
-                  : 'bg-background/60 backdrop-blur-md border-border/40 shadow-sm'
-              } text-foreground`}
+              className="md:hidden p-2.5 rounded-xl border border-border/70 bg-background/70 backdrop-blur-md text-foreground"
               onClick={() => setMobileOpen(true)}
               aria-label="Menü öffnen"
             >
               <Menu size={22} />
             </button>
-
-            {/* Logo zentriert, transparent */}
-            <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-              <img src={logo} alt="VONA Cloud" loading="eager" fetchPriority="high" className="h-8 hover:scale-105 transition-transform duration-200" />
-            </Link>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Mobile Fullscreen Sidebar Overlay */}
       <div
@@ -107,19 +98,16 @@ const Navbar = () => {
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        {/* Backdrop */}
         <div className="absolute inset-0 bg-foreground/20 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
 
-        {/* Sidebar panel */}
         <div
           className={`absolute inset-y-0 left-0 w-[85%] max-w-[320px] bg-background shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
             mobileOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
-          {/* Header */}
           <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border/40">
             <Link to="/" onClick={() => setMobileOpen(false)}>
-              <img src={logo} alt="VONA Cloud" className="h-8" />
+              <Logo size="md" />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
@@ -130,30 +118,32 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Nav Links */}
           <nav className="flex-1 flex flex-col justify-center px-6 gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`py-3.5 text-lg font-semibold transition-colors ${
-                  location.pathname === link.href
-                    ? 'text-primary'
-                    : 'text-foreground hover:text-primary'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link, i) => {
+              const active = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`flex items-baseline gap-3 py-3.5 border-b border-border/40 transition-colors ${
+                    active ? 'text-primary' : 'text-foreground hover:text-primary'
+                  }`}
+                >
+                  <span className="font-mono text-[10px] text-muted-foreground">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-lg font-semibold">{link.label}</span>
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* CTA */}
           <div className="px-6 pb-8">
             <Link
               to="/kontakt"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-base"
+              className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl bg-gradient-blue text-primary-foreground font-semibold text-base"
             >
               Projekt starten
               <ArrowRight size={16} />
