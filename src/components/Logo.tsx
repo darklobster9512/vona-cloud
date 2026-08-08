@@ -1,4 +1,4 @@
-import logoWordmark from '@/assets/logo-wordmark.png';
+import logoWordmark from '@/assets/logo-wordmark.png.asset.json';
 import { cn } from '@/lib/utils';
 
 interface LogoProps {
