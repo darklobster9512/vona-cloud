@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import methodologyTeam from '@/assets/landing/methodology-team.jpg';
 
 const phases = [
   {
