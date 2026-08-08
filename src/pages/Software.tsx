@@ -32,18 +32,18 @@ const techStack = [
 const capabilities = [
   {
     icon: Globe,
-    title: 'SaaS & Web-Plattformen',
-    description: 'Mandantenfähige Cloud-Anwendungen mit React, Next.js und TypeScript — schnell, barrierearm und wartbar.',
+    title: 'Fachanwendungen & Portale',
+    description: 'Web-Anwendungen für Mitarbeiter, Kunden oder Partner — mit React, Next.js und TypeScript, wartbar und barrierearm gebaut.',
   },
   {
     icon: Server,
-    title: 'APIs & Services',
-    description: 'Skalierbare REST- und GraphQL-Services mit Node.js, Python oder .NET, containerisiert und automatisiert ausgeliefert.',
+    title: 'Schnittstellen & Services',
+    description: 'Stabile Anbindungen an ERP, CRM, Warenwirtschaft und Drittanbieter mit Node.js, Python oder .NET — protokolliert und getestet.',
   },
   {
     icon: BarChart3,
-    title: 'Observability',
-    description: 'Dashboards für Auslastung, Latenzen und Kosten — damit Betriebsentscheidungen auf Zahlen basieren, nicht auf Gefühl.',
+    title: 'Auswertungen & Dokumente',
+    description: 'Kennzahlen, Listen und Belege direkt aus dem System — damit Entscheidungen auf Zahlen basieren, nicht auf Excel-Ständen.',
   },
   {
     icon: Smartphone,
@@ -54,24 +54,25 @@ const capabilities = [
 
 const projects = [
   {
-    title: 'Multi-Tenant SaaS-Portal',
-    category: 'Cloud-Entwicklung',
-    description: 'Mandantenfähige Plattform mit Rollenmodell, Self-Service-Onboarding und automatisiertem Deployment pro Release.',
+    title: 'Auftrags- und Angebotsportal',
+    category: 'Softwareentwicklung',
+    description: 'Web-Anwendung für Angebote, Aufträge und Freigaben mit Rollenmodell und Anbindung an die Warenwirtschaft.',
     tags: ['React', 'Node.js', 'PostgreSQL'],
   },
   {
-    title: 'Migration eines ERP-Backends',
-    category: 'Cloud-Migration',
-    description: 'Schrittweise Ablösung eines Monolithen: Zielarchitektur, Datenmigration und Umschaltung im Parallelbetrieb ohne Ausfall.',
-    tags: ['C#', '.NET', 'Container'],
+    title: 'Ablösung eines Altsystems',
+    category: 'Beratung & Umsetzung',
+    description: 'Analyse, Zielkonzept und schrittweise Ablösung einer gewachsenen Anwendung inklusive Datenübernahme — ohne Stillstand.',
+    tags: ['C#', '.NET', 'Migration'],
   },
   {
-    title: 'Managed Betrieb einer Kundenplattform',
-    category: 'Cloud-Betrieb',
-    description: 'Aufbau von Monitoring, Alerting und getesteten Backups mit anschließender Übernahme des 24/7-Betriebs.',
-    tags: ['Kubernetes', 'IaC', 'Monitoring'],
+    title: 'Wartung & Support einer Fachanwendung',
+    category: 'Betrieb & Support',
+    description: 'Hosting, Updates, Überwachung und geprüfte Sicherungen mit festen Reaktionszeiten im laufenden Betrieb.',
+    tags: ['Hosting EU', 'Updates', 'Support'],
   },
 ];
+
 
 
 const Software = () => {
