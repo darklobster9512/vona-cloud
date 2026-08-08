@@ -74,6 +74,16 @@ const Methodology = () => {
             ))}
           </div>
         </div>
+        <figure className="scroll-hidden delay-4 mt-16 overflow-hidden rounded-2xl border border-border/60 bg-white shadow-sm">
+          <img
+            src={methodologyTeam}
+            alt="Team bespricht Software-Architektur und Prozessablauf am großen Bildschirm"
+            width={1344}
+            height={768}
+            loading="lazy"
+            className="w-full object-cover"
+          />
+        </figure>
       </div>
     </section>
   );
