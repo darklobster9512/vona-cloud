@@ -1,263 +1,172 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronRight, Sparkles, LayoutDashboard, GitBranch, BarChart3, FolderKanban, Settings, CheckCircle2, Clock, AlertCircle } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Cloud, Database, Globe, Lock, Server, Cpu } from 'lucide-react';
 
-const sidebarItems = [
-  { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
-  { id: 'prozesse', label: 'Deployments', icon: GitBranch },
-  { id: 'analytics', label: 'Monitoring', icon: BarChart3 },
-  { id: 'projekte', label: 'Services', icon: FolderKanban },
-  { id: 'einstellungen', label: 'Einstellungen', icon: Settings },
-];
+/* ── Architecture graphic (pure SVG/CSS) ── */
+const ArchitectureGraphic = () => (
+  <div className="relative w-full">
+    {/* glow */}
+    <div className="absolute inset-6 rounded-full bg-primary/[0.10] blur-[70px]" />
 
+    <div className="relative rounded-[2rem] border border-border/60 bg-white/70 backdrop-blur-xl p-6 sm:p-8 shadow-[0_40px_120px_-50px_hsl(217_91%_60%/0.55)]">
+      <div className="absolute inset-0 rounded-[2rem] bg-blueprint-fine opacity-70 pointer-events-none" />
 
-const tabContent: Record<string, {
-  kpis?: { label: string; value: string; color: string }[];
-  content: React.ReactNode;
-}> = {
-  dashboard: {
-    kpis: [
-      { label: 'Uptime', value: '99,98%', color: 'text-[hsl(142_71%_35%)]' },
-      { label: 'Services', value: '46', color: 'text-primary' },
-      { label: 'Cloud-Kosten', value: '−31%', color: 'text-[hsl(270_60%_50%)]' },
-    ],
-
-    content: (
-      <div className="flex-1 rounded-xl border border-border/40 bg-background p-3">
-        <div className="flex items-center justify-between mb-3">
-          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Requests / Monat</div>
-          <div className="flex gap-1.5">
-            <div className="h-5 px-2 rounded-md bg-muted text-[9px] flex items-center text-muted-foreground">Woche</div>
-            <div className="h-5 px-2 rounded-md bg-primary/10 text-[9px] flex items-center text-primary font-medium">Monat</div>
-          </div>
-        </div>
-        <div className="flex items-end gap-1.5 h-24">
-          {[40, 65, 45, 80, 55, 90, 70, 95, 60, 85, 75, 92].map((h, i) => (
-            <div key={i} className="flex-1 rounded-t-md bg-gradient-blue opacity-60 transition-all duration-300" style={{ height: `${h}%` }} />
-          ))}
-        </div>
+      <div className="relative flex items-center justify-between mb-6">
+        <span className="mono-label-muted">vona · architektur</span>
+        <span className="flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 animate-ring-expand" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
+          eu-central
+        </span>
       </div>
-    ),
-  },
-  prozesse: {
-    kpis: [
-      { label: 'Heute', value: '12', color: 'text-primary' },
-      { label: 'Erfolgreich', value: '98%', color: 'text-[hsl(142_71%_35%)]' },
-      { label: 'Rollbacks', value: '1', color: 'text-[hsl(45_93%_47%)]' },
-    ],
-    content: (
-      <div className="flex-1 rounded-xl border border-border/40 bg-background p-3 flex flex-col gap-2">
-        {[
-          { name: 'api-gateway · v2.14', status: 'Live', icon: CheckCircle2, statusColor: 'text-[hsl(142_71%_35%)] bg-[hsl(142_71%_35%/0.1)]' },
-          { name: 'billing-service · v1.8', status: 'Deploy', icon: Clock, statusColor: 'text-primary bg-primary/10' },
-          { name: 'web-app · v4.2', status: 'Live', icon: CheckCircle2, statusColor: 'text-[hsl(142_71%_35%)] bg-[hsl(142_71%_35%/0.1)]' },
-          { name: 'worker-queue · v0.9', status: 'Staging', icon: AlertCircle, statusColor: 'text-[hsl(45_93%_47%)] bg-[hsl(45_93%_47%/0.1)]' },
-        ].map((p) => (
 
-          <div key={p.name} className="flex items-center justify-between px-2.5 py-2 rounded-lg bg-muted/40">
-            <div className="flex items-center gap-2">
-              <p.icon size={12} className="text-muted-foreground" />
-              <span className="text-[11px] font-medium text-foreground">{p.name}</span>
-            </div>
-            <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full ${p.statusColor}`}>{p.status}</span>
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  analytics: {
-    kpis: [
-      { label: 'Requests/s', value: '3.4k', color: 'text-primary' },
-      { label: 'p95 Latenz', value: '48ms', color: 'text-[hsl(142_71%_35%)]' },
-      { label: 'Fehlerrate', value: '0,02%', color: 'text-[hsl(270_60%_50%)]' },
-    ],
-    content: (
-      <div className="flex-1 rounded-xl border border-border/40 bg-background p-3">
-        <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-3">Traffic-Verlauf</div>
-
-        <svg viewBox="0 0 300 100" className="w-full h-24" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <path d="M0,80 L25,65 L50,70 L75,45 L100,50 L125,30 L150,35 L175,20 L200,25 L225,15 L250,18 L275,10 L300,12 L300,100 L0,100Z" fill="url(#lineGrad)" />
-          <polyline points="0,80 25,65 50,70 75,45 100,50 125,30 150,35 175,20 200,25 225,15 250,18 275,10 300,12" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Node map */}
+      <div className="relative h-[300px] sm:h-[340px]">
+        <svg viewBox="0 0 400 340" className="absolute inset-0 w-full h-full">
+          <g
+            stroke="hsl(var(--primary))"
+            strokeOpacity="0.35"
+            strokeWidth="1.5"
+            fill="none"
+            strokeDasharray="5 7"
+          >
+            <path d="M200 60 L200 150" className="animate-dash-flow" />
+            <path d="M200 150 C200 150 100 160 80 240" className="animate-dash-flow" style={{ animationDelay: '0.4s' }} />
+            <path d="M200 150 C200 150 300 160 320 240" className="animate-dash-flow" style={{ animationDelay: '0.8s' }} />
+            <path d="M200 150 L200 240" className="animate-dash-flow" style={{ animationDelay: '1.2s' }} />
+            <path d="M80 240 L200 300" className="animate-dash-flow" style={{ animationDelay: '1.6s' }} />
+            <path d="M320 240 L200 300" className="animate-dash-flow" style={{ animationDelay: '2s' }} />
+          </g>
+          <g fill="hsl(var(--primary))">
+            <circle cx="200" cy="105" r="3" className="animate-node-pulse" />
+            <circle cx="140" cy="195" r="3" className="animate-node-pulse" style={{ animationDelay: '0.6s' }} />
+            <circle cx="262" cy="195" r="3" className="animate-node-pulse" style={{ animationDelay: '1.1s' }} />
+            <circle cx="200" cy="270" r="3" className="animate-node-pulse" style={{ animationDelay: '1.7s' }} />
+          </g>
         </svg>
-      </div>
-    ),
-  },
-  projekte: {
-    kpis: [
-      { label: 'Aktiv', value: '46', color: 'text-primary' },
-      { label: 'Regionen', value: '3', color: 'text-[hsl(45_93%_47%)]' },
-      { label: 'Autoscale', value: 'An', color: 'text-[hsl(142_71%_35%)]' },
-    ],
-    content: (
-      <div className="flex-1 grid grid-cols-2 gap-2">
-        {[
-          { name: 'API Cluster', progress: 72 },
-          { name: 'Datenbank', progress: 54 },
-          { name: 'Object Storage', progress: 88 },
-          { name: 'Queue Worker', progress: 35 },
-        ].map((p) => (
 
-          <div key={p.name} className="rounded-xl border border-border/40 bg-background p-2.5 flex flex-col justify-between">
-            <span className="text-[10px] font-semibold text-foreground">{p.name}</span>
-            <div className="mt-2">
-              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                <div className="h-full rounded-full bg-gradient-blue transition-all duration-500" style={{ width: `${p.progress}%` }} />
-              </div>
-              <span className="text-[9px] text-muted-foreground mt-1 block">{p.progress}%</span>
+        {/* Top: edge */}
+        <Node className="left-1/2 -translate-x-1/2 top-0" icon={Globe} label="Edge / CDN" />
+        {/* Center: platform */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-[110px] -translate-y-1/2">
+          <div className="relative flex items-center gap-3 rounded-2xl bg-gradient-blue px-5 py-3.5 text-primary-foreground shadow-[0_18px_44px_-16px_hsl(217_91%_60%/0.8)]">
+            <Cloud size={20} />
+            <div className="leading-tight">
+              <p className="text-[13px] font-bold">VONA Platform</p>
+              <p className="font-mono text-[10px] text-white/70">kubernetes · IaC</p>
             </div>
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  einstellungen: {
-    content: (
-      <div className="flex-1 rounded-xl border border-border/40 bg-background p-3 flex flex-col gap-3 col-span-full">
-        {[
-          { label: 'Alerting per E-Mail', on: true },
-          { label: 'Zwei-Faktor-Authentifizierung', on: true },
-          { label: 'Automatische Backups', on: true },
-        ].map((s) => (
-
-          <div key={s.label} className="flex items-center justify-between px-2 py-1.5">
-            <span className="text-[11px] font-medium text-foreground">{s.label}</span>
-            <div className={`w-8 h-4 rounded-full flex items-center px-0.5 transition-colors ${s.on ? 'bg-primary justify-end' : 'bg-muted justify-start'}`}>
-              <div className="w-3 h-3 rounded-full bg-background shadow-sm" />
-            </div>
-          </div>
-        ))}
-        <div className="flex flex-col gap-2 mt-1">
-          <div className="h-8 rounded-lg border border-border/50 bg-muted/30 flex items-center px-3">
-            <span className="text-[10px] text-muted-foreground">ops@vona-cloud.com</span>
-          </div>
-          <div className="h-8 rounded-lg border border-border/50 bg-muted/30 flex items-center px-3">
-            <span className="text-[10px] text-muted-foreground">••••••••••••</span>
           </div>
         </div>
+        {/* Row of services */}
+        <Node className="left-0 top-[210px]" icon={Server} label="API-Services" />
+        <Node className="left-1/2 -translate-x-1/2 top-[218px]" icon={Cpu} label="Worker" />
+        <Node className="right-0 top-[210px]" icon={Database} label="PostgreSQL" />
+        {/* Bottom */}
+        <Node className="left-1/2 -translate-x-1/2 bottom-0" icon={Lock} label="Backups · DSGVO" />
       </div>
-    ),
-  },
-};
+
+      {/* Live metrics strip */}
+      <div className="relative mt-6 grid grid-cols-3 gap-3 border-t border-border/60 pt-5">
+        {[
+          { k: 'uptime', v: '99,98%' },
+          { k: 'p95', v: '48 ms' },
+          { k: 'deploys/wo', v: '31' },
+        ].map((m) => (
+          <div key={m.k}>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{m.k}</p>
+            <p className="text-base font-bold tracking-tight">{m.v}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const Node = ({
+  className,
+  icon: Icon,
+  label,
+}: {
+  className: string;
+  icon: React.ElementType;
+  label: string;
+}) => (
+  <div className={`absolute ${className}`}>
+    <div className="flex items-center gap-2 rounded-xl border border-border/70 bg-white px-3 py-2 shadow-sm">
+      <Icon size={14} className="text-primary" />
+      <span className="text-[11px] font-semibold whitespace-nowrap">{label}</span>
+    </div>
+  </div>
+);
 
 const HeroSection = () => {
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const current = tabContent[activeTab];
-
   return (
-    <section className="relative flex flex-col items-center justify-center pt-32 pb-16 lg:pt-0 lg:min-h-[calc(100vh-140px)] lg:pb-0 overflow-hidden hero-gradient">
-      {/* Animated gradient orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[20%] left-[15%] w-[600px] h-[600px] rounded-full bg-primary/[0.07] blur-[100px] animate-orb" />
-        <div className="absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full bg-[hsl(199_89%_48%/0.06)] blur-[100px] animate-orb-delayed" />
-        <div className="absolute bottom-[10%] left-[40%] w-[400px] h-[400px] rounded-full bg-primary/[0.05] blur-[80px] animate-orb" />
+    <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-blueprint mask-fade-b pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-32 left-[8%] h-[520px] w-[520px] rounded-full bg-primary/[0.10] blur-[110px] animate-orb" />
+        <div className="absolute top-[18%] right-[4%] h-[460px] w-[460px] rounded-full bg-[hsl(199_89%_48%/0.09)] blur-[110px] animate-orb-delayed" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* Left: Text content */}
-        <div className="text-left">
-          <div className="hero-animate hero-animate-1 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/[0.06] backdrop-blur-sm mb-8">
-            <Sparkles size={14} className="text-primary" />
-            <span className="text-xs font-semibold text-primary tracking-wide">Cloud-Software aus Wiesbaden · EU-Hosting</span>
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
+        {/* Left */}
+        <div>
+          <div className="hero-animate hero-animate-1 mb-8 flex items-center gap-3">
+            <span className="h-px w-10 bg-primary/50" />
+            <span className="mono-label">Cloud Software · Wiesbaden</span>
           </div>
 
-          <h1 className="hero-animate hero-animate-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold tracking-tight leading-[1.08] mb-6">
-            Software, die in der{' '}
-            <span className="text-gradient-blue">Cloud zuhause ist.</span>
+          <h1 className="hero-animate hero-animate-2 text-[2.5rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]">
+            Wir bauen und
+            <br />
+            betreiben Ihre
+            <br />
+            <span className="text-gradient-blue">Cloud-Software.</span>
           </h1>
 
-          <p className="hero-animate hero-animate-3 text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed">
-            VONA Cloud entwickelt, betreibt und skaliert Cloud-Anwendungen —
-            von der Architektur über CI/CD bis zum überwachten Dauerbetrieb.
-            Ein Team für Entwicklung, Betrieb und Beratung.
+          <p className="hero-animate hero-animate-3 mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
+            Entwicklung, Migration und überwachter Dauerbetrieb — aus einer Hand,
+            dokumentiert und mit Hosting in der EU.
           </p>
 
-          <div className="hero-animate hero-animate-4 flex flex-col sm:flex-row items-stretch sm:items-start gap-4">
+          <div className="hero-animate hero-animate-4 mt-10 flex flex-col gap-4 sm:flex-row">
             <Link
               to="/kontakt"
-              className="inline-flex items-center justify-center gap-2.5 px-10 h-14 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.03] transition-all duration-200"
+              className="group inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-gradient-blue px-9 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-200 hover:shadow-xl hover:shadow-primary/35"
             >
-              Projekt anfragen
-              <ArrowRight size={18} />
+              Erstgespräch anfragen
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/leistungen"
-              className="inline-flex items-center justify-center gap-2 px-10 h-14 rounded-full border border-border bg-background/80 backdrop-blur-sm text-foreground font-semibold text-base hover:bg-background hover:border-primary/40 transition-all duration-200"
+              className="group inline-flex h-14 items-center justify-center gap-2 rounded-full border border-border bg-background/70 px-9 text-base font-semibold backdrop-blur-sm transition-all duration-200 hover:border-primary/40"
             >
-              Leistungen ansehen
-              <ChevronRight size={18} className="text-muted-foreground" />
+              Leistungen
+              <ArrowUpRight size={18} className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </div>
 
+          <dl className="hero-animate hero-animate-5 mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-border/70 pt-7">
+            {[
+              { v: '120+', l: 'Cloud-Services' },
+              { v: '99,9 %', l: 'Uptime' },
+              { v: '100 %', l: 'EU-Hosting' },
+            ].map((s) => (
+              <div key={s.l}>
+                <dt className="text-2xl font-extrabold tracking-tight">{s.v}</dt>
+                <dd className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{s.l}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* Right: Interactive Dashboard Mockup */}
-        <div className="hero-animate hero-animate-5 relative">
-          <div className="absolute -inset-10 bg-primary/[0.06] blur-[60px] rounded-full" />
-
-          <div className="relative rounded-2xl border border-border/60 bg-background shadow-2xl shadow-primary/[0.08] overflow-hidden animate-float-slow lg:rotate-1" style={{ perspective: '1000px' }}>
-            {/* Browser bar */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border/50">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-[hsl(0_84%_60%/0.6)]" />
-                <div className="w-3 h-3 rounded-full bg-[hsl(45_93%_47%/0.6)]" />
-                <div className="w-3 h-3 rounded-full bg-[hsl(142_71%_45%/0.6)]" />
-              </div>
-              <div className="flex-1 mx-4">
-                <div className="h-6 rounded-md bg-background border border-border/50 flex items-center px-3">
-                  <span className="text-xs text-muted-foreground">console.vona-cloud.com/{activeTab}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Dashboard content */}
-            <div className="p-5 grid grid-cols-12 gap-3 min-h-[280px]">
-              {/* Sidebar */}
-              <div className="col-span-3 hidden md:flex flex-col gap-1">
-                {sidebarItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveTab(item.id)}
-                    className={`h-7 rounded-lg flex items-center px-2.5 gap-2 transition-all duration-200 cursor-pointer text-left ${
-                      activeTab === item.id
-                        ? 'bg-primary/10'
-                        : 'hover:bg-muted/60'
-                    }`}
-                  >
-                    <item.icon size={12} className={activeTab === item.id ? 'text-primary' : 'text-muted-foreground'} />
-                    <span className={`text-[10px] font-medium truncate ${activeTab === item.id ? 'text-primary' : 'text-muted-foreground'}`}>
-                      {item.label}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Main content */}
-              <div className="col-span-12 md:col-span-9 flex flex-col gap-3 transition-all duration-200">
-                {current.kpis && (
-                  <div className="grid grid-cols-3 gap-2.5">
-                    {current.kpis.map((kpi) => (
-                      <div key={kpi.label} className="rounded-xl border border-border/40 bg-background p-3">
-                        <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">{kpi.label}</p>
-                        <p className={`text-lg font-bold mt-0.5 ${kpi.color}`}>{kpi.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {current.content}
-              </div>
-            </div>
-          </div>
+        {/* Right */}
+        <div className="hero-animate hero-animate-5">
+          <ArchitectureGraphic />
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };

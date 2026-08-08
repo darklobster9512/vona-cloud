@@ -1,41 +1,72 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, Mail, MapPin, Clock } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const CTASection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="kontakt" ref={ref} className="py-24 md:py-32 bg-gradient-blue relative overflow-hidden">
-      {/* Orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-white/[0.05] blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-56 h-56 rounded-full bg-white/[0.05] blur-3xl" />
-      </div>
+    <section ref={ref} className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div
+          className={`scroll-hidden ${isVisible ? 'scroll-visible' : ''} relative overflow-hidden rounded-[2.5rem] bg-ink px-8 py-14 md:px-16 md:py-20`}
+        >
+          <div className="absolute inset-0 bg-blueprint-light opacity-70 pointer-events-none" />
 
-      <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
-        <div className={`scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-primary-foreground">
-            Reden wir über Ihre Cloud.
-          </h2>
-        </div>
-        <p className={`scroll-hidden delay-1 ${isVisible ? 'scroll-visible' : ''} text-lg text-white/80 max-w-xl mx-auto mb-10`}>
-          Ob neue Anwendung, Migration oder Übernahme des Betriebs — wir schauen
-          uns Ihre Architektur an und sagen Ihnen offen, was Sinn ergibt.
-        </p>
-        <div className={`scroll-hidden delay-2 ${isVisible ? 'scroll-visible' : ''}`}>
-          <Link
-            to="/kontakt"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-foreground font-semibold text-base hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            Erstgespräch anfragen
-            <ArrowRight size={18} />
-          </Link>
-        </div>
-        <p className={`scroll-hidden delay-3 ${isVisible ? 'scroll-visible' : ''} mt-6 text-sm text-white/60`}>
-          Kostenlos. Unverbindlich. Mit klarer Einschätzung.
-        </p>
+          <div className="relative grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/50">
+                Nächster Schritt
+              </span>
+              <h2 className="mt-5 text-3xl font-extrabold leading-tight tracking-tight text-white md:text-5xl">
+                Lassen Sie uns Ihre
+                <br />
+                Cloud-Architektur ansehen.
+              </h2>
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-white/70">
+                30 Minuten, unverbindlich: Wir schauen auf Ihr System, Ihre Kosten und Ihre
+                Betriebsrisiken — und sagen offen, was sich lohnt.
+              </p>
 
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+                <Link
+                  to="/kontakt"
+                  className="group inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-white px-9 text-base font-semibold text-foreground transition-transform hover:-translate-y-0.5"
+                >
+                  Erstgespräch anfragen
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+                <a
+                  href="mailto:kontakt@vona-cloud.com"
+                  className="inline-flex h-14 items-center justify-center gap-2.5 rounded-full border border-white/25 px-9 text-base font-semibold text-white transition-colors hover:bg-white/10"
+                >
+                  <Mail size={18} />
+                  E-Mail schreiben
+                </a>
+              </div>
+            </div>
+
+            {/* Info panel */}
+            <div className="space-y-4 lg:border-l lg:border-white/15 lg:pl-12">
+              {[
+                { icon: Clock, k: 'Antwortzeit', v: 'meist am selben Werktag' },
+                { icon: MapPin, k: 'Standort', v: 'Rheingaustr. 53, Wiesbaden' },
+                { icon: Mail, k: 'E-Mail', v: 'kontakt@vona-cloud.com' },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.k} className="flex items-start gap-4 rounded-2xl bg-white/[0.06] px-5 py-4">
+                    <Icon size={16} className="mt-1 shrink-0 text-white/70" />
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">{item.k}</p>
+                      <p className="mt-1 text-sm font-semibold text-white">{item.v}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

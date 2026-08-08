@@ -1,61 +1,67 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Quote, Star } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: 'VONA Cloud hat unsere Plattform in die Cloud migriert, ohne dass unsere Kunden davon etwas gemerkt haben. Seitdem deployen wir mehrfach pro Woche statt einmal im Quartal.',
-    name: 'Peter Kurt Nowack',
-    role: 'CTO',
-    company: 'Gamma Placetel GmbH',
+    quote:
+      'Die Migration lief in Wellen — ohne einen einzigen Ausfall im Tagesgeschäft. Danach war die Cloud-Rechnung ein Drittel niedriger.',
+    author: 'Geschäftsführer',
+    company: 'Handelsunternehmen, Hessen',
+    metric: '−34 % Cloud-Kosten',
   },
   {
-    quote: 'Der Managed Betrieb hat unsere Nachtschichten beendet. Monitoring, Alerting und Backups laufen zuverlässig — wir kümmern uns wieder um das Produkt.',
-    name: 'Lennard Neubauer',
-    role: 'CEO',
-    company: 'yourdelivery GmbH',
+    quote:
+      'Störungen bemerkt heute das Monitoring, nicht unser Kunde. Das hat die Wahrnehmung unseres Produkts komplett verändert.',
+    author: 'CTO',
+    company: 'SaaS-Anbieter, Rhein-Main',
+    metric: '99,98 % Uptime',
   },
   {
-    quote: 'Das Architektur-Review war schonungslos ehrlich und hat unsere Cloud-Kosten um rund ein Drittel gesenkt. Genau die Beratung, die wir gebraucht haben.',
-    name: 'Dr. Maximilian Bode',
-    role: 'Head of IT',
-    company: 'Vorwerk Deutschland Stiftung & Co. KG',
+    quote:
+      'Statt Freitagsdeploys mit Bauchweh liefern wir mehrmals täglich aus. Die Pipelines und die Dokumentation sind Gold wert.',
+    author: 'Leiter IT',
+    company: 'Industriedienstleister',
+    metric: '31 Deploys / Woche',
   },
 ];
-
 
 const Testimonials = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className={`text-center mb-16 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Kundenstimmen</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Was unsere <span className="text-gradient-blue">Kunden sagen</span>
+    <section ref={ref} className="relative overflow-hidden bg-muted/25 py-24 md:py-32">
+      <div className="absolute inset-0 bg-dotgrid opacity-40 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className={`mb-16 max-w-2xl scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
+          <p className="mono-label mb-4">06 — Referenzen</p>
+          <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
+            Was Kunden
+            <br />
+            <span className="text-gradient-blue">nach dem Go-live sagen.</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <div
-              key={t.name}
-              className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} relative p-8 rounded-2xl border border-border/60 bg-white hover:shadow-lg hover:shadow-primary/[0.05] hover:border-primary/20 transition-all duration-300`}
+            <figure
+              key={t.author + t.company}
+              className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} card-flat card-flat-hover flex flex-col p-8 ${
+                i === 1 ? 'md:mt-10' : ''
+              } ${i === 2 ? 'md:mt-20' : ''}`}
             >
-              <Quote size={28} className="text-primary/20 mb-4" />
-              <p className="text-sm text-foreground/80 leading-relaxed mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star key={idx} size={16} className="text-yellow-400" fill="currentColor" />
-                ))}
-              </div>
-              <div>
-                <p className="text-sm font-semibold">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.role}, {t.company}</p>
-              </div>
-            </div>
+              <Quote size={22} className="mb-6 text-primary/30" />
+              <blockquote className="flex-1 text-[15px] font-medium leading-relaxed text-foreground/90">
+                „{t.quote}"
+              </blockquote>
+              <figcaption className="mt-7 border-t border-border/60 pt-5">
+                <p className="text-sm font-bold tracking-tight">{t.author}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">{t.company}</p>
+                <p className="mt-4 inline-block rounded-full bg-primary/[0.08] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                  {t.metric}
+                </p>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

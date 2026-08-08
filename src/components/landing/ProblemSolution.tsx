@@ -1,41 +1,75 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { X, Check, ArrowDown } from 'lucide-react';
 
-const painPoints = [
-  'Server im Keller?', 'Deploys per Hand?', 'Nachts Ausfälle?',
-  'Cloud-Kosten explodiert?', 'Kein Monitoring?', 'Releases dauern Wochen?',
-  'Keine Backups getestet?', 'Vendor Lock-in?', 'Legacy-Monolith?',
-  'Skaliert nicht?', 'Kein DSGVO-Nachweis?', 'Niemand kennt das System?',
+const before = [
+  'Deploys per Hand, freitags niemand',
+  'Ausfälle fallen dem Kunden zuerst auf',
+  'Cloud-Rechnung wächst ohne Erklärung',
+  'Legacy-Monolith, den keiner anfasst',
+  'Backups existieren — ungetestet',
 ];
 
+const after = [
+  'Automatisierte Pipelines, Deploy in Minuten',
+  'Monitoring & Alerting melden vor dem Kunden',
+  'Kosten transparent, Ø 34 % gesenkt',
+  'Schrittweise Ablösung ohne Stillstand',
+  'Recovery regelmäßig getestet und belegt',
+];
 
 const ProblemSolution = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 md:py-32 overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className={`text-center mb-12 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Der Ausgangspunkt</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Ihre Infrastruktur <span className="text-gradient-blue">darf kein Risiko</span> sein.
+    <section ref={ref} className="relative overflow-hidden py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className={`mb-16 max-w-2xl scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
+          <p className="mono-label mb-4">01 — Ausgangspunkt</p>
+          <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
+            Vom Bauchgefühl
+            <br />
+            <span className="text-gradient-blue">zum belegbaren Betrieb.</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Wenn Ihnen davon etwas bekannt vorkommt: genau hier setzen wir an.
-          </p>
-
         </div>
 
-        {/* Pain point tags */}
-        <div className={`scroll-hidden delay-2 ${isVisible ? 'scroll-visible' : ''} flex flex-wrap justify-center gap-3`}>
-          {painPoints.map((point, i) => (
-            <span
-              key={point}
-              className="px-5 py-2.5 rounded-full border border-destructive/15 bg-destructive/[0.04] text-sm font-medium text-foreground/70 hover:border-destructive/30 hover:bg-destructive/[0.08] transition-all duration-300 cursor-default"
-              style={{ animationDelay: `${i * 40}ms` }}
-            >
-              {point}
-            </span>
-          ))}
+        <div className="relative grid gap-8 md:grid-cols-2 md:gap-0">
+          {/* Center axis */}
+          <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-border md:block" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white shadow-sm md:flex">
+            <ArrowDown size={16} className="-rotate-90 text-primary" />
+          </div>
+
+          {/* Before */}
+          <div className={`scroll-hidden delay-1 ${isVisible ? 'scroll-visible' : ''} md:pr-14`}>
+            <p className="mono-label-muted mb-6">Vorher</p>
+            <ul className="space-y-3">
+              {before.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-border/60 bg-muted/40 px-5 py-4 text-sm text-muted-foreground"
+                >
+                  <X size={16} className="mt-0.5 shrink-0 text-destructive/60" />
+                  <span className="line-through decoration-destructive/30">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* After */}
+          <div className={`scroll-hidden delay-2 ${isVisible ? 'scroll-visible' : ''} md:pl-14`}>
+            <p className="mono-label mb-6">Mit VONA Cloud</p>
+            <ul className="space-y-3">
+              {after.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-primary/20 bg-primary/[0.05] px-5 py-4 text-sm font-medium text-foreground"
+                >
+                  <Check size={16} className="mt-0.5 shrink-0 text-primary" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

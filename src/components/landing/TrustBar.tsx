@@ -22,31 +22,59 @@ const techStack = [
   { name: 'C# / .NET', icon: csharpIcon },
 ];
 
-const LogoItem = ({ name, icon }: { name: string; icon: string }) => (
-  <div className="flex items-center gap-2.5 px-6 text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors shrink-0">
-    <img src={icon} alt={name} className="w-8 h-8" />
-    <span className="text-sm font-semibold tracking-tight whitespace-nowrap">{name}</span>
-  </div>
-);
+const capabilities = [
+  'Kubernetes',
+  'Terraform',
+  'CI/CD',
+  'Observability',
+  'Zero-Downtime-Deploys',
+  'Autoscaling',
+  'Backups & Recovery',
+  'DSGVO & EU-Hosting',
+  'Cost Optimization',
+];
 
 const TrustBar = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-8 border-y border-border/40 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <p className={`text-center text-xs font-medium text-muted-foreground uppercase tracking-[0.2em] mb-8 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          Unser Technologie-Stack für skalierbare, sichere Cloud-Anwendungen
-        </p>
-        <div className="relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
-          
-          <div className="flex animate-marquee">
-            {[...techStack, ...techStack, ...techStack].map((item, i) => (
-              <LogoItem key={`${item.name}-${i}`} name={item.name} icon={item.icon} />
-            ))}
-          </div>
+    <section ref={ref} className="relative overflow-hidden border-y border-border/60 bg-muted/30 py-10">
+      <div className="absolute inset-0 bg-dotgrid opacity-40 pointer-events-none" />
+
+      <div className={`relative mb-7 flex items-center justify-center gap-3 px-6 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
+        <span className="h-px w-8 bg-border" />
+        <span className="mono-label-muted text-center">Stack &amp; Plattform</span>
+        <span className="h-px w-8 bg-border" />
+      </div>
+
+      <div className="relative space-y-4">
+        {/* Edge fades */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 bg-gradient-to-r from-muted/95 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-28 bg-gradient-to-l from-muted/95 to-transparent" />
+
+        {/* Row 1 — tech icons */}
+        <div className="flex animate-marquee">
+          {[...techStack, ...techStack, ...techStack].map((item, i) => (
+            <div
+              key={`t-${item.name}-${i}`}
+              className="mx-2 flex shrink-0 items-center gap-2.5 rounded-full border border-border/70 bg-white px-5 py-2.5"
+            >
+              <img src={item.icon} alt={item.name} className="h-6 w-6" />
+              <span className="whitespace-nowrap text-sm font-semibold tracking-tight text-foreground/80">{item.name}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2 — capabilities, reverse direction */}
+        <div className="flex animate-marquee-reverse">
+          {[...capabilities, ...capabilities, ...capabilities].map((item, i) => (
+            <span
+              key={`c-${item}-${i}`}
+              className="mx-2 shrink-0 whitespace-nowrap rounded-full bg-primary/[0.07] px-5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-primary"
+            >
+              {item}
+            </span>
+          ))}
         </div>
       </div>
     </section>
