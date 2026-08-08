@@ -203,3 +203,93 @@
 .animate-line-draw {
   animation: line-draw 1.5s ease-out forwards;
 }
+
+/* ─────────────────────────────────────────────
+   VONA Cloud — Redesign: Blueprint utilities
+   ───────────────────────────────────────────── */
+@layer utilities {
+  /* Technical grid / dot backdrops */
+  .bg-blueprint {
+    background-image:
+      linear-gradient(to right, hsl(217 91% 60% / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(217 91% 60% / 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .bg-blueprint-fine {
+    background-image:
+      linear-gradient(to right, hsl(217 91% 60% / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(217 91% 60% / 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .bg-dotgrid {
+    background-image: radial-gradient(hsl(217 91% 60% / 0.16) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .bg-blueprint-light {
+    background-image:
+      linear-gradient(to right, hsl(0 0% 100% / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 100% / 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+
+  /* Ink (dark) surfaces for contrast bands */
+  .bg-ink {
+    background:
+      radial-gradient(ellipse 70% 60% at 15% 0%, hsl(217 91% 60% / 0.28) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 60% at 90% 100%, hsl(199 89% 48% / 0.22) 0%, transparent 60%),
+      linear-gradient(160deg, hsl(222 47% 9%) 0%, hsl(222 47% 12%) 100%);
+  }
+
+  /* Cards */
+  .card-flat {
+    @apply rounded-[1.75rem] border border-border/60 bg-white transition-all duration-300;
+  }
+  .card-flat-hover {
+    @apply hover:border-primary/30 hover:shadow-[0_20px_60px_-24px_hsl(217_91%_60%/0.35)] hover:-translate-y-1;
+  }
+
+  /* Mono section markers */
+  .mono-label {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.28em] text-primary;
+  }
+  .mono-label-muted {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground;
+  }
+}
+
+/* Reverse marquee */
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 34s linear infinite;
+}
+
+/* Node / edge pulses for the architecture graphic */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.18); }
+}
+.animate-node-pulse { animation: node-pulse 3.2s ease-in-out infinite; }
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -60; }
+}
+.animate-dash-flow { animation: dash-flow 2.4s linear infinite; }
+
+@keyframes ring-expand {
+  0% { transform: scale(0.7); opacity: 0.55; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.animate-ring-expand { animation: ring-expand 4s ease-out infinite; }
+
+/* Slow tilt-hover for panels */
+.hover-lift {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+.hover-lift:hover { transform: translateY(-6px); }
