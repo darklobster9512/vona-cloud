@@ -15,7 +15,7 @@ const heights = {
 
 const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
   <img
-    src={logoWordmark}
+    src={logoWordmark.url}
     alt="VONA Cloud"
     width={1152}
     height={576}
