@@ -5,89 +5,90 @@ import PageHero from '@/components/landing/PageHero';
 import CTASection from '@/components/landing/CTASection';
 import Footer from '@/components/landing/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Code2, ServerCog, MoveRight, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Code2, Boxes, LifeBuoy, Compass, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const services = [
   {
     icon: Code2,
     id: 'entwicklung',
-    title: 'Web-Apps, SaaS & APIs',
-    headline: 'Cloud-Entwicklung',
+    title: 'Fachanwendungen, Portale & Schnittstellen',
+    headline: 'Softwareentwicklung',
     description:
-      'Wir entwickeln Cloud-Anwendungen von Grund auf — mit klarer Architektur, getesteter Codebasis und automatisierter Auslieferung. Vom Prototyp bis zum produktiven Release.',
+      'Wir entwickeln Software, die Ihren Ablauf abbildet — von der Fachanwendung über das Kundenportal bis zur Schnittstelle zwischen bestehenden Systemen.',
     longDescription:
-      'Unsere Teams arbeiten in kurzen Iterationen: jede Woche ein sichtbarer Fortschritt, jedes Release automatisiert ausgeliefert. Wir setzen auf bewährte Technologien statt Experimente und dokumentieren Entscheidungen so, dass Ihr Team jederzeit übernehmen kann.',
+      'Unsere Teams arbeiten in kurzen Iterationen: jede Woche ein sichtbarer Fortschritt, regelmäßige Demos, klare Abnahmen. Wir setzen auf bewährte Technologien statt Experimente und dokumentieren Entscheidungen so, dass Ihr Team jederzeit übernehmen kann.',
     features: [
-      'Full-Stack Web- und SaaS-Anwendungen',
-      'API- und Integrationsschicht',
-      'Multi-Tenancy & Rollenmodelle',
-      'Automatisierte Tests & CI/CD',
-      'Container & Infrastructure as Code',
-      'Wartung und Weiterentwicklung',
+      'Fachanwendungen und Web-Portale',
+      'Schnittstellen zu ERP, CRM & Co.',
+      'Rollen- und Berechtigungskonzepte',
+      'Auswertungen und Dokumente',
+      'Tests und automatisierte Auslieferung',
+      'Weiterentwicklung nach dem Go-live',
     ],
   },
   {
-    icon: ServerCog,
+    icon: Boxes,
+    id: 'produkte',
+    title: 'Lizenzierung, Einführung & Schulung',
+    headline: 'Softwareprodukte & Vertrieb',
+    description:
+      'Wir vertreiben eigene und bewährte Softwareprodukte, richten sie in Ihrer Umgebung ein und schulen die Menschen, die täglich damit arbeiten.',
+    longDescription:
+      'Wenn eine fertige Lösung Ihre Anforderungen erfüllt, ist Eigenentwicklung der teurere Weg. Wir prüfen das offen, empfehlen das passende Produkt und übernehmen Konfiguration, Datenübernahme und Einführung.',
+    features: [
+      'Auswahl und Empfehlung passender Produkte',
+      'Lizenz- und Betriebsmodelle',
+      'Konfiguration und Anpassung',
+      'Datenübernahme aus Altsystemen',
+      'Schulung von Anwendern und Key-Usern',
+      'Begleitung im ersten Betriebsmonat',
+    ],
+  },
+  {
+    icon: LifeBuoy,
     id: 'betrieb',
-    title: 'Deployment, Monitoring & Support',
-    headline: 'Managed Cloud-Betrieb',
+    title: 'Hosting, Wartung & Support',
+    headline: 'Betrieb & Support',
     description:
-      'Wir übernehmen den Betrieb Ihrer Anwendungen: Infrastruktur, Monitoring, Alerting, Backups und Skalierung — überwacht statt gehofft.',
+      'Wir halten Ihre Software am Laufen: Hosting in der EU, Updates, Überwachung, Sicherungen und ein Ansprechpartner mit zugesagter Reaktionszeit.',
     longDescription:
-      'Betrieb ist kein Nebenprodukt der Entwicklung, sondern eine eigene Disziplin. Wir bauen Monitoring und Alerting so auf, dass Probleme auffallen, bevor Ihre Nutzer sie merken, und testen Wiederherstellungen regelmäßig statt nur zu dokumentieren.',
+      'Betrieb ist kein Nebenprodukt der Entwicklung, sondern eine eigene Disziplin. Wir überwachen die Anwendung, spielen Updates kontrolliert ein und prüfen Wiederherstellungen regelmäßig — statt sie nur zu dokumentieren.',
     features: [
-      'Monitoring, Logging & Alerting',
-      'Backups mit getesteter Recovery',
-      'Autoscaling & Lastverteilung',
-      'Patch- und Update-Management',
-      'Incident-Handling mit Reaktionszeiten',
-      'Regelmäßige Betriebsreports',
+      'Hosting in Rechenzentren in der EU',
+      'Wartung und Sicherheits-Updates',
+      'Überwachung und Benachrichtigung',
+      'Sicherungen mit geprüfter Wiederherstellung',
+      'Support mit festen Reaktionszeiten',
+      'Regelmäßige Betriebsberichte',
     ],
   },
   {
-    icon: MoveRight,
-    id: 'migration',
-    title: 'Vom Altsystem in die Cloud',
-    headline: 'Cloud-Migration',
-    description:
-      'Bestehende Systeme migrieren wir schrittweise und ohne Stillstand — mit Zielarchitektur, Migration in Wellen und einem Rollback-Pfad in jeder Phase.',
-    longDescription:
-      'Migrationen scheitern selten an der Technik, sondern an fehlender Reihenfolge. Wir beginnen mit einer vollständigen Bestandsaufnahme, definieren Abhängigkeiten und schalten erst um, wenn die neue Umgebung verifiziert ist.',
-    features: [
-      'Bestandsaufnahme & Abhängigkeitsanalyse',
-      'Zielarchitektur und Migrationsplan',
-      'Datenmigration mit Abgleich',
-      'Parallelbetrieb und stufenweise Umschaltung',
-      'Ablösung von Legacy-Komponenten',
-      'Wissenstransfer an Ihr Team',
-    ],
-  },
-  {
-    icon: ShieldCheck,
+    icon: Compass,
     id: 'beratung',
-    title: 'Architektur, Kosten & Compliance',
-    headline: 'Cloud-Beratung',
+    title: 'Prozesse, Systemauswahl & Konzept',
+    headline: 'Beratung',
     description:
-      'Wir bewerten Ihre Architektur, senken Cloud-Kosten und bringen Security- sowie DSGVO-Anforderungen in eine belastbare Form — inklusive EU-Hosting.',
+      'Wir analysieren Abläufe, bewerten bestehende Systeme und erarbeiten ein Konzept mit Aufwand, Wirkung und Reihenfolge — inklusive Datenschutz.',
     longDescription:
-      'Wir sagen offen, was gut läuft und was nicht. Das Ergebnis ist kein Foliensatz, sondern eine priorisierte Liste konkreter Maßnahmen mit Aufwand, Wirkung und Reihenfolge.',
+      'Wir sagen offen, was gut läuft und was nicht. Das Ergebnis ist kein Foliensatz, sondern eine priorisierte Liste konkreter Maßnahmen, die Sie auch ohne uns umsetzen könnten.',
     features: [
-      'Architektur- und Code-Review',
-      'Cloud Cost Optimization',
-      'Security-Assessment',
-      'DSGVO-konforme Verarbeitung & EU-Hosting',
-      'Vermeidung von Vendor Lock-in',
-      'Technische Due Diligence',
+      'Prozessaufnahme und Interviews',
+      'Bewertung bestehender Anwendungen',
+      'Make-or-Buy-Entscheidung',
+      'Aufwands- und Kostenschätzung',
+      'Datenschutz und Berechtigungen',
+      'Priorisierte Umsetzungsempfehlung',
     ],
   },
 ];
+
 
 
 const Leistungen = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
-    document.title = 'Leistungen | VONA Cloud';
+    document.title = 'Leistungen | VONA Cloud Solutions';
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('scroll-visible')),
       { threshold: 0.1 }
@@ -102,7 +103,7 @@ const Leistungen = () => {
       <PageHero
         title="Unsere"
         highlight="Leistungen"
-        subtitle="Vier Bereiche rund um die Cloud — Entwicklung, Betrieb, Migration und Beratung aus einer Hand."
+        subtitle="Vier Bereiche rund um Software — Entwicklung, Produkte, Betrieb und Beratung aus einer Hand."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Leistungen' },
