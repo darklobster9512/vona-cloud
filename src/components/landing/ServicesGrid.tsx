@@ -151,6 +151,7 @@ const ServicesGrid = () => {
             const Icon = s.icon;
             const Visual = visuals[i];
             const featured = i === 0;
+            const span = ['md:col-span-4', 'md:col-span-2', 'md:col-span-3', 'md:col-span-3'][i];
             return (
               <article
                 key={s.number}
