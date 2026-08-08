@@ -1,4 +1,4 @@
-import logoWordmark from '@/assets/logo-wordmark.png.asset.json';
+import logoWordmark from '@/assets/logo-wordmark.png';
 import { cn } from '@/lib/utils';
 
 interface LogoProps {
@@ -15,7 +15,7 @@ const heights = {
 
 const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
   <img
-    src={logoWordmark.url}
+    src={logoWordmark}
     alt="VONA Cloud"
     width={1152}
     height={576}
