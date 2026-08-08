@@ -119,9 +119,6 @@ const ConsultVisual = () => (
 
 const visuals = [DevVisual, ProductVisual, SupportVisual, ConsultVisual];
 
-
-const visuals = [DevVisual, OpsVisual, MigrationVisual, ConsultVisual];
-
 const ServicesGrid = () => {
   const { ref, isVisible } = useScrollAnimation();
 
