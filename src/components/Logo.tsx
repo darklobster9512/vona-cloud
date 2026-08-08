@@ -17,8 +17,8 @@ const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
   <img
     src={logoWordmark}
     alt="VONA Cloud"
-    width={1152}
-    height={576}
+    width={1054}
+    height={110}
     loading={eager ? 'eager' : 'lazy'}
     fetchPriority={eager ? 'high' : undefined}
     className={cn(heights[size], 'w-auto object-contain', className)}
