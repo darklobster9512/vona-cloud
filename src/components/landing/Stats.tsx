@@ -17,7 +17,7 @@ const Stats = () => {
       <div className="relative mx-auto max-w-7xl px-6">
         <div className={`mb-14 flex flex-col gap-3 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
           <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/50">
-            04 — Betrieb in Zahlen
+            05 — Betrieb in Zahlen
           </span>
           <h2 className="max-w-2xl text-2xl font-extrabold tracking-tight text-white md:text-4xl">
             Kennzahlen, die wir messen — nicht behaupten.

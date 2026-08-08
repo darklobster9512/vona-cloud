@@ -31,7 +31,7 @@ const Methodology = () => {
     <section ref={ref} className="relative overflow-hidden py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className={`mb-16 max-w-2xl scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <p className="mono-label mb-4">03 — Vorgehen</p>
+          <p className="mono-label mb-4">04 — Vorgehen</p>
           <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             Drei Phasen,
             <br />

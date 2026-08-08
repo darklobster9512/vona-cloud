@@ -34,7 +34,7 @@ const Testimonials = () => {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className={`mb-16 max-w-2xl scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <p className="mono-label mb-4">05 — Referenzen</p>
+          <p className="mono-label mb-4">06 — Referenzen</p>
           <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             Was Kunden
             <br />

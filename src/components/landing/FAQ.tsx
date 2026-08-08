@@ -39,7 +39,7 @@ const FAQ = () => {
       <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         {/* Left column */}
         <div className={`scroll-hidden ${isVisible ? 'scroll-visible' : ''} lg:sticky lg:top-32 lg:self-start`}>
-          <p className="mono-label mb-4">06 — Fragen</p>
+          <p className="mono-label mb-4">07 — Fragen</p>
           <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
             Häufig gestellt,
             <br />
