@@ -1,72 +1,76 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Search, PenTool, Rocket } from 'lucide-react';
 
-const steps = [
+const phases = [
   {
-    icon: Search,
-    number: '01',
+    step: '01',
     title: 'Assessment',
-    description: 'Wir nehmen Anwendung, Infrastruktur und Kosten auf und benennen Risiken sowie Quick Wins.',
+    duration: 'Woche 1–2',
+    description: 'Bestandsaufnahme von System, Infrastruktur und Kosten. Ergebnis: dokumentierter Ist-Stand mit Risiken.',
+    points: ['Architektur-Analyse', 'Kosten- & Risiko-Check', 'Zielbild'],
   },
   {
-    icon: PenTool,
-    number: '02',
+    step: '02',
     title: 'Architektur',
-    description: 'Zielbild, Technologiewahl und Migrationspfad — dokumentiert, nachvollziehbar, ohne Lock-in.',
+    duration: 'Woche 3–4',
+    description: 'Zielarchitektur, Infrastructure as Code und Migrationspfad — abgestimmt, bevor gebaut wird.',
+    points: ['Zielarchitektur', 'IaC-Blueprint', 'Migrationsplan'],
   },
   {
-    icon: Rocket,
-    number: '03',
+    step: '03',
     title: 'Build & Betrieb',
-    description: 'Umsetzung in Sprints, automatisiertes Deployment und anschließend überwachter Dauerbetrieb.',
+    duration: 'laufend',
+    description: 'Umsetzung in Iterationen, dann überwachter Dauerbetrieb mit Monitoring, Backups und Reporting.',
+    points: ['CI/CD-Pipelines', '24/7 Monitoring', 'Monatliches Reporting'],
   },
 ];
-
 
 const Methodology = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="methodik" ref={ref} className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className={`text-center mb-16 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Methodik</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Drei Phasen. <span className="text-gradient-blue">Ein System, das läuft.</span>
+    <section ref={ref} className="relative overflow-hidden py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className={`mb-16 max-w-2xl scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
+          <p className="mono-label mb-4">03 — Vorgehen</p>
+          <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
+            Drei Phasen,
+            <br />
+            <span className="text-gradient-blue">klar abgegrenzt.</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            So gehen wir jedes Cloud-Projekt an — nachvollziehbar von Tag eins.
-          </p>
-
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-20 left-[20%] right-[20%] h-px bg-border/60" />
+        {/* Horizontal timeline */}
+        <div className="relative">
+          <div className="absolute left-0 top-[26px] hidden h-px w-full bg-border md:block" />
 
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={step.number}
-                className={`scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''} relative text-center`}
-              >
-                <div className="relative inline-flex flex-col items-center mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-white border-2 border-primary/20 flex items-center justify-center shadow-lg shadow-primary/10 relative z-10">
-                    <Icon size={28} className="text-primary" />
+          <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+            {phases.map((p, i) => (
+              <div key={p.step} className={`relative scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''}`}>
+                {/* Node */}
+                <div className="relative z-10 mb-7 flex items-center gap-4">
+                  <div className="flex h-13 w-13 items-center justify-center rounded-full border border-primary/25 bg-white px-4 py-3 font-mono text-sm font-bold text-primary shadow-[0_8px_24px_-12px_hsl(217_91%_60%/0.6)]">
+                    {p.step}
                   </div>
-                  <span className="absolute -top-3 -right-3 w-7 h-7 rounded-full bg-gradient-blue text-primary-foreground text-xs font-bold flex items-center justify-center z-20">
-                    {step.number}
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    {p.duration}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold tracking-tight mb-3">{step.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
-                  {step.description}
-                </p>
+                <div className="rounded-[1.5rem] border border-border/60 bg-white p-7 hover-lift">
+                  <h3 className="text-xl font-extrabold tracking-tight">{p.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                  <ul className="mt-6 space-y-2.5 border-t border-border/60 pt-5">
+                    {p.points.map((pt) => (
+                      <li key={pt} className="flex items-center gap-2.5 text-sm font-medium">
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
