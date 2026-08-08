@@ -8,9 +8,9 @@ interface LogoProps {
 }
 
 const heights = {
-  sm: 'h-6',
-  md: 'h-8',
-  lg: 'h-10',
+  sm: 'h-7',
+  md: 'h-9',
+  lg: 'h-12',
 };
 
 const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
