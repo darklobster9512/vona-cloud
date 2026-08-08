@@ -1,31 +1,28 @@
+import logoWordmark from '@/assets/logo-wordmark.png';
 import { cn } from '@/lib/utils';
 
 interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg';
+  eager?: boolean;
 }
 
-const sizes = {
-  sm: { word: 'text-xl', tag: 'text-[9px] tracking-[0.3em]' },
-  md: { word: 'text-2xl sm:text-3xl', tag: 'text-[10px] tracking-[0.32em]' },
-  lg: { word: 'text-3xl sm:text-[2rem]', tag: 'text-[11px] tracking-[0.34em]' },
+const heights = {
+  sm: 'h-7',
+  md: 'h-9',
+  lg: 'h-11',
 };
 
-const Logo = ({ className, size = 'lg' }: LogoProps) => {
-  const s = sizes[size];
-  return (
-    <span
-      className={cn('inline-flex items-baseline gap-2 select-none leading-none', className)}
-      aria-label="VONA Cloud"
-    >
-      <span className={cn('font-extrabold tracking-tight text-foreground', s.word)}>
-        VONA
-      </span>
-      <span className={cn('font-mono font-medium uppercase text-gradient-blue', s.tag)}>
-        Cloud
-      </span>
-    </span>
-  );
-};
+const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
+  <img
+    src={logoWordmark}
+    alt="VONA Cloud"
+    width={1536}
+    height={512}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchPriority={eager ? 'high' : undefined}
+    className={cn(heights[size], 'w-auto object-contain', className)}
+  />
+);
 
 export default Logo;
