@@ -38,7 +38,7 @@ const panels: Record<string, JSX.Element> = {
   dashboards: (
     <div className="grid grid-cols-2 gap-3">
       {[
-        { k: 'MRR', v: '€ 184.２00', d: '+8,4 %' },
+        { k: 'MRR', v: '€ 184.200', d: '+8,4 %' },
         { k: 'Aktive Nutzer', v: '12.480', d: '+3,1 %' },
         { k: 'Fehlerrate', v: '0,02 %', d: '−0,01' },
         { k: 'Ø Antwortzeit', v: '48 ms', d: '−12 ms' },

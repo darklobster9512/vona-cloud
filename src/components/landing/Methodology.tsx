@@ -48,7 +48,7 @@ const Methodology = () => {
               <div key={p.step} className={`relative scroll-hidden delay-${i + 1} ${isVisible ? 'scroll-visible' : ''}`}>
                 {/* Node */}
                 <div className="relative z-10 mb-7 flex items-center gap-4">
-                  <div className="flex h-13 w-13 items-center justify-center rounded-full border border-primary/25 bg-white px-4 py-3 font-mono text-sm font-bold text-primary shadow-[0_8px_24px_-12px_hsl(217_91%_60%/0.6)]">
+                  <div className="flex items-center justify-center rounded-full border border-primary/25 bg-white px-4 py-3 font-mono text-sm font-bold text-primary shadow-[0_8px_24px_-12px_hsl(217_91%_60%/0.6)]">
                     {p.step}
                   </div>
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
