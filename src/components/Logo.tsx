@@ -8,17 +8,17 @@ interface LogoProps {
 }
 
 const heights = {
-  sm: 'h-5',
-  md: 'h-6',
-  lg: 'h-8',
+  sm: 'h-6',
+  md: 'h-8',
+  lg: 'h-10',
 };
 
 const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
   <img
     src={logoWordmark}
     alt="VONA Cloud"
-    width={1330}
-    height={157}
+    width={1152}
+    height={576}
     loading={eager ? 'eager' : 'lazy'}
     fetchPriority={eager ? 'high' : undefined}
     className={cn(heights[size], 'w-auto object-contain', className)}
