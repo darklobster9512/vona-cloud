@@ -17,7 +17,7 @@ const KarriereDetail = () => {
   const prev = index > 0 ? stellen[index - 1] : undefined;
   const next = index < stellen.length - 1 ? stellen[index + 1] : undefined;
 
-  const contentSections = [
+  const contentSections: { title: string; text?: string; items?: string[] }[] = [
     { title: 'Über die Position', text: stelle.beschreibung },
     { title: 'Deine Aufgaben', items: stelle.aufgaben },
     { title: 'Dein Profil', items: stelle.voraussetzungen },
