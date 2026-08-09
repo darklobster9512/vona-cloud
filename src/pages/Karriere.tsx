@@ -112,7 +112,7 @@ const Karriere = () => {
               </div>
               <a
                 href="mailto:kontakt@vona-cloud.com"
-                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-ink-foreground font-semibold text-sm hover:scale-[1.02] transition-transform duration-200"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-foreground font-semibold text-sm hover:scale-[1.02] transition-transform duration-200"
               >
                 kontakt@vona-cloud.com
                 <ArrowUpRight size={16} />
