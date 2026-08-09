@@ -1,6 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { X, Check, ArrowDown } from 'lucide-react';
-import workspaceSolution from '@/assets/landing/workspace-solution.jpg';
 
 const before = [
   'Excel-Listen als heimliches Hauptsystem',
