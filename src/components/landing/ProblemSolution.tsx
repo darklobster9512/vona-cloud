@@ -1,6 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { X, Check, ArrowDown } from 'lucide-react';
-import workspaceSolution from '@/assets/landing/workspace-solution.jpg';
 
 const before = [
   'Excel-Listen als heimliches Hauptsystem',
@@ -71,16 +70,6 @@ const ProblemSolution = () => {
                 </li>
               ))}
             </ul>
-            <figure className="mt-7 overflow-hidden rounded-2xl border border-border/60 bg-white shadow-sm">
-              <img
-                src={workspaceSolution}
-                alt="Übersichtlicher Software-Workspace mit Dashboard und klaren Prozessen"
-                width={1344}
-                height={768}
-                loading="lazy"
-                className="w-full object-cover"
-              />
-            </figure>
           </div>
         </div>
       </div>
