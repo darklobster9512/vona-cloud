@@ -51,6 +51,11 @@ const Impressum = () => {
               kontakt@vona-cloud.com
             </a>
             <br />
+            Telefon:{' '}
+            <a href="tel:+4961318888371" className="text-primary hover:underline">
+              06131 8888371
+            </a>
+            <br />
             Website:{' '}
             <a href="https://vona-cloud.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
               vona-cloud.com

@@ -26,6 +26,11 @@ const Datenschutz = () => {
               kontakt@vona-cloud.com
             </a>
             <br />
+            Telefon:{' '}
+            <a href="tel:+4961318888371" className="text-primary hover:underline">
+              06131 8888371
+            </a>
+            <br />
             Geschäftsführer: Alexander Seitz
 
           </p>
