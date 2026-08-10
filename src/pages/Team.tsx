@@ -6,16 +6,17 @@ import PageHero from '@/components/landing/PageHero';
 import CTASection from '@/components/landing/CTASection';
 import Footer from '@/components/landing/Footer';
 
-import seitz from '@/assets/team/seitz.png.asset.json';
-import lindner from '@/assets/team/lindner.png.asset.json';
-import winterfeld from '@/assets/team/winterfeld.png.asset.json';
-import ademi from '@/assets/team/ademi.png.asset.json';
-import bergmann from '@/assets/team/bergmann.png.asset.json';
-import reuter from '@/assets/team/reuter.png.asset.json';
-import sorin from '@/assets/team/sorin.png.asset.json';
-import sanders from '@/assets/team/sanders.png.asset.json';
-import fuchs from '@/assets/team/fuchs.png.asset.json';
-import hagenauer from '@/assets/team/hagenauer.png.asset.json';
+import seitz from '@/assets/team/seitz.png';
+import lindner from '@/assets/team/lindner.png';
+import winterfeld from '@/assets/team/winterfeld.png';
+import ademi from '@/assets/team/ademi.png';
+import bergmann from '@/assets/team/bergmann.png';
+import reuter from '@/assets/team/reuter.png';
+import sorin from '@/assets/team/sorin.png';
+import sanders from '@/assets/team/sanders.png';
+import fuchs from '@/assets/team/fuchs.png';
+import hagenauer from '@/assets/team/hagenauer.png';
+
 
 const teamMembers = [
   {
