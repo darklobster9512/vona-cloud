@@ -22,8 +22,8 @@ const Datenschutz = () => {
             Rheingaustr. 53<br />
             65201 Wiesbaden<br />
             E-Mail:{' '}
-            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
-              kontakt@vona-cloud.com
+            <a href="mailto:kontakt@vona-cloud.de" className="text-primary hover:underline">
+              kontakt@vona-cloud.de
             </a>
             <br />
             Telefon:{' '}
