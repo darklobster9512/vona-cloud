@@ -24,70 +24,70 @@ const teamMembers = [
     role: 'Geschäftsführer',
     description:
       'Verantwortet Strategie, Produktportfolio und Vertrieb — und bleibt dabei nah an Kunden und Technik.',
-    image: seitz.url,
+    image: seitz,
   },
   {
     name: 'Andreas Lindner',
     role: 'Head of Software Engineering',
     description:
       'Führt die Entwicklung: Architektur, Code-Qualität und Releases, die verlässlich in Betrieb gehen.',
-    image: lindner.url,
+    image: lindner,
   },
   {
     name: 'Michael Winterfeld',
     role: 'Projektleiter',
     description:
       'Steuert Kundenprojekte von der Anforderung bis zum Go-Live — Termine, Budget und Umfang im Griff.',
-    image: winterfeld.url,
+    image: winterfeld,
   },
   {
     name: 'Kerim Ademi',
     role: 'Senior Software Engineer',
     description:
       'Entwickelt Backends, Schnittstellen und Integrationen für unsere Softwareprodukte.',
-    image: ademi.url,
+    image: ademi,
   },
   {
     name: 'Mia Bergmann',
     role: 'UX/UI Design',
     description:
       'Gestaltet Oberflächen, die im Arbeitsalltag funktionieren — klar, schnell, ohne Schulungsbedarf.',
-    image: bergmann.url,
+    image: bergmann,
   },
   {
     name: 'Nadine Reuter',
     role: 'Requirements Engineering',
     description:
       'Übersetzt Fachprozesse in präzise Anforderungen und sorgt für ein gemeinsames Verständnis.',
-    image: reuter.url,
+    image: reuter,
   },
   {
     name: 'Elena Sorin',
     role: 'Business Consultant',
     description:
       'Berät bei Prozessen, Auswahl und Einführung von Software — mit Blick auf messbaren Nutzen.',
-    image: sorin.url,
+    image: sorin,
   },
   {
     name: 'Claudia Sanders',
     role: 'Head of Operations & Support',
     description:
       'Verantwortet Betrieb, Wartung und Support unserer Lösungen inklusive Service-Levels.',
-    image: sanders.url,
+    image: sanders,
   },
   {
     name: 'Lena Fuchs',
     role: 'HR & People',
     description:
       'Baut Team und Kultur — von Onboarding bis Weiterentwicklung.',
-    image: fuchs.url,
+    image: fuchs,
   },
   {
     name: 'Jonas Hagenauer',
     role: 'Recruiter',
     description:
       'Findet passende Köpfe und begleitet Bewerberinnen und Bewerber durch den gesamten Prozess.',
-    image: hagenauer.url,
+    image: hagenauer,
   },
 ];
 
