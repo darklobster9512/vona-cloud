@@ -1,87 +1,96 @@
 import { useEffect } from 'react';
+import { ArrowUpRight, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import PageHero from '@/components/landing/PageHero';
 import CTASection from '@/components/landing/CTASection';
 import Footer from '@/components/landing/Footer';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-import sarahMeier from '@/assets/team/sarah-meier.jpg';
-import michaelFischer from '@/assets/team/michael-fischer.jpg';
-import jonasHartmann from '@/assets/team/jonas-hartmann.jpg';
-import thomasWeber from '@/assets/team/thomas-weber.jpg';
-import lauraSchneider from '@/assets/team/laura-schneider.jpg';
-import danielKrause from '@/assets/team/daniel-krause.jpg';
-import annaHoffmann from '@/assets/team/anna-hoffmann.jpg';
-import markusBauer from '@/assets/team/markus-bauer.jpg';
-import juliaWagner from '@/assets/team/julia-wagner.jpg';
-import sebastianRichter from '@/assets/team/sebastian-richter.jpg';
+import seitz from '@/assets/team/seitz.png.asset.json';
+import lindner from '@/assets/team/lindner.png.asset.json';
+import winterfeld from '@/assets/team/winterfeld.png.asset.json';
+import ademi from '@/assets/team/ademi.png.asset.json';
+import bergmann from '@/assets/team/bergmann.png.asset.json';
+import reuter from '@/assets/team/reuter.png.asset.json';
+import sorin from '@/assets/team/sorin.png.asset.json';
+import sanders from '@/assets/team/sanders.png.asset.json';
+import fuchs from '@/assets/team/fuchs.png.asset.json';
+import hagenauer from '@/assets/team/hagenauer.png.asset.json';
 
 const teamMembers = [
   {
-    name: 'Ulrich Papst',
-    role: 'Geschäftsführer / CEO',
-    description: 'Visionär mit über 20 Jahren Erfahrung in der digitalen Transformation und strategischen Unternehmensführung.',
-    image: thomasWeber,
+    name: 'Alexander Seitz',
+    role: 'Geschäftsführer',
+    description:
+      'Verantwortet Strategie, Produktportfolio und Vertrieb — und bleibt dabei nah an Kunden und Technik.',
+    image: seitz.url,
   },
   {
-    name: 'Thomas Papst',
-    role: 'Geschäftsführer / CEO',
-    description: 'Führt das Unternehmen gemeinsam mit seinem Vater und treibt Innovation und Wachstum voran.',
-    image: danielKrause,
-  },
-  {
-    name: 'Laura Schneider',
+    name: 'Andreas Lindner',
     role: 'Head of Software Engineering',
-    description: 'Leitet unser Entwicklungsteam mit Leidenschaft für Clean Code und skalierbare Architekturen.',
-    image: lauraSchneider,
+    description:
+      'Führt die Entwicklung: Architektur, Code-Qualität und Releases, die verlässlich in Betrieb gehen.',
+    image: lindner.url,
   },
   {
-    name: 'Michael Fischer',
+    name: 'Michael Winterfeld',
     role: 'Projektleiter',
-    description: 'Steuert komplexe Kundenprojekte von der Konzeption bis zum erfolgreichen Go-Live.',
-    image: michaelFischer,
+    description:
+      'Steuert Kundenprojekte von der Anforderung bis zum Go-Live — Termine, Budget und Umfang im Griff.',
+    image: winterfeld.url,
   },
   {
-    name: 'Julia Wagner',
+    name: 'Kerim Ademi',
+    role: 'Senior Software Engineer',
+    description:
+      'Entwickelt Backends, Schnittstellen und Integrationen für unsere Softwareprodukte.',
+    image: ademi.url,
+  },
+  {
+    name: 'Mia Bergmann',
+    role: 'UX/UI Design',
+    description:
+      'Gestaltet Oberflächen, die im Arbeitsalltag funktionieren — klar, schnell, ohne Schulungsbedarf.',
+    image: bergmann.url,
+  },
+  {
+    name: 'Nadine Reuter',
+    role: 'Requirements Engineering',
+    description:
+      'Übersetzt Fachprozesse in präzise Anforderungen und sorgt für ein gemeinsames Verständnis.',
+    image: reuter.url,
+  },
+  {
+    name: 'Elena Sorin',
     role: 'Business Consultant',
-    description: 'Verbindet betriebswirtschaftliches Know-how mit technologischem Verständnis für optimale Beratungsergebnisse.',
-    image: juliaWagner,
+    description:
+      'Berät bei Prozessen, Auswahl und Einführung von Software — mit Blick auf messbaren Nutzen.',
+    image: sorin.url,
   },
   {
-    name: 'Anna Hoffmann',
-    role: 'UX/UI Designerin',
-    description: 'Gestaltet intuitive Benutzeroberflächen, die Nutzerbedürfnisse in den Mittelpunkt stellen.',
-    image: annaHoffmann,
+    name: 'Claudia Sanders',
+    role: 'Head of Operations & Support',
+    description:
+      'Verantwortet Betrieb, Wartung und Support unserer Lösungen inklusive Service-Levels.',
+    image: sanders.url,
   },
   {
-    name: 'Markus Bauer',
-    role: 'Data Analyst',
-    description: 'Verwandelt komplexe Datensätze in klare Insights und messbare Handlungsempfehlungen.',
-    image: markusBauer,
+    name: 'Lena Fuchs',
+    role: 'HR & People',
+    description:
+      'Baut Team und Kultur — von Onboarding bis Weiterentwicklung.',
+    image: fuchs.url,
   },
   {
-    name: 'Sarah Meier',
-    role: 'HR Managerin',
-    description: 'Sorgt für ein starkes Team und eine Unternehmenskultur, in der Talente wachsen können.',
-    image: sarahMeier,
-  },
-  {
-    name: 'Jonas Hartmann',
+    name: 'Jonas Hagenauer',
     role: 'Recruiter',
-    description: 'Findet die besten Köpfe der Branche und begleitet sie auf ihrem Weg zu VONA.',
-    image: jonasHartmann,
-  },
-  {
-    name: 'Sebastian Richter',
-    role: 'DevOps Engineer',
-    description: 'Automatisiert Deployments und sorgt für reibungslose CI/CD-Pipelines und stabile Systeme.',
-    image: sebastianRichter,
+    description:
+      'Findet passende Köpfe und begleitet Bewerberinnen und Bewerber durch den gesamten Prozess.',
+    image: hagenauer.url,
   },
 ];
 
 const Team = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('scroll-visible')),
@@ -91,40 +100,105 @@ const Team = () => {
     return () => observer.disconnect();
   }, []);
 
+  const [lead, ...rest] = teamMembers;
+
   return (
     <>
-
       <PageHero
         title="Unser"
         highlight="Team"
-        subtitle="Die Menschen hinter VONA — Entwicklung, Betrieb und Beratung in einem Team."
-        breadcrumb={[
-          { label: 'Home', href: '/' },
-          { label: 'Team' },
-        ]}
+        subtitle="Die Menschen hinter VONA Cloud Solutions — Entwicklung, Betrieb, Vertrieb und Beratung an einem Ort."
+        breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Team' }]}
       />
 
-      <section ref={ref} className="max-w-6xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {teamMembers.map((member, i) => (
-            <div
-              key={member.name}
-              className={`scroll-hidden delay-${Math.min(i % 4 + 1, 4)} ${isVisible ? 'scroll-visible' : ''} group flex flex-col items-center text-center p-5 rounded-2xl border border-border/60 bg-card hover:shadow-lg hover:shadow-primary/[0.05] hover:border-primary/20 transition-all duration-300`}
-            >
-              <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-border/40 group-hover:ring-primary/30 transition-all duration-300 mb-3">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-blueprint-fine opacity-70 pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-6 py-20">
+          {/* Section marker */}
+          <div className="flex items-end justify-between gap-6 border-b border-border pb-4">
+            <span className="mono-label">Team / {teamMembers.length} Personen</span>
+            <span className="mono-label-muted hidden sm:block">Wiesbaden</span>
+          </div>
+
+          {/* Lead / Geschäftsführung */}
+          <div className="scroll-hidden mt-8 rounded-[1.75rem] bg-ink p-7 sm:p-9 relative overflow-hidden">
+            <div className="absolute inset-0 bg-blueprint-light opacity-40 pointer-events-none" />
+            <div className="relative flex flex-col sm:flex-row sm:items-center gap-6">
+              <div className="w-24 h-24 shrink-0 rounded-full overflow-hidden ring-1 ring-white/20">
                 <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500 select-none pointer-events-none"
+                  src={lead.image}
+                  alt={lead.name}
+                  className="w-full h-full object-cover object-top select-none pointer-events-none"
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />
               </div>
-              <h3 className="text-sm font-bold text-foreground leading-tight">{member.name}</h3>
-              <p className="text-xs font-semibold text-primary mt-0.5">{member.role}</p>
-              <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed line-clamp-3">{member.description}</p>
+              <div className="min-w-0">
+                <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
+                  00 / {lead.role}
+                </span>
+                <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-white tracking-tight">{lead.name}</h2>
+                <p className="mt-2 text-sm text-white/60 max-w-xl leading-relaxed">{lead.description}</p>
+              </div>
+              <a
+                href="mailto:kontakt@vona-cloud.com"
+                className="sm:ml-auto inline-flex items-center gap-2 shrink-0 rounded-full border border-white/20 px-4 py-2 text-xs font-medium text-white/80 hover:text-white hover:border-primary/60 transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                Kontakt
+              </a>
             </div>
-          ))}
+          </div>
+
+          {/* Technical rows */}
+          <div className="mt-6 border-t border-border">
+            {rest.map((member, i) => (
+              <div
+                key={member.name}
+                className={`scroll-hidden delay-${Math.min((i % 4) + 1, 4)} group grid grid-cols-[auto_1fr] md:grid-cols-[3.5rem_auto_1fr_1.2fr] items-start md:items-center gap-x-5 gap-y-3 border-b border-border py-6 transition-colors hover:bg-primary/[0.03]`}
+              >
+                <span className="hidden md:block font-mono text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden ring-1 ring-border group-hover:ring-primary/40 transition-all duration-300">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 select-none pointer-events-none"
+                    onContextMenu={(e) => e.preventDefault()}
+                    draggable={false}
+                  />
+                </div>
+
+                <div className="min-w-0">
+                  <h3 className="text-base md:text-lg font-bold text-foreground tracking-tight">{member.name}</h3>
+                  <span className="mono-label block mt-1">{member.role}</span>
+                </div>
+
+                <p className="col-span-2 md:col-span-1 text-sm text-muted-foreground leading-relaxed">
+                  {member.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Join us */}
+          <div className="scroll-hidden mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-border/60 bg-card px-6 py-5">
+            <div>
+              <span className="mono-label-muted">Offene Positionen</span>
+              <p className="mt-1 text-sm text-foreground font-medium">
+                Wir suchen Menschen, die Software bauen, betreiben und erklären können.
+              </p>
+            </div>
+            <Link
+              to="/karriere"
+              className="inline-flex items-center gap-2 shrink-0 text-sm font-semibold text-primary hover:gap-3 transition-all"
+            >
+              Karriere ansehen
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
