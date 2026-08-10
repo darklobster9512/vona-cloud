@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Mail, MapPin, Clock } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, Clock, Phone } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const CTASection = () => {
@@ -51,6 +51,7 @@ const CTASection = () => {
             <div className="space-y-4 lg:border-l lg:border-white/15 lg:pl-12">
               {[
                 { icon: Clock, k: 'Antwortzeit', v: 'meist am selben Werktag' },
+                { icon: Phone, k: 'Telefon', v: '06131 8888371' },
                 { icon: MapPin, k: 'Standort', v: 'Rheingaustr. 53, Wiesbaden' },
                 { icon: Mail, k: 'E-Mail', v: 'kontakt@vona-cloud.com' },
               ].map((item) => {

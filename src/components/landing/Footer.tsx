@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Building2, MapPin, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Mail, Building2, MapPin, ArrowUpRight, ShieldCheck, Phone } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 const columns = [
@@ -104,6 +104,10 @@ const Footer = () => {
                 <MapPin className="h-3.5 w-3.5 text-primary" />
                 Rheingaustr. 53, 65201 Wiesbaden
               </span>
+              <a href="tel:+4961318888371" className="group flex items-center gap-1.5 transition-colors hover:text-white">
+                <Phone className="h-3.5 w-3.5 text-primary" />
+                06131 8888371
+              </a>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="h-3.5 w-3.5 text-primary" />
                 Hosting in der EU

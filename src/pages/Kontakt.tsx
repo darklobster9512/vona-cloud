@@ -6,7 +6,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Building2, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Building2, MapPin, Clock, Phone, Send } from 'lucide-react';
 
 const contactInfo = [
   {
@@ -14,6 +14,12 @@ const contactInfo = [
     label: 'E-Mail',
     value: 'kontakt@vona-cloud.com',
     href: 'mailto:kontakt@vona-cloud.com',
+  },
+  {
+    icon: Phone,
+    label: 'Telefon',
+    value: '06131 8888371',
+    href: 'tel:+4961318888371',
   },
   {
     icon: Building2,
