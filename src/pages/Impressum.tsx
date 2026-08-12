@@ -57,8 +57,8 @@ const Impressum = () => {
             </a>
             <br />
             Website:{' '}
-            <a href="https://vona-cloud.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              vona-cloud.com
+            <a href="https://vona-cloud.solutions" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              vona-cloud.solutions
             </a>
           </p>
 
