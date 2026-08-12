@@ -47,8 +47,8 @@ const Impressum = () => {
           <h3 className="text-lg font-bold mt-8 mb-3">Kontakt</h3>
           <p>
             E-Mail:{' '}
-            <a href="mailto:kontakt@vona-cloud.de" className="text-primary hover:underline">
-              kontakt@vona-cloud.de
+            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
+              kontakt@vona-cloud.com
             </a>
             <br />
             Telefon:{' '}
@@ -57,8 +57,8 @@ const Impressum = () => {
             </a>
             <br />
             Website:{' '}
-            <a href="https://vona-cloud.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              vona-cloud.com
+            <a href="https://vona-cloud.solutions" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              vona-cloud.solutions
             </a>
           </p>
 

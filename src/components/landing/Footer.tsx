@@ -51,10 +51,10 @@ const Footer = () => {
           </div>
 
           <a
-            href="mailto:kontakt@vona-cloud.de"
+            href="mailto:kontakt@vona-cloud.com"
             className="group flex items-center gap-2 text-lg font-semibold tracking-tight text-white transition-colors hover:text-primary"
           >
-            kontakt@vona-cloud.de
+            kontakt@vona-cloud.com
             <ArrowUpRight
               size={16}
               className="shrink-0 text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
