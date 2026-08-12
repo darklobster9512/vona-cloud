@@ -291,8 +291,8 @@ const Bewerbung = () => {
 
                 <p className="text-xs text-muted-foreground">
                   Fragen?{' '}
-                  <a href="mailto:kontakt@vona-cloud.de" className="text-primary font-medium hover:underline underline-offset-4">
-                    kontakt@vona-cloud.de
+                  <a href="mailto:kontakt@vona-cloud.com" className="text-primary font-medium hover:underline underline-offset-4">
+                    kontakt@vona-cloud.com
                   </a>
                 </p>
               </div>

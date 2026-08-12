@@ -142,7 +142,7 @@ const Team = () => {
                 <p className="mt-2 text-sm text-white/60 max-w-xl leading-relaxed">{lead.description}</p>
               </div>
               <a
-                href="mailto:kontakt@vona-cloud.de"
+                href="mailto:kontakt@vona-cloud.com"
                 className="sm:ml-auto inline-flex items-center gap-2 shrink-0 rounded-full border border-white/20 px-4 py-2 text-xs font-medium text-white/80 hover:text-white hover:border-primary/60 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />

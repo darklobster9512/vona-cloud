@@ -12,8 +12,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'E-Mail',
-    value: 'kontakt@vona-cloud.de',
-    href: 'mailto:kontakt@vona-cloud.de',
+    value: 'kontakt@vona-cloud.com',
+    href: 'mailto:kontakt@vona-cloud.com',
   },
   {
     icon: Phone,
