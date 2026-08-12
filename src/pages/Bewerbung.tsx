@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Upload, Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, ArrowRight, ArrowLeft } from 'lucide-react';
 
 import PageHero from '@/components/landing/PageHero';
 import Footer from '@/components/landing/Footer';
@@ -33,17 +33,17 @@ const Bewerbung = () => {
   const preselected = searchParams.get('stelle') || '';
   const { ref, isVisible } = useScrollAnimation();
 
+  const [step, setStep] = useState<1 | 2>(1);
   const [form, setForm] = useState({
     vorname: '',
     nachname: '',
     email: '',
     telefon: '',
-    strasse: '',
     plz: '',
     stadt: '',
+    startdatum: '',
     stelle: preselected,
     anstellungsart: '',
-    lebenslauf: null as File | null,
   });
   const [submitting, setSubmitting] = useState(false);
 
@@ -53,14 +53,23 @@ const Bewerbung = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, lebenslauf: e.target.files?.[0] || null });
+  const handleNext = () => {
+    if (!form.vorname.trim() || !form.nachname.trim() || !form.email.trim() || !form.telefon.trim()) {
+      toast({ title: 'Bitte alle Pflichtfelder ausfüllen.', variant: 'destructive' });
+      return;
+    }
+    setStep(2);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.vorname.trim() || !form.nachname.trim() || !form.email.trim() || !form.telefon.trim() || !form.strasse.trim() || !form.plz.trim() || !form.stadt.trim() || !form.anstellungsart) {
+    if (step === 1) {
+      handleNext();
+      return;
+    }
+
+    if (!form.anstellungsart || !form.startdatum.trim() || !form.plz.trim() || !form.stadt.trim()) {
       toast({ title: 'Bitte alle Pflichtfelder ausfüllen.', variant: 'destructive' });
       return;
     }
@@ -73,17 +82,16 @@ const Bewerbung = () => {
       formData.append('email', form.email.trim());
       formData.append('phone', form.telefon.trim());
       formData.append('employment_type', form.anstellungsart);
+      formData.append('start_date', form.startdatum);
       formData.append('branding_id', BRANDING_ID);
-      if (form.lebenslauf) {
-        formData.append('resume', form.lebenslauf);
-      }
 
       const res = await fetch(API_URL, { method: 'POST', body: formData });
       const data = await res.json();
 
       if (data.success) {
         toast({ title: 'Bewerbung erfolgreich gesendet!', description: 'Wir melden uns bei dir.' });
-        setForm({ vorname: '', nachname: '', email: '', telefon: '', strasse: '', plz: '', stadt: '', stelle: '', anstellungsart: '', lebenslauf: null });
+        setForm({ vorname: '', nachname: '', email: '', telefon: '', plz: '', stadt: '', startdatum: '', stelle: '', anstellungsart: '' });
+        setStep(1);
       } else {
         throw new Error(data.error || 'Unbekannter Fehler');
       }
@@ -95,9 +103,14 @@ const Bewerbung = () => {
   };
 
   const steps = [
-    { title: 'Formular senden', text: 'Basisdaten und optional dein Lebenslauf.' },
+    { title: 'Formular senden', text: 'Kontaktdaten und Rahmenbedingungen in zwei Schritten.' },
     { title: 'Rückmeldung', text: 'Wir sichten deine Bewerbung und melden uns per E-Mail.' },
     { title: 'Kennenlernen', text: 'Kurzes Gespräch per Video — unkompliziert und ehrlich.' },
+  ];
+
+  const stepMeta = [
+    { n: '01', label: 'Kontakt' },
+    { n: '02', label: 'Details' },
   ];
 
   return (
@@ -105,7 +118,7 @@ const Bewerbung = () => {
       <PageHero
         title="Deine"
         highlight="Bewerbung"
-        subtitle="Fülle das Formular aus und bewirb dich auf eine unserer offenen Stellen. Wir freuen uns darauf, dich kennenzulernen."
+        subtitle="Zwei kurze Schritte — Kontaktdaten und Rahmenbedingungen. Wir freuen uns darauf, dich kennenzulernen."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Karriere', href: '/karriere' },
@@ -121,123 +134,158 @@ const Bewerbung = () => {
             {/* Form */}
             <div className={`flex-1 min-w-0 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
               <div className="flex items-baseline gap-4 pb-4 border-b border-border">
-                <span className="mono-label-muted text-[10px]">01</span>
-                <h2 className="text-xl font-extrabold tracking-tight text-foreground">Bewerbungsformular</h2>
+                <span className="mono-label-muted text-[10px]">{stepMeta[step - 1].n}</span>
+                <h2 className="text-xl font-extrabold tracking-tight text-foreground">
+                  {stepMeta[step - 1].label}
+                </h2>
                 <span className="ml-auto text-xs text-muted-foreground">* Pflichtfeld</span>
               </div>
 
+              {/* Step indicator */}
+              <div className="mt-6 flex items-center gap-3">
+                {stepMeta.map((s, i) => {
+                  const active = step === i + 1;
+                  const done = step > i + 1;
+                  return (
+                    <div key={s.n} className="flex flex-1 items-center gap-3">
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className={`flex h-7 w-7 items-center justify-center rounded-full font-mono text-[10px] transition-colors ${
+                            active || done
+                              ? 'bg-primary text-primary-foreground'
+                              : 'border border-border text-muted-foreground'
+                          }`}
+                        >
+                          {s.n}
+                        </span>
+                        <span
+                          className={`font-mono text-[10px] uppercase tracking-[0.2em] ${
+                            active ? 'text-foreground' : 'text-muted-foreground'
+                          }`}
+                        >
+                          {s.label}
+                        </span>
+                      </div>
+                      {i === 0 && (
+                        <span className={`h-px flex-1 ${step > 1 ? 'bg-primary' : 'bg-border'}`} />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
               <form onSubmit={handleSubmit} className="mt-8 space-y-7">
-                {/* Stelle (UI only) */}
-                <div className="grid md:grid-cols-2 gap-7">
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="stelle">Stelle</FieldLabel>
-                    <Select value={form.stelle} onValueChange={(v) => setForm({ ...form, stelle: v })}>
-                      <SelectTrigger id="stelle" className={inputClass}>
-                        <SelectValue placeholder="Stelle auswählen" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {stellen.map((s) => (
-                          <SelectItem key={s.slug} value={s.titel}>
-                            {s.titel}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                {step === 1 ? (
+                  <>
+                    <div className="space-y-2">
+                      <FieldLabel htmlFor="stelle">Stelle</FieldLabel>
+                      <Select value={form.stelle} onValueChange={(v) => setForm({ ...form, stelle: v })}>
+                        <SelectTrigger id="stelle" className={inputClass}>
+                          <SelectValue placeholder="Stelle auswählen" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {stellen.map((s) => (
+                            <SelectItem key={s.slug} value={s.titel}>
+                              {s.titel}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="anstellungsart">Anstellungsart *</FieldLabel>
-                    <Select value={form.anstellungsart} onValueChange={(v) => setForm({ ...form, anstellungsart: v })}>
-                      <SelectTrigger id="anstellungsart" className={inputClass}>
-                        <SelectValue placeholder="Anstellungsart wählen" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="minijob">Minijob</SelectItem>
-                        <SelectItem value="teilzeit">Teilzeit</SelectItem>
-                        <SelectItem value="vollzeit">Vollzeit</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
+                    <div className="grid md:grid-cols-2 gap-7">
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="vorname">Vorname *</FieldLabel>
+                        <Input id="vorname" name="vorname" placeholder="Max" value={form.vorname} onChange={handleChange} className={inputClass} />
+                      </div>
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="nachname">Nachname *</FieldLabel>
+                        <Input id="nachname" name="nachname" placeholder="Mustermann" value={form.nachname} onChange={handleChange} className={inputClass} />
+                      </div>
+                    </div>
 
-                {/* Name */}
-                <div className="grid md:grid-cols-2 gap-7">
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="vorname">Vorname *</FieldLabel>
-                    <Input id="vorname" name="vorname" placeholder="Max" value={form.vorname} onChange={handleChange} className={inputClass} />
-                  </div>
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="nachname">Nachname *</FieldLabel>
-                    <Input id="nachname" name="nachname" placeholder="Mustermann" value={form.nachname} onChange={handleChange} className={inputClass} />
-                  </div>
-                </div>
+                    <div className="grid md:grid-cols-2 gap-7">
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="email">E-Mail *</FieldLabel>
+                        <Input id="email" name="email" type="email" placeholder="max@beispiel.de" value={form.email} onChange={handleChange} className={inputClass} />
+                      </div>
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="telefon">Telefon *</FieldLabel>
+                        <Input id="telefon" name="telefon" type="tel" placeholder="+49 123 456 789" value={form.telefon} onChange={handleChange} className={inputClass} />
+                      </div>
+                    </div>
 
-                {/* Contact */}
-                <div className="grid md:grid-cols-2 gap-7">
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="email">E-Mail *</FieldLabel>
-                    <Input id="email" name="email" type="email" placeholder="max@beispiel.de" value={form.email} onChange={handleChange} className={inputClass} />
-                  </div>
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="telefon">Telefon *</FieldLabel>
-                    <Input id="telefon" name="telefon" type="tel" placeholder="+49 123 456 789" value={form.telefon} onChange={handleChange} className={inputClass} />
-                  </div>
-                </div>
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200"
+                    >
+                      Weiter
+                      <ArrowRight size={16} />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <div className="grid md:grid-cols-2 gap-7">
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="anstellungsart">Anstellungsart *</FieldLabel>
+                        <Select value={form.anstellungsart} onValueChange={(v) => setForm({ ...form, anstellungsart: v })}>
+                          <SelectTrigger id="anstellungsart" className={inputClass}>
+                            <SelectValue placeholder="Anstellungsart wählen" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="minijob">Minijob</SelectItem>
+                            <SelectItem value="teilzeit">Teilzeit</SelectItem>
+                            <SelectItem value="vollzeit">Vollzeit</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="startdatum">Startdatum *</FieldLabel>
+                        <Input id="startdatum" name="startdatum" type="date" value={form.startdatum} onChange={handleChange} className={inputClass} />
+                      </div>
+                    </div>
 
-                {/* Adresse */}
-                <div className="space-y-2">
-                  <FieldLabel htmlFor="strasse">Straße + Hausnummer *</FieldLabel>
-                  <Input id="strasse" name="strasse" placeholder="Musterstraße 1" value={form.strasse} onChange={handleChange} className={inputClass} />
-                </div>
-                <div className="grid grid-cols-[110px_1fr] gap-7">
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="plz">PLZ *</FieldLabel>
-                    <Input id="plz" name="plz" placeholder="12345" value={form.plz} onChange={handleChange} className={inputClass} />
-                  </div>
-                  <div className="space-y-2">
-                    <FieldLabel htmlFor="stadt">Stadt *</FieldLabel>
-                    <Input id="stadt" name="stadt" placeholder="Musterstadt" value={form.stadt} onChange={handleChange} className={inputClass} />
-                  </div>
-                </div>
+                    <div className="grid grid-cols-[110px_1fr] gap-7">
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="plz">PLZ *</FieldLabel>
+                        <Input id="plz" name="plz" placeholder="12345" value={form.plz} onChange={handleChange} className={inputClass} />
+                      </div>
+                      <div className="space-y-2">
+                        <FieldLabel htmlFor="stadt">Stadt *</FieldLabel>
+                        <Input id="stadt" name="stadt" placeholder="Musterstadt" value={form.stadt} onChange={handleChange} className={inputClass} />
+                      </div>
+                    </div>
 
-                {/* File upload */}
-                <div className="space-y-2">
-                  <FieldLabel htmlFor="lebenslauf">Lebenslauf</FieldLabel>
-                  <label
-                    htmlFor="lebenslauf"
-                    className="flex items-center gap-3 p-4 rounded-xl border border-dashed border-border bg-card/40 cursor-pointer hover:border-primary/40 hover:bg-card transition-colors"
-                  >
-                    <Upload size={18} className="text-primary" />
-                    <span className="text-sm text-muted-foreground">
-                      {form.lebenslauf ? form.lebenslauf.name : 'PDF oder DOCX hochladen'}
-                    </span>
-                    <input
-                      id="lebenslauf"
-                      type="file"
-                      accept=".pdf,.docx,.doc"
-                      className="hidden"
-                      onChange={handleFileChange}
-                    />
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
-                >
-                  {submitting ? (
-                    <>
-                      Wird gesendet…
-                      <Loader2 size={16} className="animate-spin" />
-                    </>
-                  ) : (
-                    <>
-                      Bewerbung absenden
-                      <Send size={16} />
-                    </>
-                  )}
-                </button>
+                    <div className="flex flex-wrap items-center gap-4">
+                      <button
+                        type="button"
+                        onClick={() => setStep(1)}
+                        className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-border text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                      >
+                        <ArrowLeft size={16} />
+                        Zurück
+                      </button>
+                      <button
+                        type="submit"
+                        disabled={submitting}
+                        className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
+                      >
+                        {submitting ? (
+                          <>
+                            Wird gesendet…
+                            <Loader2 size={16} className="animate-spin" />
+                          </>
+                        ) : (
+                          <>
+                            Bewerbung absenden
+                            <Send size={16} />
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </>
+                )}
               </form>
             </div>
 
