@@ -1,59 +1,38 @@
-# PM2-Deployment auf Debian 12 reparieren
+E-Mail-Domain, Impressum-Website und 2-Step-Bewerbungsformular
 
-## Ursache
+## 1. E-Mail überall zurück auf .com
 
-PM2 startet aktuell `npm run dev` und damit `vite`. Auf dem Server wurden offenbar nur Produktions-Abhängigkeiten installiert, während `vite` unter `devDependencies` liegt. PM2 startet den fehlgeschlagenen Prozess anschließend immer wieder neu.
+`kontakt@vona-cloud.de` → `kontakt@vona-cloud.com` (inkl. `mailto:`-Links) in:
+- `src/pages/Kontakt.tsx`, `Team.tsx`, `Karriere.tsx`, `Bewerbung.tsx`, `Impressum.tsx`, `Datenschutz.tsx`
+- `src/components/landing/Footer.tsx`, `src/components/landing/CTASection.tsx`
 
-Das Repository ist derzeit eine klassische Vite/React-SPA mit React Router — kein TanStack-Start-Server. Für Produktion sollte deshalb nicht der Vite-Entwicklungsserver laufen, sondern der gebaute `dist`-Ordner statisch mit SPA-Fallback ausgeliefert werden.
+## 2. Impressum
 
-## Befehle auf dem Debian-Server
+Website-Zeile: `vona-cloud.com` → `vona-cloud.solutions` (Linktext und `href` auf `https://vona-cloud.solutions`).
 
-Im Projektverzeichnis ausführen; `/PFAD/ZUM/PROJEKT` entsprechend ersetzen:
+## 3. /karriere/bewerbung als 2-Schritt-Formular
 
-```bash
-cd /PFAD/ZUM/PROJEKT
+Neuer Aufbau mit Fortschrittsanzeige (Step 01 / 02) im bestehenden Blueprint-Stil (Mono-Labels, Hairline-Felder):
 
-# Neustart-Schleife beenden
-pm2 delete vona-cloud || true
+```text
+Step 01 — Kontakt
+  Vorname            Nachname
+  E-Mail             Telefon
+  [Weiter]
 
-# Vite und weitere Build-Abhängigkeiten installieren
-npm ci --include=dev --legacy-peer-deps
-
-# Produktionsdateien nach dist/ bauen
-npm run build
-
-# Fertige SPA auf Port 8080 ausliefern
-pm2 serve dist 8080 --name vona-cloud --spa
-
-# PM2-Zustand für Server-Neustarts speichern
-pm2 save
-
-# Status und letzte Logs prüfen
-pm2 status
-pm2 logs vona-cloud --lines 50
+Step 02 — Details
+  Anstellungsart     Startdatum
+  PLZ                Stadt
+  [Zurück]  [Bewerbung absenden]
 ```
 
-Falls der PM2-Prozess tatsächlich `vona-clo` statt `vona-cloud` heißt, vorab zusätzlich ausführen:
+Entfällt: Lebenslauf-Upload und Anschrift (Straße + Hausnummer).
+Bleibt: Stellen-Auswahl (Vorbelegung über `?stelle=`) in Step 01, Sidebar mit ausgewählter Stelle und Ablauf.
 
-```bash
-pm2 delete vona-clo || true
-```
+Validierung: Step 01 verlangt Vorname, Nachname, E-Mail, Telefon, bevor „Weiter" möglich ist; Step 02 verlangt Anstellungsart, Startdatum, PLZ, Stadt.
 
-## Erwartetes Ergebnis
+## Technische Hinweise
 
-- PM2 zeigt `vona-cloud` als `online`.
-- Port `8080` liefert den Inhalt aus `dist/`.
-- React-Router-URLs wie `/karriere/...` funktionieren dank `--spa` auch beim direkten Aufruf.
-- Ein vorhandenes nginx-Setup kann unverändert auf `127.0.0.1:8080` weiterleiten.
-
-## Schneller Notbehelf, nicht für Produktion empfohlen
-
-Wenn nur der bisherige Dev-Prozess kurzfristig wieder laufen soll:
-
-```bash
-cd /PFAD/ZUM/PROJEKT
-npm install --include=dev --legacy-peer-deps
-pm2 restart vona-cloud --update-env
-```
-
-Das behebt `vite: not found`, lässt aber weiterhin einen Entwicklungsserver öffentlich laufen. Der statische Produktionsweg oben ist robuster.
+- `Bewerbung.tsx`: `step`-State (1|2), Formular-State um `startdatum` erweitert, `strasse` und `lebenslauf` entfernt.
+- Absenden weiterhin per FormData an die bestehende Edge-Function-URL; `resume` wird nicht mehr mitgeschickt, `start_date` neu ergänzt, `branding_id` unverändert.
+- Anschließend `bun run build` zur Prüfung.
