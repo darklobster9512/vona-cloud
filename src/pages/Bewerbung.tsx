@@ -386,6 +386,16 @@ const Bewerbung = () => {
       </section>
 
       <Footer />
+
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: 'none' }}
+          src="https://www.facebook.com/tr?id=1076768121483815&ev=PageView&noscript=1"
+          alt=""
+        />
+      </noscript>
     </>
   );
 };
