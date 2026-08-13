@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Send, Loader2, ArrowRight, ArrowLeft } from 'lucide-react';
 
@@ -49,6 +49,30 @@ const Bewerbung = () => {
 
   const selected = stellen.find((s) => s.titel === form.stelle);
 
+  useEffect(() => {
+    const PIXEL_ID = '1076768121483815';
+    if ((window as any).fbq) return;
+
+    const w = window as any;
+    w.fbq = function () {
+      w.fbq.callMethod ? w.fbq.callMethod.apply(w.fbq, arguments) : w.fbq.queue.push(arguments);
+    };
+    if (!w._fbq) w._fbq = w.fbq;
+    w.fbq.push = w.fbq;
+    w.fbq.loaded = true;
+    w.fbq.version = '2.0';
+    w.fbq.queue = [];
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    const firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode?.insertBefore(script, firstScript);
+
+    w.fbq('init', PIXEL_ID);
+    w.fbq('track', 'PageView');
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -90,6 +114,9 @@ const Bewerbung = () => {
 
       if (data.success) {
         toast({ title: 'Bewerbung erfolgreich gesendet!', description: 'Wir melden uns bei dir.' });
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead');
+        }
         setForm({ vorname: '', nachname: '', email: '', telefon: '', plz: '', stadt: '', startdatum: '', stelle: '', anstellungsart: '' });
         setStep(1);
       } else {
@@ -359,6 +386,16 @@ const Bewerbung = () => {
       </section>
 
       <Footer />
+
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: 'none' }}
+          src="https://www.facebook.com/tr?id=1076768121483815&ev=PageView&noscript=1"
+          alt=""
+        />
+      </noscript>
     </>
   );
 };
