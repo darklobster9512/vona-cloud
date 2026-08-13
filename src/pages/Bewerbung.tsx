@@ -105,7 +105,7 @@ const Bewerbung = () => {
   const steps = [
     { title: 'Formular senden', text: 'Kontaktdaten und Rahmenbedingungen in zwei Schritten.' },
     { title: 'Rückmeldung', text: 'Wir sichten deine Bewerbung und melden uns per E-Mail.' },
-    { title: 'Kennenlernen', text: 'Kurzes Gespräch per Video — unkompliziert und ehrlich.' },
+    { title: 'Kennenlernen', text: 'Kurzes Gespräch per Telefon — unkompliziert und ehrlich.' },
   ];
 
   const stepMeta = [
