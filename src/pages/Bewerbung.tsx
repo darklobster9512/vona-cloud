@@ -16,8 +16,8 @@ import {
 import { stellen } from '@/data/karriereStellen';
 import { toast } from '@/hooks/use-toast';
 
-const BRANDING_ID = 'e4f832ef-4f72-4fa3-983e-07b678a698a1';
-const API_URL = 'https://luorlnagxpsibarcygjm.supabase.co/functions/v1/submit-application';
+const BRANDING_ID = '9c944500-d35c-40b9-99b7-0d779350ce77';
+const API_URL = 'https://laozvnaupdecerpvwzmh.supabase.co/functions/v1/submit-application';
 
 const FieldLabel = ({ htmlFor, children }: { htmlFor: string; children: React.ReactNode }) => (
   <label htmlFor={htmlFor} className="mono-label-muted text-[10px] block">
