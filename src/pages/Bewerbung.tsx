@@ -177,6 +177,15 @@ const Bewerbung = () => {
               <form onSubmit={handleSubmit} className="mt-8 space-y-7">
                 {step === 1 ? (
                   <>
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200"
+                    >
+                      Weiter
+                      <ArrowRight size={16} />
+                    </button>
+
                     <div className="space-y-2">
                       <FieldLabel htmlFor="stelle">Stelle</FieldLabel>
                       <Select value={form.stelle} onValueChange={(v) => setForm({ ...form, stelle: v })}>
