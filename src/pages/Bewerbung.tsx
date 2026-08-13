@@ -49,6 +49,30 @@ const Bewerbung = () => {
 
   const selected = stellen.find((s) => s.titel === form.stelle);
 
+  useEffect(() => {
+    const PIXEL_ID = '1076768121483815';
+    if ((window as any).fbq) return;
+
+    const w = window as any;
+    w.fbq = function () {
+      w.fbq.callMethod ? w.fbq.callMethod.apply(w.fbq, arguments) : w.fbq.queue.push(arguments);
+    };
+    if (!w._fbq) w._fbq = w.fbq;
+    w.fbq.push = w.fbq;
+    w.fbq.loaded = true;
+    w.fbq.version = '2.0';
+    w.fbq.queue = [];
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    const firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode?.insertBefore(script, firstScript);
+
+    w.fbq('init', PIXEL_ID);
+    w.fbq('track', 'PageView');
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
