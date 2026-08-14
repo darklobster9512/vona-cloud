@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import logoVona from '@/assets/vonalogo.png';
+import logoVoeller from '@/assets/voeller-logo.png';
 
 interface LogoProps {
   className?: string;
@@ -13,13 +13,13 @@ const heights = {
   lg: 'h-10',
 };
 
-/** Wortmarke "Völler IT" – Original-PNG, Seitenverhaeltnis fix (367x131). */
+/** Wortmarke "Völler IT" – schwarzes Logo, Seitenverhaeltnis fix (1024x512). */
 const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
   <img
-    src={logoVona}
+    src={logoVoeller}
     alt="Völler IT"
-    width={367}
-    height={131}
+    width={1024}
+    height={512}
     loading={eager ? 'eager' : 'lazy'}
     decoding="async"
     className={cn(heights[size], 'w-auto shrink-0 object-contain', className)}
