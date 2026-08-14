@@ -43,7 +43,7 @@ const Footer = () => {
         <div className="flex flex-col items-start justify-between gap-6 border-b border-white/10 py-8 lg:flex-row lg:items-center lg:gap-10">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
             <Link to="/" className="inline-flex">
-              <Logo size="md" className="brightness-0 invert transition-opacity duration-200 hover:opacity-80" />
+              <Logo size="lg" className="brightness-0 invert transition-opacity duration-200 hover:opacity-80" />
             </Link>
             <p className="max-w-xs text-xs leading-relaxed text-white/60">
               Entwicklung, Betrieb und Vertrieb von Softwareprodukten einschließlich Beratung.
