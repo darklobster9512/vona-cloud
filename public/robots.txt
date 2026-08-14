@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://efficient-flow.solutions/sitemap.xml
+Sitemap: https://voeller-it.solutions/sitemap.xml

@@ -11,7 +11,7 @@ const ArchitectureGraphic = () => (
       <div className="absolute inset-0 rounded-[2rem] bg-blueprint-fine opacity-70 pointer-events-none" />
 
       <div className="relative flex items-center justify-between mb-6">
-        <span className="mono-label-muted">vona · systemlandschaft</span>
+        <span className="mono-label-muted">völler it · systemlandschaft</span>
         <span className="flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 animate-ring-expand" />
