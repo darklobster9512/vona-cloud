@@ -8,9 +8,9 @@ interface LogoProps {
 }
 
 const heights = {
-  sm: 'h-6',
-  md: 'h-8',
-  lg: 'h-10',
+  sm: 'h-8',
+  md: 'h-11',
+  lg: 'h-14',
 };
 
 /** Wortmarke "Völler IT" – schwarzes Logo, Seitenverhaeltnis fix (1024x512). */
