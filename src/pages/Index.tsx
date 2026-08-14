@@ -13,7 +13,7 @@ import Footer from '@/components/landing/Footer';
 
 const Index = () => {
   useEffect(() => {
-    document.title = 'VONA Cloud Solutions – Software entwickeln, betreiben, beraten';
+    document.title = 'Völler IT Solutions – Software entwickeln, betreiben, beraten';
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

@@ -38,7 +38,7 @@ const CTASection = () => {
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a
-                  href="mailto:kontakt@vona-cloud.com"
+                  href="mailto:kontakt@voeller-it.com"
                   className="inline-flex h-14 items-center justify-center gap-2.5 rounded-full border border-white/25 px-9 text-base font-semibold text-white transition-colors hover:bg-white/10"
                 >
                   <Mail size={18} />
@@ -52,8 +52,8 @@ const CTASection = () => {
               {[
                 { icon: Clock, k: 'Antwortzeit', v: 'meist am selben Werktag' },
                 { icon: Phone, k: 'Telefon', v: '06131 8888371' },
-                { icon: MapPin, k: 'Standort', v: 'Rheingaustr. 53, Wiesbaden' },
-                { icon: Mail, k: 'E-Mail', v: 'kontakt@vona-cloud.com' },
+                { icon: MapPin, k: 'Standort', v: 'Sandweg 44, Marburg' },
+                { icon: Mail, k: 'E-Mail', v: 'kontakt@voeller-it.com' },
               ].map((item) => {
                 const Icon = item.icon;
                 return (

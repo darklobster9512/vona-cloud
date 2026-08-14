@@ -19,18 +19,18 @@ const Impressum = () => {
           <h2 className="text-2xl font-extrabold tracking-tight mb-6">Angaben gemäß § 5 TMG</h2>
 
           <p>
-            VONA Cloud Solutions GmbH<br />
-            Rheingaustr. 53<br />
-            65201 Wiesbaden
+            Völler IT Solutions GmbH<br />
+            Sandweg 44<br />
+            35037 Marburg
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Vertreten durch</h3>
-          <p>Geschäftsführer: Alexander Seitz</p>
+          <p>Geschäftsführer: Klaus Völler</p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Registereintrag</h3>
           <p>
-            Registergericht: Amtsgericht Wiesbaden<br />
-            Registernummer: HRB 32932
+            Registergericht: Amtsgericht Marburg<br />
+            Registernummer: HRB 6375
           </p>
 
           <h3 className="text-lg font-bold mt-8 mb-3">Unternehmensgegenstand</h3>
@@ -47,8 +47,8 @@ const Impressum = () => {
           <h3 className="text-lg font-bold mt-8 mb-3">Kontakt</h3>
           <p>
             E-Mail:{' '}
-            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
-              kontakt@vona-cloud.com
+            <a href="mailto:kontakt@voeller-it.com" className="text-primary hover:underline">
+              kontakt@voeller-it.com
             </a>
             <br />
             Telefon:{' '}
@@ -57,8 +57,8 @@ const Impressum = () => {
             </a>
             <br />
             Website:{' '}
-            <a href="https://vona-cloud.solutions" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              vona-cloud.solutions
+            <a href="https://voeller-it.solutions" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              voeller-it.solutions
             </a>
           </p>
 

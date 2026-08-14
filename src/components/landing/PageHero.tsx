@@ -46,7 +46,7 @@ const PageHero = ({ title, highlight, subtitle, breadcrumb }: PageHeroProps) => 
 
         <div className="hero-animate hero-animate-3 mt-12 flex items-center gap-3">
           <span className="h-px flex-1 bg-border" />
-          <span className="mono-label-muted">VONA Cloud Solutions</span>
+          <span className="mono-label-muted">Völler IT Solutions</span>
         </div>
       </div>
     </section>

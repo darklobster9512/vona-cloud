@@ -11,7 +11,7 @@ const ArchitectureGraphic = () => (
       <div className="absolute inset-0 rounded-[2rem] bg-blueprint-fine opacity-70 pointer-events-none" />
 
       <div className="relative flex items-center justify-between mb-6">
-        <span className="mono-label-muted">vona · systemlandschaft</span>
+        <span className="mono-label-muted">völler it · systemlandschaft</span>
         <span className="flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 animate-ring-expand" />
@@ -117,7 +117,7 @@ const HeroSection = () => {
         <div>
           <div className="hero-animate hero-animate-1 mb-8 flex items-center gap-3">
             <span className="h-px w-10 bg-primary/50" />
-            <span className="mono-label">Softwarehaus · Wiesbaden</span>
+            <span className="mono-label">Softwarehaus · Marburg</span>
           </div>
 
           <h1 className="hero-animate hero-animate-2 text-[2.5rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]">

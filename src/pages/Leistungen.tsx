@@ -88,7 +88,7 @@ const Leistungen = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
-    document.title = 'Leistungen | VONA Cloud Solutions';
+    document.title = 'Leistungen | Völler IT Solutions';
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('scroll-visible')),
       { threshold: 0.1 }
