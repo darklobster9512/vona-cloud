@@ -13,11 +13,11 @@ const heights = {
   lg: 'h-10',
 };
 
-/** Wortmarke "VONA" – Original-PNG, Seitenverhaeltnis fix (367x131). */
+/** Wortmarke "Völler IT" – Original-PNG, Seitenverhaeltnis fix (367x131). */
 const Logo = ({ className, size = 'lg', eager = false }: LogoProps) => (
   <img
     src={logoVona}
-    alt="VONA Cloud"
+    alt="Völler IT"
     width={367}
     height={131}
     loading={eager ? 'eager' : 'lazy'}

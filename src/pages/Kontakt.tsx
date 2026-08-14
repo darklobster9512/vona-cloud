@@ -12,8 +12,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'E-Mail',
-    value: 'kontakt@vona-cloud.com',
-    href: 'mailto:kontakt@vona-cloud.com',
+    value: 'kontakt@voeller-it.com',
+    href: 'mailto:kontakt@voeller-it.com',
   },
   {
     icon: Phone,
@@ -24,13 +24,13 @@ const contactInfo = [
   {
     icon: Building2,
     label: 'Unternehmen',
-    value: 'VONA Cloud Solutions GmbH',
+    value: 'Völler IT Solutions GmbH',
     href: undefined,
   },
   {
     icon: MapPin,
     label: 'Adresse',
-    value: 'Rheingaustr. 53, 65201 Wiesbaden',
+    value: 'Sandweg 44, 35037 Marburg',
     href: undefined,
   },
   {

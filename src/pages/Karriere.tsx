@@ -20,8 +20,8 @@ const Karriere = () => {
     <>
       <PageHero
         title="Karriere bei"
-        highlight="VONA"
-        subtitle="Arbeite an Software, die täglich im Einsatz ist — in Wiesbaden oder remote."
+        highlight="Völler IT"
+        subtitle="Arbeite an Software, die täglich im Einsatz ist — in Marburg oder remote."
         breadcrumb={[
           { label: 'Home', href: '/' },
           { label: 'Karriere' },
@@ -43,7 +43,7 @@ const Karriere = () => {
             <p className="text-sm text-muted-foreground">
               Nichts Passendes?{' '}
               <a
-                href="mailto:kontakt@vona-cloud.com"
+                href="mailto:kontakt@voeller-it.com"
                 className="font-medium text-primary hover:underline underline-offset-4"
               >
                 Initiativbewerbung senden
@@ -111,10 +111,10 @@ const Karriere = () => {
                 </p>
               </div>
               <a
-                href="mailto:kontakt@vona-cloud.com"
+                href="mailto:kontakt@voeller-it.com"
                 className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-foreground font-semibold text-sm hover:scale-[1.02] transition-transform duration-200"
               >
-                kontakt@vona-cloud.com
+                kontakt@voeller-it.com
                 <ArrowUpRight size={16} />
               </a>
             </div>

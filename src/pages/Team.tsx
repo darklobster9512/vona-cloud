@@ -20,7 +20,7 @@ import hagenauer from '@/assets/team/hagenauer.png';
 
 const teamMembers = [
   {
-    name: 'Alexander Seitz',
+    name: 'Klaus Völler',
     role: 'Geschäftsführer',
     description:
       'Verantwortet Strategie, Produktportfolio und Vertrieb — und bleibt dabei nah an Kunden und Technik.',
@@ -108,7 +108,7 @@ const Team = () => {
       <PageHero
         title="Unser"
         highlight="Team"
-        subtitle="Die Menschen hinter VONA Cloud Solutions — Entwicklung, Betrieb, Vertrieb und Beratung an einem Ort."
+        subtitle="Die Menschen hinter Völler IT Solutions — Entwicklung, Betrieb, Vertrieb und Beratung an einem Ort."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Team' }]}
       />
 
@@ -118,7 +118,7 @@ const Team = () => {
           {/* Section marker */}
           <div className="flex items-end justify-between gap-6 border-b border-border pb-4">
             <span className="mono-label">Team / {teamMembers.length} Personen</span>
-            <span className="mono-label-muted hidden sm:block">Wiesbaden</span>
+            <span className="mono-label-muted hidden sm:block">Marburg</span>
           </div>
 
           {/* Lead / Geschäftsführung */}
@@ -142,7 +142,7 @@ const Team = () => {
                 <p className="mt-2 text-sm text-white/60 max-w-xl leading-relaxed">{lead.description}</p>
               </div>
               <a
-                href="mailto:kontakt@vona-cloud.com"
+                href="mailto:kontakt@voeller-it.com"
                 className="sm:ml-auto inline-flex items-center gap-2 shrink-0 rounded-full border border-white/20 px-4 py-2 text-xs font-medium text-white/80 hover:text-white hover:border-primary/60 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />

@@ -82,7 +82,7 @@ const Methodik = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
-    document.title = 'Methodik | VONA Cloud Solutions';
+    document.title = 'Methodik | Völler IT Solutions';
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('scroll-visible')),
       { threshold: 0.1 }

@@ -16,7 +16,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'onlineprozess-tester',
     titel: 'Mitarbeiter (m/w/d) für Onlineprozess-Tests',
-    standort: 'Wiesbaden',
+    standort: 'Marburg',
     modell: 'Remote / Minijob / Teilzeit',
     arbeitszeit: 'Flexibel (ca. 5–30 Std./Woche)',
     stundenlohn: '29 €',
@@ -47,7 +47,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'senior-software-engineer',
     titel: 'Mitarbeiter (m/w/d) für Softwareentwicklung',
-    standort: 'Wiesbaden',
+    standort: 'Marburg',
     modell: 'Remote',
     kurzbeschreibung: 'Entwickle skalierbare Full-Stack-Lösungen mit React und Node.js für unsere Kunden.',
     beschreibung: 'Als Senior Software Engineer gestaltest du die technische Architektur unserer Kundenprojekte und entwickelst performante Web-Applikationen von der Konzeption bis zum Go-Live. Du arbeitest eng mit unserem Consulting-Team zusammen, um maßgeschneiderte Softwarelösungen zu realisieren.',
@@ -76,7 +76,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'ux-ui-designer',
     titel: 'Mitarbeiter (m/w/d) für UX/UI Design',
-    standort: 'Wiesbaden',
+    standort: 'Marburg',
     modell: 'Remote',
     kurzbeschreibung: 'Gestalte intuitive Benutzeroberflächen und entwickle nutzerzentrierte Designkonzepte.',
     beschreibung: 'Als UX/UI Designer:in verantwortest du das visuelle und interaktive Erlebnis unserer Softwareprodukte. Du führst Nutzerforschung durch, erstellst Wireframes und High-Fidelity-Prototypen und arbeitest eng mit dem Entwicklungsteam zusammen.',
@@ -105,7 +105,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'devops-engineer',
     titel: 'Mitarbeiter (m/w/d) für Betrieb & Infrastruktur',
-    standort: 'Wiesbaden',
+    standort: 'Marburg',
     modell: 'Remote',
     kurzbeschreibung: 'Sorge dafür, dass die Software unserer Kunden zuverlässig läuft, aktuell bleibt und sicher betrieben wird.',
     beschreibung: 'In dieser Rolle verantwortest du den technischen Betrieb unserer Anwendungen: Du automatisierst Auslieferungen, überwachst Systeme, spielst Updates ein und sorgst für geprüfte Sicherungen — damit unsere Kunden sich auf ihre Arbeit konzentrieren können.',
@@ -134,7 +134,7 @@ export const stellen: Stelle[] = [
   {
     slug: 'werkstudent-software',
     titel: 'Werkstudent (m/w/d) im Bereich Softwareentwicklung',
-    standort: 'Wiesbaden',
+    standort: 'Marburg',
     modell: 'Hybrid',
     kurzbeschreibung: 'Unterstütze unser Team in Kundenprojekten und sammle Praxiserfahrung in Entwicklung und Betrieb.',
     beschreibung: 'Als Werkstudent:in arbeitest du an echten Kundenprojekten mit: du hilfst bei der Entwicklung von Web-Anwendungen, bei Tests und bei der Dokumentation. Ideal für den Berufseinstieg in die Softwareentwicklung.',
@@ -158,7 +158,7 @@ export const stellen: Stelle[] = [
       'Praktische Erfahrung in echten Kundenprojekten',
       'Mentoring durch erfahrene Entwickler:innen',
       'Übernahmemöglichkeit nach dem Studium',
-      'Modernes Büro in Wiesbaden oder Remote-Arbeit',
+      'Modernes Büro in Marburg oder Remote-Arbeit',
     ],
   },
 

@@ -18,12 +18,12 @@ const Datenschutz = () => {
 
           <h2 className="text-2xl font-extrabold tracking-tight mb-6">1. Verantwortlicher</h2>
           <p>
-            VONA Cloud Solutions GmbH<br />
-            Rheingaustr. 53<br />
-            65201 Wiesbaden<br />
+            Völler IT Solutions GmbH<br />
+            Sandweg 44<br />
+            35037 Marburg<br />
             E-Mail:{' '}
-            <a href="mailto:kontakt@vona-cloud.com" className="text-primary hover:underline">
-              kontakt@vona-cloud.com
+            <a href="mailto:kontakt@voeller-it.com" className="text-primary hover:underline">
+              kontakt@voeller-it.com
             </a>
             <br />
             Telefon:{' '}
@@ -31,7 +31,7 @@ const Datenschutz = () => {
               06131 8888371
             </a>
             <br />
-            Geschäftsführer: Alexander Seitz
+            Geschäftsführer: Klaus Völler
 
           </p>
 

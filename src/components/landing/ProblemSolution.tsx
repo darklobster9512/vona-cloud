@@ -58,7 +58,7 @@ const ProblemSolution = () => {
 
           {/* After */}
           <div className={`scroll-hidden delay-2 ${isVisible ? 'scroll-visible' : ''} md:pl-14`}>
-            <p className="mono-label mb-6">Mit VONA</p>
+            <p className="mono-label mb-6">Mit Völler IT</p>
             <ul className="space-y-3">
               {after.map((item) => (
                 <li

@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://efficient-flow.solutions/</loc>
+    <loc>https://voeller-it.solutions/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/leistungen</loc>
+    <loc>https://voeller-it.solutions/leistungen</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/software</loc>
+    <loc>https://voeller-it.solutions/software</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/methodik</loc>
+    <loc>https://voeller-it.solutions/methodik</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/team</loc>
+    <loc>https://voeller-it.solutions/team</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/kontakt</loc>
+    <loc>https://voeller-it.solutions/kontakt</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/karriere</loc>
+    <loc>https://voeller-it.solutions/karriere</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/impressum</loc>
+    <loc>https://voeller-it.solutions/impressum</loc>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://efficient-flow.solutions/datenschutz</loc>
+    <loc>https://voeller-it.solutions/datenschutz</loc>
     <priority>0.3</priority>
   </url>
 </urlset>

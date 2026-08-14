@@ -51,10 +51,10 @@ const Footer = () => {
           </div>
 
           <a
-            href="mailto:kontakt@vona-cloud.com"
+            href="mailto:kontakt@voeller-it.com"
             className="group flex items-center gap-2 text-lg font-semibold tracking-tight text-white transition-colors hover:text-primary"
           >
-            kontakt@vona-cloud.com
+            kontakt@voeller-it.com
             <ArrowUpRight
               size={16}
               className="shrink-0 text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
@@ -93,16 +93,16 @@ const Footer = () => {
         <div className="relative py-5">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <p className="text-[11px] text-white/40">
-              © {new Date().getFullYear()} VONA Cloud Solutions GmbH. Alle Rechte vorbehalten.
+              © {new Date().getFullYear()} Völler IT Solutions GmbH. Alle Rechte vorbehalten.
             </p>
             <div className="flex flex-col flex-wrap items-start gap-x-6 gap-y-2 text-[11px] text-white/50 sm:flex-row sm:items-center">
               <span className="flex items-center gap-1.5">
                 <Building2 className="h-3.5 w-3.5 text-primary" />
-                VONA Cloud Solutions GmbH
+                Völler IT Solutions GmbH
               </span>
               <span className="flex items-center gap-1.5">
                 <MapPin className="h-3.5 w-3.5 text-primary" />
-                Rheingaustr. 53, 65201 Wiesbaden
+                Sandweg 44, 35037 Marburg
               </span>
               <a href="tel:+4961318888371" className="group flex items-center gap-1.5 transition-colors hover:text-white">
                 <Phone className="h-3.5 w-3.5 text-primary" />
