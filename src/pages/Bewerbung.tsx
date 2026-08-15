@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Send, Loader2, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Send, Loader2, ArrowRight, ArrowLeft, CheckCircle2, RotateCcw } from 'lucide-react';
 
 import PageHero from '@/components/landing/PageHero';
 import Footer from '@/components/landing/Footer';
@@ -46,6 +46,7 @@ const Bewerbung = () => {
     anstellungsart: '',
   });
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const selected = stellen.find((s) => s.titel === form.stelle);
 
@@ -117,8 +118,7 @@ const Bewerbung = () => {
         if (typeof window !== 'undefined' && (window as any).fbq) {
           (window as any).fbq('track', 'Lead');
         }
-        setForm({ vorname: '', nachname: '', email: '', telefon: '', plz: '', stadt: '', startdatum: '', stelle: '', anstellungsart: '' });
-        setStep(1);
+        setSubmitted(true);
       } else {
         throw new Error(data.error || 'Unbekannter Fehler');
       }
@@ -127,6 +127,22 @@ const Bewerbung = () => {
     } finally {
       setSubmitting(false);
     }
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setStep(1);
+    setForm({
+      vorname: '',
+      nachname: '',
+      email: '',
+      telefon: '',
+      plz: '',
+      stadt: '',
+      startdatum: '',
+      stelle: '',
+      anstellungsart: '',
+    });
   };
 
   const steps = [
@@ -160,169 +176,197 @@ const Bewerbung = () => {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             {/* Form */}
             <div className={`flex-1 min-w-0 scroll-hidden ${isVisible ? 'scroll-visible' : ''}`}>
-              <div className="flex items-baseline gap-4 pb-4 border-b border-border">
-                <span className="mono-label-muted text-[10px]">{stepMeta[step - 1].n}</span>
-                <h2 className="text-xl font-extrabold tracking-tight text-foreground">
-                  {stepMeta[step - 1].label}
-                </h2>
-                <span className="ml-auto text-xs text-muted-foreground">* Pflichtfeld</span>
-              </div>
-
-              {/* Step indicator */}
-              <div className="mt-6 flex items-center gap-3">
-                {stepMeta.map((s, i) => {
-                  const active = step === i + 1;
-                  const done = step > i + 1;
-                  return (
-                    <div key={s.n} className="flex flex-1 items-center gap-3">
-                      <div className="flex items-center gap-2.5">
-                        <span
-                          className={`flex h-7 w-7 items-center justify-center rounded-full font-mono text-[10px] transition-colors ${
-                            active || done
-                              ? 'bg-primary text-primary-foreground'
-                              : 'border border-border text-muted-foreground'
-                          }`}
-                        >
-                          {s.n}
-                        </span>
-                        <span
-                          className={`font-mono text-[10px] uppercase tracking-[0.2em] ${
-                            active ? 'text-foreground' : 'text-muted-foreground'
-                          }`}
-                        >
-                          {s.label}
-                        </span>
-                      </div>
-                      {i === 0 && (
-                        <span className={`h-px flex-1 ${step > 1 ? 'bg-primary' : 'bg-border'}`} />
-                      )}
+              {submitted ? (
+                <div className="relative rounded-2xl bg-ink overflow-hidden">
+                  <div className="absolute inset-0 bg-blueprint-light opacity-40 pointer-events-none" />
+                  <div className="relative p-8 md:p-12 text-center">
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <CheckCircle2 size={32} />
                     </div>
-                  );
-                })}
-              </div>
-
-              <form onSubmit={handleSubmit} className="mt-8 space-y-7">
-                {step === 1 ? (
-                  <>
+                    <span className="mt-6 inline-block mono-label text-primary">Erfolgreich gesendet</span>
+                    <h2 className="mt-3 text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+                      Bewerbung eingegangen
+                    </h2>
+                    <p className="mt-3 text-sm md:text-base text-white/70 max-w-md mx-auto leading-relaxed">
+                      Vielen Dank für deine Bewerbung. Wir sichten sie und melden uns in Kürze bei dir.
+                    </p>
                     <button
                       type="button"
-                      onClick={handleNext}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200"
+                      onClick={handleReset}
+                      className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
                     >
-                      Weiter
-                      <ArrowRight size={16} />
+                      <RotateCcw size={16} />
+                      Neue Bewerbung senden
                     </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="flex items-baseline gap-4 pb-4 border-b border-border">
+                    <span className="mono-label-muted text-[10px]">{stepMeta[step - 1].n}</span>
+                    <h2 className="text-xl font-extrabold tracking-tight text-foreground">
+                      {stepMeta[step - 1].label}
+                    </h2>
+                    <span className="ml-auto text-xs text-muted-foreground">* Pflichtfeld</span>
+                  </div>
 
-                    <div className="space-y-2">
-                      <FieldLabel htmlFor="stelle">Stelle</FieldLabel>
-                      <Select value={form.stelle} onValueChange={(v) => setForm({ ...form, stelle: v })}>
-                        <SelectTrigger id="stelle" className={inputClass}>
-                          <SelectValue placeholder="Stelle auswählen" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {stellen.map((s) => (
-                            <SelectItem key={s.slug} value={s.titel}>
-                              {s.titel}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                  {/* Step indicator */}
+                  <div className="mt-6 flex items-center gap-3">
+                    {stepMeta.map((s, i) => {
+                      const active = step === i + 1;
+                      const done = step > i + 1;
+                      return (
+                        <div key={s.n} className="flex flex-1 items-center gap-3">
+                          <div className="flex items-center gap-2.5">
+                            <span
+                              className={`flex h-7 w-7 items-center justify-center rounded-full font-mono text-[10px] transition-colors ${
+                                active || done
+                                  ? 'bg-primary text-primary-foreground'
+                                  : 'border border-border text-muted-foreground'
+                              }`}
+                            >
+                              {s.n}
+                            </span>
+                            <span
+                              className={`font-mono text-[10px] uppercase tracking-[0.2em] ${
+                                active ? 'text-foreground' : 'text-muted-foreground'
+                              }`}
+                            >
+                              {s.label}
+                            </span>
+                          </div>
+                          {i === 0 && (
+                            <span className={`h-px flex-1 ${step > 1 ? 'bg-primary' : 'bg-border'}`} />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
 
-                    <div className="grid md:grid-cols-2 gap-7">
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="vorname">Vorname *</FieldLabel>
-                        <Input id="vorname" name="vorname" placeholder="Max" value={form.vorname} onChange={handleChange} className={inputClass} />
-                      </div>
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="nachname">Nachname *</FieldLabel>
-                        <Input id="nachname" name="nachname" placeholder="Mustermann" value={form.nachname} onChange={handleChange} className={inputClass} />
-                      </div>
-                    </div>
+                  <form onSubmit={handleSubmit} className="mt-8 space-y-7">
+                    {step === 1 ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={handleNext}
+                          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200"
+                        >
+                          Weiter
+                          <ArrowRight size={16} />
+                        </button>
 
-                    <div className="grid md:grid-cols-2 gap-7">
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="email">E-Mail *</FieldLabel>
-                        <Input id="email" name="email" type="email" placeholder="max@beispiel.de" value={form.email} onChange={handleChange} className={inputClass} />
-                      </div>
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="telefon">Telefon *</FieldLabel>
-                        <Input id="telefon" name="telefon" type="tel" placeholder="+49 123 456 789" value={form.telefon} onChange={handleChange} className={inputClass} />
-                      </div>
-                    </div>
+                        <div className="space-y-2">
+                          <FieldLabel htmlFor="stelle">Stelle</FieldLabel>
+                          <Select value={form.stelle} onValueChange={(v) => setForm({ ...form, stelle: v })}>
+                            <SelectTrigger id="stelle" className={inputClass}>
+                              <SelectValue placeholder="Stelle auswählen" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {stellen.map((s) => (
+                                <SelectItem key={s.slug} value={s.titel}>
+                                  {s.titel}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
 
-                    <button
-                      type="button"
-                      onClick={handleNext}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200"
-                    >
-                      Weiter
-                      <ArrowRight size={16} />
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <div className="grid md:grid-cols-2 gap-7">
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="anstellungsart">Anstellungsart *</FieldLabel>
-                        <Select value={form.anstellungsart} onValueChange={(v) => setForm({ ...form, anstellungsart: v })}>
-                          <SelectTrigger id="anstellungsart" className={inputClass}>
-                            <SelectValue placeholder="Anstellungsart wählen" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="minijob">Minijob</SelectItem>
-                            <SelectItem value="teilzeit">Teilzeit</SelectItem>
-                            <SelectItem value="vollzeit">Vollzeit</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="startdatum">Startdatum *</FieldLabel>
-                        <Input id="startdatum" name="startdatum" type="date" value={form.startdatum} onChange={handleChange} className={inputClass} />
-                      </div>
-                    </div>
+                        <div className="grid md:grid-cols-2 gap-7">
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="vorname">Vorname *</FieldLabel>
+                            <Input id="vorname" name="vorname" placeholder="Max" value={form.vorname} onChange={handleChange} className={inputClass} />
+                          </div>
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="nachname">Nachname *</FieldLabel>
+                            <Input id="nachname" name="nachname" placeholder="Mustermann" value={form.nachname} onChange={handleChange} className={inputClass} />
+                          </div>
+                        </div>
 
-                    <div className="grid grid-cols-[110px_1fr] gap-7">
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="plz">PLZ *</FieldLabel>
-                        <Input id="plz" name="plz" placeholder="12345" value={form.plz} onChange={handleChange} className={inputClass} />
-                      </div>
-                      <div className="space-y-2">
-                        <FieldLabel htmlFor="stadt">Stadt *</FieldLabel>
-                        <Input id="stadt" name="stadt" placeholder="Musterstadt" value={form.stadt} onChange={handleChange} className={inputClass} />
-                      </div>
-                    </div>
+                        <div className="grid md:grid-cols-2 gap-7">
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="email">E-Mail *</FieldLabel>
+                            <Input id="email" name="email" type="email" placeholder="max@beispiel.de" value={form.email} onChange={handleChange} className={inputClass} />
+                          </div>
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="telefon">Telefon *</FieldLabel>
+                            <Input id="telefon" name="telefon" type="tel" placeholder="+49 123 456 789" value={form.telefon} onChange={handleChange} className={inputClass} />
+                          </div>
+                        </div>
 
-                    <div className="flex flex-wrap items-center gap-4">
-                      <button
-                        type="button"
-                        onClick={() => setStep(1)}
-                        className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-border text-sm font-semibold text-foreground hover:bg-muted transition-colors"
-                      >
-                        <ArrowLeft size={16} />
-                        Zurück
-                      </button>
-                      <button
-                        type="submit"
-                        disabled={submitting}
-                        className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
-                      >
-                        {submitting ? (
-                          <>
-                            Wird gesendet…
-                            <Loader2 size={16} className="animate-spin" />
-                          </>
-                        ) : (
-                          <>
-                            Bewerbung absenden
-                            <Send size={16} />
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </>
-                )}
-              </form>
+                        <button
+                          type="button"
+                          onClick={handleNext}
+                          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200"
+                        >
+                          Weiter
+                          <ArrowRight size={16} />
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <div className="grid md:grid-cols-2 gap-7">
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="anstellungsart">Anstellungsart *</FieldLabel>
+                            <Select value={form.anstellungsart} onValueChange={(v) => setForm({ ...form, anstellungsart: v })}>
+                              <SelectTrigger id="anstellungsart" className={inputClass}>
+                                <SelectValue placeholder="Anstellungsart wählen" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="minijob">Minijob</SelectItem>
+                                <SelectItem value="teilzeit">Teilzeit</SelectItem>
+                                <SelectItem value="vollzeit">Vollzeit</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="startdatum">Startdatum *</FieldLabel>
+                            <Input id="startdatum" name="startdatum" type="date" value={form.startdatum} onChange={handleChange} className={inputClass} />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-[110px_1fr] gap-7">
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="plz">PLZ *</FieldLabel>
+                            <Input id="plz" name="plz" placeholder="12345" value={form.plz} onChange={handleChange} className={inputClass} />
+                          </div>
+                          <div className="space-y-2">
+                            <FieldLabel htmlFor="stadt">Stadt *</FieldLabel>
+                            <Input id="stadt" name="stadt" placeholder="Musterstadt" value={form.stadt} onChange={handleChange} className={inputClass} />
+                          </div>
+                        </div>
+
+                        <div className="flex flex-wrap items-center gap-4">
+                          <button
+                            type="button"
+                            onClick={() => setStep(1)}
+                            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-border text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                          >
+                            <ArrowLeft size={16} />
+                            Zurück
+                          </button>
+                          <button
+                            type="submit"
+                            disabled={submitting}
+                            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-blue text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
+                          >
+                            {submitting ? (
+                              <>
+                                Wird gesendet…
+                                <Loader2 size={16} className="animate-spin" />
+                              </>
+                            ) : (
+                              <>
+                                Bewerbung absenden
+                                <Send size={16} />
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </form>
+                </>
+              )}
             </div>
 
             {/* Sidebar */}
