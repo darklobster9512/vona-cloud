@@ -46,7 +46,7 @@ const Bewerbung = () => {
     anstellungsart: '',
   });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(true);
 
   const selected = stellen.find((s) => s.titel === form.stelle);
 
