@@ -118,8 +118,7 @@ const Bewerbung = () => {
         if (typeof window !== 'undefined' && (window as any).fbq) {
           (window as any).fbq('track', 'Lead');
         }
-        setForm({ vorname: '', nachname: '', email: '', telefon: '', plz: '', stadt: '', startdatum: '', stelle: '', anstellungsart: '' });
-        setStep(1);
+        setSubmitted(true);
       } else {
         throw new Error(data.error || 'Unbekannter Fehler');
       }
