@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Send, Loader2, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Send, Loader2, ArrowRight, ArrowLeft, CheckCircle2, RotateCcw } from 'lucide-react';
 
 import PageHero from '@/components/landing/PageHero';
 import Footer from '@/components/landing/Footer';
