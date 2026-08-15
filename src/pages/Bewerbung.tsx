@@ -129,6 +129,22 @@ const Bewerbung = () => {
     }
   };
 
+  const handleReset = () => {
+    setSubmitted(false);
+    setStep(1);
+    setForm({
+      vorname: '',
+      nachname: '',
+      email: '',
+      telefon: '',
+      plz: '',
+      stadt: '',
+      startdatum: '',
+      stelle: '',
+      anstellungsart: '',
+    });
+  };
+
   const steps = [
     { title: 'Formular senden', text: 'Kontaktdaten und Rahmenbedingungen in zwei Schritten.' },
     { title: 'Rückmeldung', text: 'Wir sichten deine Bewerbung und melden uns per E-Mail.' },
